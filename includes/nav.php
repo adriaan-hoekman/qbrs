@@ -1,6 +1,6 @@
 <div class="header">
     <ul class="nav nav-pills pull-right" role="tablist">
-        <li role="presentation"><a href="login.php">Login</a></li>
+        <li role="presentation"><a href="https://webappdev.queensu.ca/pps/qbrs/registered/index.php">Login</a></li>
     </ul>
     <!--<h3 class="text-muted"><?php echo $site_name; ?></h3>-->
 
