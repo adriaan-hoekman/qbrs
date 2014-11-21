@@ -1,9 +1,7 @@
 <?php
 	
 	//$link = mysqli_connect(Null,'test','testqbrs','qbrs','4444','/home/users/qbrssec/www-data/tmp/mysql.sock');
-	include_once 'lib/global.conf.php';
-
-	//$dbc = mysqli_connect(Null,DB_USER,DB_PWD,DB_DBNAME,DB_PORT,DB_FILE);
+	include_once '../lib/global.conf.php';
 
 	if($dbc)
 	{	
