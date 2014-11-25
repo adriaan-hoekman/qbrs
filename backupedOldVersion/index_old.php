@@ -7,7 +7,7 @@
 <table cellspacing="50">
 	<tr>
 		<td>
-			<img src="/pps/qbrs/images/Queens_logo.png" width="192" height="146">
+			<img src="/pps/qbrs/QueensLogo_colour.png" width="192" height="146">
 		</td>
         <td align="center">
 			<h1>Queens Bicycle Registration System</h1>

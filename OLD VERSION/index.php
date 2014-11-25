@@ -1,4 +1,4 @@
-
+<DOCTYPE html>
 <html>
 <head>
   <title>Queens Bicycle Registration System</title>
@@ -7,13 +7,13 @@
 <table cellspacing="50">
 	<tr>
 		<td>
-			<img src="/pps/qbrs/images/Queens_logo.png" width="192" height="146">
+			<img src="./images/Queens_logo.png" width="192" height="146">
 		</td>
         <td align="center">
 			<h1>Queens Bicycle Registration System</h1>
         </td>
 		<td>
-			<FORM METHOD="LINK" ACTION="https://webapp.queensu.ca/pps/qbrs/registered/index.php">
+			<FORM METHOD="LINK" ACTION="https://webappdev.queensu.ca/pps/qbrs/registered/index.php">
   			<INPUT TYPE="submit" VALUE="Login">
   			</FORM>
   		</td>
