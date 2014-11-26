@@ -1,7 +1,7 @@
 <?php
 /*
  * Database Connection info
- * Author: @QCRS Group, CISC 498
+ * Author: @QBRS Group, CISC 498
  */
 
 // Define Database Connection
