@@ -13,7 +13,7 @@
 			<h1>Queens Bicycle Registration System</h1>
         </td>
 		<td>
-			<FORM METHOD="LINK" ACTION="https://webapp.queensu.ca/pps/qbrs/registered/index.php">
+			<FORM METHOD="LINK" ACTION="./registered/index.php">
   			<INPUT TYPE="submit" VALUE="Login">
   			</FORM>
   		</td>
