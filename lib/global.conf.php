@@ -10,7 +10,7 @@ define('DB_PORT','4444');
 define('DB_FILE','/home/users/qbrssec/www-data/tmp/mysql.sock');
 define('DB_USER','test');
 define('DB_PWD','testqbrs');
-define('DB_DBNAME','qbrs');
+define('DB_DBNAME','QBRS');
 
 // Using MySQL
 $dbc = mysqli_connect(Null,DB_USER,DB_PWD,DB_DBNAME,DB_PORT,DB_FILE);
