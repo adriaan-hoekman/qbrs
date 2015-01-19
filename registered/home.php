@@ -1,23 +1,9 @@
-<DOCTYPE html>
-<html>
-<head>
-  <title>Queens Bicycle Registration System</title>
-</head>
+<?php
+	include_once '../includes/header.php';
+?>
+
 <body>
 <table cellspacing="50">
-	<tr>
-		<td>
-			<img src="../images/Queens_logo.png" width="192" height="146">
-		</td>
-        <td align="center">
-			<h1>Queens Bicycle Registration System</h1>
-        </td>
-		<td>
-			<FORM>
-			<INPUT TYPE="button" VALUE="Logout" onClick="parent.location='https://login.queensu.ca/idp/logout.jsp?goto=https://webapp.queensu.ca/pps/qbrs/'">
-  			</FORM>
-  		</td>
-	</tr>
 	<tr>
     	<td>
         	<!-- Blank Cell under the Queens Logo. -->
@@ -59,8 +45,6 @@
 </table>
 </body>
 
-<footer>
-    <!--Somewhere For footer -->
-</footer>
-
-</html>
+<?php
+	include_once '../includes/footer.php';
+?>

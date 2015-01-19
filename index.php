@@ -1,23 +1,11 @@
 
 <html>
-<head>
-  <title>Queens Bicycle Registration System</title>
-</head>
+<?php
+	include_once './includes/header.php';
+?>
+
 <body>
 <table cellspacing="50">
-	<tr>
-		<td>
-			<img src="/pps/qbrs/images/Queens_logo.png" width="192" height="146">
-		</td>
-        <td align="center">
-			<h1>Queens Bicycle Registration System</h1>
-        </td>
-		<td>
-			<FORM METHOD="LINK" ACTION="./registered/index.php">
-  			<INPUT TYPE="submit" VALUE="Login">
-  			</FORM>
-  		</td>
-	</tr>
 	<tr>
     	<td>
         	<!-- Blank Cell under the Queens Logo. -->
@@ -40,4 +28,7 @@
         </td>
 </table>
 </body>
-</html>
+
+<?php
+	include_once './includes/footer.php';
+?>
