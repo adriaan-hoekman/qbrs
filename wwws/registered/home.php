@@ -3,7 +3,7 @@
 ?>
 
 <body>
-<table cellspacing="50">
+<table cellspacing="50" align="center">
 	<tr>
     	<td>
         	<!-- Blank Cell under the Queens Logo. -->
