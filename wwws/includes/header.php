@@ -5,12 +5,11 @@
 </head>
 
 <body>
-
 <table cellspacing="20">
 	<tr>
 		<td>
 		<?php
-			echo '<img src=/QBRS/dev/images/Queens_logo.png width="192" height="146">';
+			echo '<img src=/QBRS/dev/wwws/images/Queens_logo.png width="192" height="146">';
 		?>
 		</td>
         <td align="center">
@@ -22,5 +21,4 @@
   			</FORM>
   		</td>
 	</tr>
-	
 </body>

@@ -1,7 +1,7 @@
 <?php
 
-	include_once '../lib/global.conf.php';
-	include_once '../lib/reg.func.php';
+	include_once '../../lib/global.conf.php';
+	include_once '../../lib/reg.func.php';
 
 	date_default_timezone_set("America/Toronto");
 
