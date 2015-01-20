@@ -10,10 +10,6 @@
 	$email = $_SERVER['HTTP_QUEENSU_MAIL'];
 	$da = date("Y-m-d H:i:s");
 	
-// 	if ($netid != '9ah67' || $netid != '11ld20' || $netid != '1zwj') {
-// 		header('Location: https://login.queensu.ca/idp/logout.jsp?goto=https://webapp.queensu.ca/pps/qbrs/');
-// 	}
-
 	if (is_registered($dbc, $netid) == 0) {
 		register_user($dbc, $netid, $name, $email, $da);
 	}

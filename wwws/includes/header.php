@@ -10,7 +10,7 @@
 		<td>
 		<?php
 			$upOne = str_replace(realpath(dirname(__FILE__) . '/..'), '', realpath(dirname(__FILE__) . '/..'));
-			if (strpos($upOne,'adriaan') !== false) {
+			if ((strpos($upOne,'adriaan') !== false) || empty($upOne) == true) {
 				$upOne = str_replace(realpath(dirname(__DIR__) . '/../../..'), '', realpath(dirname(__FILE__) . '/..'));
 			}
 			$imgLink = $upOne .'/images/Queens_logo.png';
