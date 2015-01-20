@@ -9,9 +9,7 @@
 	<tr>
 		<td>
 		<?php
-
-			$imgLink = '/images/Queens_logo.png';
-			echo '<img src="'. $imgLink .'" width="192" height="146">';
+			echo '<img src=/images/Queens_logo.png width="192" height="146">';
 		?>
 		</td>
         <td align="center">
