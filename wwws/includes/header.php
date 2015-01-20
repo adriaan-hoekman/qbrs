@@ -9,11 +9,8 @@
 	<tr>
 		<td>
 		<?php
-			$upOne = str_replace(realpath(dirname(__FILE__) . '/..'), '', realpath(dirname(__FILE__) . '/..'));
-			if ((strpos($upOne,'adriaan') !== false) || empty($upOne) == true) {
-				$upOne = str_replace(realpath(dirname(__DIR__) . '/../../..'), '', realpath(dirname(__FILE__) . '/..'));
-			}
-			$imgLink = $upOne .'/images/Queens_logo.png';
+
+			$imgLink = '/images/Queens_logo.png';
 			echo '<img src="'. $imgLink .'" width="192" height="146">';
 		?>
 		</td>
@@ -46,5 +43,5 @@
 	}else{
     	//exit('error: 400 no agent');
 	}
-	
+
 ?>
