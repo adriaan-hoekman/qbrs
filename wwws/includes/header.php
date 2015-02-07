@@ -1,10 +1,12 @@
 <DOCTYPE html>
 <html>
 <head>
-  <title>Queen's Bicycle Registration System</title>
+	<link rel="stylesheet" href="/includes/styles.css">
+  	<title>Queen's Bicycle Registration System</title>
 </head>
 
 <body>
+<header>
 <table cellspacing="20" align="center">
 	<tr>
 		<td>
@@ -15,12 +17,25 @@
         <td align="center">
 			<h1>Queens Bicycle Registration System</h1>
         </td>
-		<td>
-			<FORM METHOD="LINK" ACTION="./registered/index.php">
-  			<INPUT TYPE="submit" VALUE="Login">
-  			</FORM>
-  		</td>
+        <?php
+        	if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
+        	{	
+				echo "<td>";
+				echo '<FORM METHOD="LINK" ACTION="../index.php">';
+				echo '<INPUT TYPE="submit" VALUE="Logout">';
+  				echo "</FORM>";
+	  			echo "</td>";
+        	} else {
+        		echo "<td>";
+				echo '<FORM METHOD="LINK" ACTION="./registered/index.php">';
+				echo '<INPUT TYPE="submit" VALUE="Login">';
+  				echo "</FORM>";
+	  			echo "</td>";
+        	}
+        ?>
 	</tr>
+</table>
+</header>
 </body>
 
 <?php

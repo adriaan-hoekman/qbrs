@@ -64,4 +64,48 @@ function search_netid($dbc, $netid) {
 	}
 }
 
+function search_missing($dbc) {
+	$sql = "SELECT Serial FROM Bicycle WHERE Missing > 0";
+	$query = $dbc -> query($sql);
+
+	$result = $query -> fetch_assoc();
+	
+	return $result;
+}
+
+function search_bicycle($dbc, $serial, $make, $model, $missing) {
+	$sql = "SELECT * FROM Bicycle WHERE ";
+	if (empty($serial) == False) {
+		$sql .= "Serial = '$serial'";
+	}
+	if (empty($make) == False) {
+		if (empty($serial) == False) {
+			$sql .= " AND ";
+		}
+		$sql .= "Make = '$make'";
+	}
+	if (empty($model) == False) {
+		if (empty($serial) == False or empty($make) == False) {
+			$sql .= " AND ";
+		}
+		$sql .= "Model = '$model'";
+	}
+	if (empty($missing) == False) {
+		if (empty($serial) == False or empty($make) == False or empty($model) == False) {
+			$sql .= " AND ";
+		}
+		if (strcmp($missing, "True") == 0) {
+			$sql .= "Missing > 0";
+		} else {
+			$sql .= "Missing = 0";
+		}
+	}
+	if (empty($serial) and empty($make) and empty($model) and empty($missing)) {
+		$sql = "SELECT * FROM Bicycle";
+	} 
+	$query = $dbc -> query($sql);
+	
+	return $query;
+}
+
 ?>
