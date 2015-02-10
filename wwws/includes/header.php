@@ -7,36 +7,37 @@
 
 <body>
 <header>
-<table cellspacing="20" align="center">
+<table cellspacing="50" align="center">
 	<tr>
 		<td>
 		<?php
 			echo '<img src=/images/Queens_logo.png width="192" height="146">';
 		?>
 		</td>
-        <td align="center">
+    <td align="center">
 			<h1>Queens Bicycle Registration System</h1>
-        </td>
-        <?php
-        	if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
-        	{	
-				echo "<td>";
-				echo '<FORM METHOD="LINK" ACTION="../index.php">';
-				echo '<INPUT TYPE="submit" VALUE="Logout">';
+    </td>
+		<td>
+      <?php
+      	if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
+      	{
+					echo "<td>";
+					echo '<FORM METHOD="LINK" ACTION="../index.php">';
+					echo '<INPUT TYPE="submit" VALUE="Logout">';
   				echo "</FORM>";
 	  			echo "</td>";
-        	} else {
-        		echo "<td>";
-				echo '<FORM METHOD="LINK" ACTION="./registered/index.php">';
-				echo '<INPUT TYPE="submit" VALUE="Login">';
+        } else {
+        	echo "<td>";
+					echo '<FORM METHOD="LINK" ACTION="./registered/index.php">';
+					echo '<INPUT TYPE="submit" VALUE="Login">';
   				echo "</FORM>";
 	  			echo "</td>";
-        	}
+        }
         ?>
+		</td>
 	</tr>
 </table>
 </header>
-</body>
 
 <?php
 	// Test version of different browser

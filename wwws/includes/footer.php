@@ -11,8 +11,9 @@
     </tr>
 	<tr style="font-size:75%">
 		<td>
-        	Created By Luke Dowker, Adriaan Hoekman, and Dearie Jiang 
+        	Created By Luke Dowker, Adriaan Hoekman, and Dearie Jiang
         </td>
 	</tr>
 </footer>
+</body>
 </html>
