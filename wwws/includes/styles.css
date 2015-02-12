@@ -60,3 +60,13 @@ th#admin-th, td#admin-search-td {
 	text-align: center;
 }
 
+table#cyclist-show {
+    width: 90%;
+    margin: 5%;
+    border: 1px solid black;
+}
+
+td#cyclist-show-td {
+    border: 1px solid black;
+    text-align: center;
+}
