@@ -121,7 +121,7 @@
 	<tr>
 		<?php
 		echo "<td>";
-		echo '<FORM METHOD="LINK" ACTION="./home.php">';
+		echo '<FORM METHOD="LINK" ACTION="./manage-admin.php">';
 		echo '<INPUT TYPE="submit" VALUE="Manage Adminstrators">';
 		echo "</FORM>";
 		echo "</td>";   
