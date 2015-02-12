@@ -1,11 +1,7 @@
-<html>
 <?php
 	include_once './includes/header.php';
 ?>
 
-
-
-<body>
 <table cellspacing="50" align="center">
 	<tr>
     	<td>
@@ -22,7 +18,6 @@
       </td>
 	</tr>
 </table>
-</body>
 
 <?php
 	include_once './includes/footer.php';
