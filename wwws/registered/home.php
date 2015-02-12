@@ -1,49 +1,57 @@
 <?php
-	include_once '../includes/header.php';
+    include_once '../includes/header.php';
+    include_once '../../lib/global.conf.php';
+    include_once '../../lib/reg.func.php';
+    include_once '../../lib/search.func.php';
 ?>
 
-<body>
-<table cellspacing="50" align="center">
-	<tr>
-    	<td>
-        	<!-- Blank Cell under the Queens Logo. -->
-        </td>
-    	<td align="center">
-        	<h1>YOU LOGGED IN AS CYCLIST</h1>
-  			<?php
+<section>
+<nav>
+<h1>CYCLIST HOME PAGE</h1>
+<h2>Welcome <?php echo $_SERVER['HTTP_COMMON_NAME']; ?></h2>
+</nav>
 
-			include_once '../../lib/global.conf.php';
-			include_once '../../lib/reg.func.php';
+<div class="container">
+    <form action="./add-bicycle.php">
+        <button type="submit" class="btn btn-info btn-block">Add Bicycle</button>
+    </form>
 
-			date_default_timezone_set("America/Toronto");
+    <?php
 
-			$netid = $_SERVER['HTTP_QUEENSU_NETID'];
-			$name = $_SERVER['HTTP_COMMON_NAME'];
-			$email = $_SERVER['HTTP_QUEENSU_MAIL'];
-			$da = date("Y-m-d H:i:s");
+        date_default_timezone_set("America/Toronto");
 
-    		echo "Hello Cyclist ".$name;
-			echo "<br />";
-    		echo "Your NetID is ".$netid;
-			echo "<br />";
-    		echo "Your Email is ".$email;
-			echo "<br />";
-			echo "System Time is: ".$da;
-  			?>
-        </td>
-	</tr>
-    <tr>
-    	<td>
-        	<!-- Blank Cell under the Queens Logo. -->
-        </td>
-        <td align="center">
-        	<a href="http://youtu.be/JgHubY5Vw3Y" title="Video - How to properly lock your bicycle" target="new">Video - How to properly lock your bicycle</a>
-            <br />
-            <a href="http://www.cyclekingston.ca/" title="CYCLE Kingston" target="new">CYCLE Kingston</a>
-            <br />
-        </td>
-</table>
-</body>
+        $netid = $_SERVER['HTTP_QUEENSU_NETID'];
+        $name = $_SERVER['HTTP_COMMON_NAME'];
+        $email = $_SERVER['HTTP_QUEENSU_MAIL'];
+        $da = date("Y-m-d H:i:s");
+
+        // Get Bicycle list from batadase.
+        $result = search_netid($dbc, $netid);
+
+        if ($result != false && $result -> num_rows != 0) {
+            while($row = mysqli_fetch_assoc($result)){
+                echo "<table id='cyclist-show' align='center'>";
+                echo "<tr>
+                        <td id='cyclist-show-td'>Image</td>
+                        <td id='cyclist-show-td'>Serial Number</td>
+                        <td id='cyclist-show-td'>Make</td>
+                        <td id='cyclist-show-td'>Model</td>
+                        <td id='cyclist-show-td'>Missing Report</td>
+                    </tr>";
+                echo "<tr><td id='cyclist-show-td'>".$row['Image']."</td>
+                          <td id='cyclist-show-td'>".$row['Serial']."</td>
+                          <td id='cyclist-show-td'>".$row['Make']."</td>
+                          <td id='cyclist-show-td'>".$row['Model']."</td>
+                          <td id='cyclist-show-td'><input type='checkbox' value=".htmlspecialchars('./missing-report.php')." name='checket' onClick='if (this.checked) { window.location = this.value;}'</input></td>
+                    </tr>";
+                echo "</table>";
+            }
+        } else {
+            echo "You do not have any bicycle that registered with system";
+        }
+    ?>
+</div>
+</section>
 
 <?php
 	include_once '../includes/footer.php';

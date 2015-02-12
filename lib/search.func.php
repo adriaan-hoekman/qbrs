@@ -45,23 +45,15 @@ function search_make($dbc, $make) {
 		return 0;
 	} else {
 		// Bicycle is already in the database
-		return 1;
+		return $result;
 	}
 }
 
 function search_netid($dbc, $netid) {
-	$sql = "SELECT * FROM Users, Bicycle WHERE NetID = '$netid' AND Bicycle.UserID = User.UserID";
+	$sql = "SELECT * FROM User, Bicycle WHERE User.NetID = '$netid' AND Bicycle.UserID = User.UserID";
 	$query = $dbc -> query($sql);
-
-	$result = $query -> fetch_array();
-
-	if(empty($result)){
-		// No Bicycle with this net ID in the database
-		return 0;
-	} else {
-		// Bicycle is already in the database
-		return 1;
-	}
+	
+	return $query;
 }
 
 function search_missing($dbc) {
