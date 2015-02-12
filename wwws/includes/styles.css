@@ -36,10 +36,10 @@ section#admin-results {
     margin-bottom:5%;
 }
 section#non-reg-search {
-		width:100%;
+	width:100%;
 	text-align:center;
-		float:left;
-		padding:5px;
+	float:left;
+	padding:5px;
 }
 footer {
     background-color:white;
@@ -59,4 +59,5 @@ th#admin-th, td#admin-search-td {
 	border:1px solid black;
 	text-align: center;
 }
+
 

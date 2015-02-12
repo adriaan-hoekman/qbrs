@@ -5,7 +5,6 @@
 	include_once '../../lib/search.func.php';
 ?>
 
-<body>
 <nav>
 <h1>ADMINISTRATOR</h1>
 </nav>
@@ -165,7 +164,6 @@
 	}
 ?>
 </section>
-</body>
 
 <?php
 	include_once '../includes/footer.php';
