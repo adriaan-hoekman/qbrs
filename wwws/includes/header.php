@@ -7,34 +7,32 @@
 
 <body>
 <header>
-<table cellspacing="50" align="center">
+<table cellspacing="50" align="center" border =1>
 	<tr>
 		<td>
 		<?php
 			echo '<img src=/images/Queens_logo.png width="192" height="146">';
 		?>
 		</td>
-    <td align="center">
+    <td align="center" width=550px>
 			<h1>Queens Bicycle Registration System</h1>
     </td>
-		<td>
       <?php
       	if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
       	{
-					echo "<td>";
+					echo '<td align="center" width=100px>';
 					echo '<FORM METHOD="LINK" ACTION="../index.php">';
-					echo '<INPUT TYPE="submit" VALUE="Logout">';
+					echo '<INPUT TYPE="submit" VALUE="Login">';
   				echo "</FORM>";
 	  			echo "</td>";
         } else {
-        	echo "<td>";
+        	echo '<td align="center" width=100px>';
 					echo '<FORM METHOD="LINK" ACTION="./registered/index.php">';
 					echo '<INPUT TYPE="submit" VALUE="Login">';
   				echo "</FORM>";
 	  			echo "</td>";
         }
         ?>
-		</td>
 	</tr>
 </table>
 </header>
