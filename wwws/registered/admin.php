@@ -112,7 +112,7 @@
 	<tr>
 		<?php
 		echo "<td>";
-		echo '<FORM METHOD="LINK" ACTION="./home.php">';
+		echo '<FORM METHOD="LINK" ACTION="./generate-report.php">';
 		echo '<INPUT TYPE="submit" VALUE="Generate System Report">';
 		echo "</FORM>";
 		echo "</td>";   
