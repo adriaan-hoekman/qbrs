@@ -38,31 +38,25 @@
 <aside>
 <table align="center">
 	<tr>
-		<?php
-		echo "<td>";
-		echo '<FORM METHOD="LINK" ACTION="./admin.php">';
-		echo '<INPUT TYPE="submit" VALUE="Admin Home">';
-		echo "</FORM>";
-		echo "</td>";   
-		?>
+		<td>
+		<FORM METHOD="LINK" ACTION="./admin.php">
+		<button id="admin-button">Admin Home</button>
+		</FORM>
+		</td>
 	</tr>
 	<tr>
-		<?php
-		echo "<td>";
-		echo '<FORM METHOD="LINK" ACTION="./home.php">';
-		echo '<INPUT TYPE="submit" VALUE="Manage Personal Bicycles">';
-		echo "</FORM>";
-		echo "</td>";   
-		?>
+		<td>
+		<FORM METHOD="LINK" ACTION="./home.php">
+		<button id="admin-button">Manage Personal Bicycles</button>
+		</FORM>
+		</td>
 	</tr>
 	<tr>
-		<?php
-		echo "<td>";
-		echo '<FORM METHOD="LINK" ACTION="./generate-report.php">';
-		echo '<INPUT TYPE="submit" VALUE="Generate System Report">';
-		echo "</FORM>";
-		echo "</td>";   
-		?>
+		<td>
+		<FORM METHOD="LINK" ACTION="./generate-report.php">
+		<button id="admin-button">Generate Report</button>
+		</FORM>
+		</td> 
 	</tr>
 </table>
 </aside>

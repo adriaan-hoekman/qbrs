@@ -70,3 +70,6 @@ td#cyclist-show-td {
     border: 1px solid black;
     text-align: center;
 }
+button#admin-button {
+	width:100%;
+}
