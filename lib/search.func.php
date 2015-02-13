@@ -41,7 +41,7 @@ function search_make($dbc, $make) {
 	$result = $query -> fetch_array();
 
 	if(empty($result)){
-		// No Bicycle with this make in the database
+		// No Bicycle with this net ID in the database
 		return 0;
 	} else {
 		// Bicycle is already in the database

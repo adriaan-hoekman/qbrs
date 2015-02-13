@@ -6,8 +6,8 @@
 
 function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 	$result = mysqli_query($dbc,
-		"INSERT INTO Bicycle (BicycleID, Serial, Make, Model, Image, Other, Missing, UserID)
-		 VALUES ('', '$serialNum, '$make', '$model', '$pic', '$other', '1', '$userid');")
+		"INSERT INTO Bicycle (Serial, Make, Model, Image, Other, Missing, UserID)
+		 VALUES ('$serialNum', '$make', '$model', '$pic', '$other', '0', '$userid');")
 		or die ("<br />Couldn't execute query.");
 	return $result;
 }

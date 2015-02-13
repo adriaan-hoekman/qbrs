@@ -5,6 +5,7 @@
 	include_once '../../lib/search.func.php';
 ?>
 
+<body>
 <nav>
 <h1>ADMINISTRATOR</h1>
 </nav>
@@ -112,7 +113,7 @@
 	<tr>
 		<?php
 		echo "<td>";
-		echo '<FORM METHOD="LINK" ACTION="./generate-report.php">';
+		echo '<FORM METHOD="LINK" ACTION="./home.php">';
 		echo '<INPUT TYPE="submit" VALUE="Generate System Report">';
 		echo "</FORM>";
 		echo "</td>";   
@@ -121,7 +122,7 @@
 	<tr>
 		<?php
 		echo "<td>";
-		echo '<FORM METHOD="LINK" ACTION="./manage-admin.php">';
+		echo '<FORM METHOD="LINK" ACTION="./home.php">';
 		echo '<INPUT TYPE="submit" VALUE="Manage Adminstrators">';
 		echo "</FORM>";
 		echo "</td>";   
@@ -164,6 +165,7 @@
 	}
 ?>
 </section>
+</body>
 
 <?php
 	include_once '../includes/footer.php';

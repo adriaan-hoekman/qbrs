@@ -2,37 +2,40 @@
 <html>
 <head>
 	<link rel="stylesheet" href="/includes/styles.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   	<title>Queen's Bicycle Registration System</title>
 </head>
 
 <body>
 <header>
-<table cellspacing="50" align="center" border =1>
+<table cellspacing="50" align="center">
 	<tr>
 		<td>
 		<?php
 			echo '<img src=/images/Queens_logo.png width="192" height="146">';
 		?>
 		</td>
-    <td align="center" width=550px>
+    <td align="center">
 			<h1>Queens Bicycle Registration System</h1>
     </td>
+		<td>
       <?php
       	if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
       	{
-					echo '<td align="center" width=100px>';
+					echo "<td>";
 					echo '<FORM METHOD="LINK" ACTION="../index.php">';
-					echo '<INPUT TYPE="submit" VALUE="Login">';
+					echo '<INPUT TYPE="submit" VALUE="Logout">';
   				echo "</FORM>";
 	  			echo "</td>";
         } else {
-        	echo '<td align="center" width=100px>';
+        	echo "<td>";
 					echo '<FORM METHOD="LINK" ACTION="./registered/index.php">';
 					echo '<INPUT TYPE="submit" VALUE="Login">';
   				echo "</FORM>";
 	  			echo "</td>";
         }
         ?>
+		</td>
 	</tr>
 </table>
 </header>

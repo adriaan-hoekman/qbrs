@@ -21,15 +21,16 @@
         $da = date("Y-m-d H:i:s");
     ?>
 
-    <table alian="center">
-        <form alian="center" action="POST">
-            <td>
-                <tr>Location: <input name="Serial"></input></br></tr>        
-                <tr>Time: <input name="Make"></input></br></tr>
-                <button name="submit" value="Submit">Submit</button> 
-            </td>
+        <form align="center" action="POST">
+        <table align="center">
+            <tr><td>Date: </td><td><input name="date"></input></td></tr>     
+            <tr><td>Time: </td><td><input name="time"></input></td></tr>     
+            <tr><td>Location: </td><td><input name="location"></input></td></tr>    
+            <tr><td>Description: </td><td><input name="desc"></input></td></tr>
+        </table>
+    </br>
+        <button name="submit" value="Submit">Submit</button>
         </form>
-    </table>
 
 
 </div>
