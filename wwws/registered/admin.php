@@ -5,7 +5,6 @@
 	include_once '../../lib/search.func.php';
 ?>
 
-<body>
 <nav>
 <h1>ADMINISTRATOR</h1>
 </nav>
@@ -22,7 +21,7 @@
 			$email = $_SERVER['HTTP_QUEENSU_MAIL'];
 			$da = date("Y-m-d H:i:s");
 
-    		echo "Search for bicycles by:";
+			echo "Search for bicycles by:";
 			echo "<br />";
   			?>
 		</td>
@@ -160,7 +159,6 @@
 	}
 ?>
 </section>
-</body>
 
 <?php
 	include_once '../includes/footer.php';

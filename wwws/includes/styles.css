@@ -7,7 +7,7 @@ header {
 nav {
 	line-height:30px;
 	text-align:center;
-	float:none;
+	clear:both;
 	padding:5px;
 }
 aside {
