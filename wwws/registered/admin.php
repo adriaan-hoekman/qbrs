@@ -69,13 +69,13 @@
 	</tr>
 	<tr>
 		<td>
-			<input type="submit" name="submit" value="Submit">
+			<button id="admin-button">Submit</button>
 			<input type="hidden" name="doSearch" value="1">
 		</td>
 </form>
-<form>
+<form method="post">
 		<td>
-			<input type="submit" name="clear" value="Clear">
+			<button id="admin-button">Reset</button>
 			<input type="hidden" name="doSearch" value="0">
 		</td>
 </form>
