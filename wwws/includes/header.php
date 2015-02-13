@@ -22,7 +22,7 @@
       	{
 					echo '<td align="center" width=100px>';
 					echo '<FORM METHOD="LINK" ACTION="../index.php">';
-					echo '<INPUT TYPE="submit" VALUE="Login">';
+					echo '<INPUT TYPE="submit" VALUE="Logout">';
   				echo "</FORM>";
 	  			echo "</td>";
         } else {
