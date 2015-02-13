@@ -3,6 +3,20 @@
 /**
  * Bicycle Search functuons file to search Bicycle information.
  */
+function search_serial_nonreg ($dbc, $serialNum) {
+	$sql = "SELECT * FROM Bicycle WHERE Serial = '$serialNum' limit 1";
+	$query = $dbc -> query($sql);
+
+	$result = $query -> fetch_assoc();
+
+	if(empty($result)){
+		// No Bicycle with this serial number in the database
+		return 0;
+	} else {
+		// Bicycle is already in the database
+		return $result;
+	}
+}
 
 function search_serial($dbc, $serialNum) {
 	$sql = "SELECT * FROM Bicycle WHERE Serial = '$serialNum' limit 1";
@@ -41,7 +55,7 @@ function search_make($dbc, $make) {
 	$result = $query -> fetch_array();
 
 	if(empty($result)){
-		// No Bicycle with this make in the database
+		// No Bicycle with this net ID in the database
 		return 0;
 	} else {
 		// Bicycle is already in the database
@@ -61,7 +75,7 @@ function search_missing($dbc) {
 	$query = $dbc -> query($sql);
 
 	$result = $query -> fetch_assoc();
-	
+
 	return $result;
 }
 
@@ -94,9 +108,9 @@ function search_bicycle($dbc, $serial, $make, $model, $missing) {
 	}
 	if (empty($serial) and empty($make) and empty($model) and empty($missing)) {
 		$sql = "SELECT * FROM Bicycle";
-	} 
+	}
 	$query = $dbc -> query($sql);
-	
+
 	return $query;
 }
 
