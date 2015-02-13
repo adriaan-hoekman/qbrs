@@ -29,8 +29,7 @@
         $result = search_netid($dbc, $netid);
 
         if ($result != false && $result -> num_rows != 0) {
-            while($row = mysqli_fetch_assoc($result)){
-                echo "<table id='cyclist-show' align='center'>";
+            echo "<table id='cyclist-show' align='center'>";
                 echo "<tr>
                         <td id='cyclist-show-td'>Image</td>
                         <td id='cyclist-show-td'>Serial Number</td>
@@ -38,14 +37,15 @@
                         <td id='cyclist-show-td'>Model</td>
                         <td id='cyclist-show-td'>Missing Report</td>
                     </tr>";
-                echo "<tr><td id='cyclist-show-td'>".$row['Image']."</td>
+            while($row = mysqli_fetch_assoc($result)){
+                echo "<tr><td id='cyclist-show-td'><img height='75px' src=".$row['Image']."></td>
                           <td id='cyclist-show-td'>".$row['Serial']."</td>
                           <td id='cyclist-show-td'>".$row['Make']."</td>
                           <td id='cyclist-show-td'>".$row['Model']."</td>
                           <td id='cyclist-show-td'><input type='checkbox' value=".htmlspecialchars('./missing-report.php')." name='checket' onClick='if (this.checked) { window.location = this.value;}'</input></td>
                     </tr>";
-                echo "</table>";
             }
+            echo "</table>";
         } else {
             echo "You do not have any bicycle that registered with system";
         }

@@ -6,8 +6,8 @@
 
 function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 	$result = mysqli_query($dbc,
-		"INSERT INTO Bicycle (BicycleID, Serial, Make, Model, Image, Other, Missing, UserID)
-		 VALUES ('', '$serialNum, '$make', '$model', '$pic', '$other', '1', '$userid');")
+		"INSERT INTO Bicycle (Serial, Make, Model, Image, Other, Missing, UserID)
+		 VALUES ('$serialNum', '$make', '$model', '$pic', '$other', '0', '$userid');")
 		or die ("<br />Couldn't execute query.");
 	return $result;
 }
@@ -39,10 +39,27 @@ function report_bicycle($dbc, $serialNum) {
 	$result = $query -> fetch_array();
 
 	if(empty($result)){
-		// No User with this net ID in the database
+		// No report bicycle is not success
 		return 0;
 	} else {
-		// User is already in the database
+		// success
+		return 1;
+	}
+}
+
+function report_bicycle_add($dbc, $date, $time, $loca, $desc, $bikeid){
+	$sql = "INSERT INTO Report (Date, Time, Location, Description, Return, BicycleID) 
+				VALUES ('$date','$time','$loca','$desc','0','$bikeid');"
+
+	$query = $dbc -> query($sql);
+
+	$result = $query -> fetch_array();
+
+	if(empty($result)){
+		// No report bicycle is not success
+		return 0;
+	} else {
+		// success
 		return 1;
 	}
 }
