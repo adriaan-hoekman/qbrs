@@ -2,7 +2,6 @@
 <html>
 <head>
 	<link rel="stylesheet" href="/includes/styles.css">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   	<title>Queen's Bicycle Registration System</title>
 </head>
 

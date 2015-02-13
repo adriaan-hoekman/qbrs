@@ -42,7 +42,7 @@
                           <td id='cyclist-show-td'>".$row['Serial']."</td>
                           <td id='cyclist-show-td'>".$row['Make']."</td>
                           <td id='cyclist-show-td'>".$row['Model']."</td>
-                          <td id='cyclist-show-td'><input type='checkbox' value=".htmlspecialchars('./missing-report.php')." name='checket' onClick='if (this.checked) { window.location = this.value;}'</input></td>
+                          <td id='cyclist-show-td'><input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['Serial'])." name='checket' onClick='if (this.checked) { window.location = this.value;}'</input></td>
                     </tr>";
             }
             echo "</table>";

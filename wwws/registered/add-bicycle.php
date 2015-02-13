@@ -22,7 +22,7 @@
         $email = $_SERVER['HTTP_QUEENSU_MAIL'];
         $da = date("Y-m-d H:i:s");
     ?>
-        <form align="center" method="post" action="addBicycle.php" enctype="multipart/form-data">
+        <form align="center" method="post" action="add-bicycle.php" enctype="multipart/form-data">
             <table align="center">
                 <tr><td>Serial Number: </td><td><input type="text" name="serial"></input></td></tr>     
                 <tr><td>Make: </td><td><input type="text" name="make"></input></td></tr>
@@ -33,11 +33,29 @@
             </br>
             <input type="submit" name="submit" value="Submit">
             <input type="hidden" name="addBicycle" value="1">
-            <input type="hidden" id = "netid" name="netid" value="<?php echo $netid; ?>">
+            <input type="hidden" id = "netidx" name="netidx" value="<?php echo $netid; ?>">
         </form>
 </div>
 </section>
 
 <?php
 	include_once '../includes/footer.php';
+?>
+
+<?php 
+    if(isset($_POST['addBicycle']) AND $_POST['addBicycle']) { 
+        $pic_name = "../../images/" . $_POST['serial'] . basename($_FILES["pics"]["name"]);
+        move_uploaded_file($_FILES["pics"]["tmp_name"], $pic_name);
+        $result = add_bicycle($dbc, $_POST['serial'],
+                                       $_POST['make'],
+                                       $_POST['model'],
+                                       $pic_name,
+                                       $_POST['other'], 
+                                       $netid);
+        if ($result != false) {
+            header('./home.php');
+        }else{
+            echo "Fail";
+        }
+    }
 ?>
