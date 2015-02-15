@@ -3,8 +3,6 @@
 	include_once './includes/header.php';
 ?>
 
-
-
 <body>
 <table cellspacing="50" align="center">
 	<tr>
@@ -21,16 +19,6 @@
 					</FORM>
         </td>
 	</tr>
-    <tr>
-    	<td>
-        	<!-- Blank Cell under the Queens Logo. -->
-        </td>
-        <td align="center">
-        	<a href="http://youtu.be/JgHubY5Vw3Y" title="Video - How to properly lock your bicycle" target="new">Video - How to properly lock your bicycle</a>
-            <br />
-            <a href="http://www.cyclekingston.ca/" title="CYCLE Kingston" target="new">CYCLE Kingston</a>
-            <br />
-        </td>
 </table>
 </body>
 
