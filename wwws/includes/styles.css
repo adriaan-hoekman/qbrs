@@ -7,7 +7,7 @@ header {
 nav {
     line-height:30px;
     text-align:center;
-    float:none;
+    clear:both;
     padding:5px;
 }
 aside {
@@ -59,14 +59,15 @@ th#admin-th, td#admin-search-td {
 	border:1px solid black;
 	text-align: center;
 }
-
 table#cyclist-show {
     width: 90%;
     margin: 5%;
     border: 1px solid black;
 }
-
 td#cyclist-show-td {
     border: 1px solid black;
     text-align: center;
+}
+button#admin-button {
+	width:100%;
 }

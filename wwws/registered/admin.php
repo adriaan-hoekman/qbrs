@@ -99,27 +99,26 @@
 		echo "</div>";
 		echo "</td></tr>";
 	}
-	?>
-
+?>
 	<tr>
 		<td>
-			<FORM METHOD="LINK" ACTION="./manage-admin.php">
+		<FORM METHOD="LINK" ACTION="./manage-admin.php">
 			<button id="admin-button">Manage Administrators</button>
-			</FORM>
+		</FORM>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<FORM METHOD="LINK" ACTION="./home.php">
+		<FORM METHOD="LINK" ACTION="./home.php">
 			<button id="admin-button">Manage Personal Bicycles</button>
-			</FORM>
+		</FORM>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<FORM METHOD="LINK" ACTION="./generate-report.php">
+		<FORM METHOD="LINK" ACTION="./generate-report.php">
 			<button id="admin-button">Generate Report</button>
-			</FORM>
+		</FORM>
 		</td>
 	</tr>
 </table>

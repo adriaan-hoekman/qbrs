@@ -17,23 +17,23 @@
 	<tr>
 		<td>
 		<FORM METHOD="LINK" ACTION="./admin.php">
-		<button id="admin-button">Admin Home</button>
+			<button id="admin-button">Admin Home</button>
 		</FORM>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<FORM METHOD="LINK" ACTION="./home.php">
-		<button id="admin-button">Manage Personal Bicycles</button>
+			<button id="admin-button">Manage Personal Bicycles</button>
 		</FORM>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<FORM METHOD="LINK" ACTION="./manage-admin.php">
-		<button id="admin-button">Manage Administrators</button>
+			<button id="admin-button">Manage Administrators</button>
 		</FORM>
-		</td> 
+		</td>
 	</tr>
 </table>
 </aside>

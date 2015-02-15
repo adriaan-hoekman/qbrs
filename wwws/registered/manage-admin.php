@@ -14,7 +14,7 @@
 	<tr>
     	<td>
 	    	Edit Administrator: <br/>
-        </td>
+			</td>
 	</tr>
 	<tr>
 		<td>
@@ -40,30 +40,30 @@
 	<tr>
 		<td>
 		<FORM METHOD="LINK" ACTION="./admin.php">
-		<button id="admin-button">Admin Home</button>
+			<button id="admin-button">Admin Home</button>
 		</FORM>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<FORM METHOD="LINK" ACTION="./home.php">
-		<button id="admin-button">Manage Personal Bicycles</button>
+			<button id="admin-button">Manage Personal Bicycles</button>
 		</FORM>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<FORM METHOD="LINK" ACTION="./generate-report.php">
-		<button id="admin-button">Generate Report</button>
+			<button id="admin-button">Generate Report</button>
 		</FORM>
-		</td> 
+		</td>
 	</tr>
 </table>
 </aside>
 
 <section id="admin-results">
-<?php 
-	if(isset($_POST['submit']) AND $_POST['submit'] == 1) { 
+<?php
+	if(isset($_POST['submit']) AND $_POST['submit'] == 1) {
 		$result = add_admin($dbc, $_POST['adminQuery']);
 		if ($result == 1) {
 			echo "Admin successfully added";
@@ -71,8 +71,8 @@
 			echo "Unable to add admin.";
 		}
 	}
-	
-	if(isset($_POST['submit']) AND $_POST['submit'] == 2) { 
+
+	if(isset($_POST['submit']) AND $_POST['submit'] == 2) {
 		$result = remove_admin($dbc, $_POST['adminQuery']);
 		if ($result == 1) {
 			echo "Admin successfully removed";
