@@ -23,7 +23,7 @@
 
 			echo "Search for bicycles by:";
 			echo "<br />";
-  			?>
+			?>
 		</td>
 	</tr>
 <form method="post" action="admin.php">
