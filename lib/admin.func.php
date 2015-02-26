@@ -110,7 +110,7 @@ function generate_report($dbc, $report_type) {
 	return $query;
 }
 
-function report_to_csv($dbc, $report_type, $headers = TRUE) {
+function report_to_csv($dbc, $report_type, $attachment = True, $headers = True) {
 	$filename = generate_report_filename($report_type);
 	$query = generate_report($dbc, $report_type);
 
@@ -118,7 +118,14 @@ function report_to_csv($dbc, $report_type, $headers = TRUE) {
 		return 0;
 	}
 
-	$fp = fopen($filename, 'w');
+	if($attachment) {
+		// send response headers to the browser
+		header( 'Content-Type: text/csv' );
+		header( 'Content-Disposition: attachment;filename='.$filename);
+		$fp = fopen('php://output', 'w');
+	} else {
+		$fp = fopen($filename, 'w');
+	}
 
 	if($headers) {
 		// output header row (if at least one row exists)

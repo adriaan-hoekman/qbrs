@@ -81,7 +81,7 @@ function search_missing($dbc) {
 
 function search_bicycle($dbc, $serial, $make, $model, $missing) {
 	$sql = "SELECT * FROM Bicycle, User
-					WHERE Bicycle.UserID = User.UserID AND";
+					WHERE Bicycle.UserID = User.UserID AND ";
 	if (empty($serial) == False) {
 		$sql .= "Serial = '$serial'";
 	}
