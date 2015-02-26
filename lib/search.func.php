@@ -66,7 +66,7 @@ function search_make($dbc, $make) {
 function search_netid($dbc, $netid) {
 	$sql = "SELECT * FROM User, Bicycle WHERE User.NetID = '$netid' AND Bicycle.UserID = User.UserID";
 	$query = $dbc -> query($sql);
-	
+
 	return $query;
 }
 
@@ -80,7 +80,8 @@ function search_missing($dbc) {
 }
 
 function search_bicycle($dbc, $serial, $make, $model, $missing) {
-	$sql = "SELECT * FROM Bicycle WHERE ";
+	$sql = "SELECT * FROM Bicycle, User
+					WHERE Bicycle.UserID = User.UserID AND";
 	if (empty($serial) == False) {
 		$sql .= "Serial = '$serial'";
 	}
@@ -107,7 +108,8 @@ function search_bicycle($dbc, $serial, $make, $model, $missing) {
 		}
 	}
 	if (empty($serial) and empty($make) and empty($model) and empty($missing)) {
-		$sql = "SELECT * FROM Bicycle";
+		$sql = "SELECT * FROM Bicycle, User
+						WHERE Bicycle.UserID = User.UserID";
 	}
 	$query = $dbc -> query($sql);
 

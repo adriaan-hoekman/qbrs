@@ -102,23 +102,23 @@
 ?>
 	<tr>
 		<td>
-		<FORM METHOD="LINK" ACTION="./manage-admin.php">
+		<form method="link" action="./manage-admin.php">
 			<button id="admin-button">Manage Administrators</button>
-		</FORM>
+		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
-		<FORM METHOD="LINK" ACTION="./home.php">
+		<form method="link" action="./home.php">
 			<button id="admin-button">Manage Personal Bicycles</button>
-		</FORM>
+		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
-		<FORM METHOD="LINK" ACTION="./generate-report.php">
+		<form method="link" action="./generate-report.php">
 			<button id="admin-button">Generate Report</button>
-		</FORM>
+		</form>
 		</td>
 	</tr>
 </table>
@@ -136,6 +136,7 @@
 		<table id="admin-search" align="center">
 			<tr>
 				<th id="admin-th">Picture</th>
+				<th id="admin-th">NetID</th>
 				<th id="admin-th">Serial Number</th>
 				<th id="admin-th">Make</th>
 				<th id="admin-th">Model</th>
@@ -145,6 +146,7 @@
 			while($row = mysqli_fetch_assoc($result)){
 				$missing = ($row['Missing'] == 0 ? "No" : "Yes");
 				echo "<tr><td id='admin-search-td'>".$row['Image']."</td>
+							<td id='admin-search-td'>".$row['NetID']."</td>
 						  <td id='admin-search-td'>".$row['Serial']."</td>
 						  <td id='admin-search-td'>".$row['Make']."</td>
 						  <td id='admin-search-td'>".$row['Model']."</td>

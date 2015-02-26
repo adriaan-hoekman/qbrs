@@ -39,23 +39,23 @@
 <table align="center">
 	<tr>
 		<td>
-		<FORM METHOD="LINK" ACTION="./admin.php">
+		<form method="link" action="./admin.php">
 			<button id="admin-button">Admin Home</button>
-		</FORM>
+		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
-		<FORM METHOD="LINK" ACTION="./home.php">
+		<form method="link" action="./home.php">
 			<button id="admin-button">Manage Personal Bicycles</button>
-		</FORM>
+		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
-		<FORM METHOD="LINK" ACTION="./generate-report.php">
+		<form method="link" action="./generate-report.php">
 			<button id="admin-button">Generate Report</button>
-		</FORM>
+		</form>
 		</td>
 	</tr>
 </table>
@@ -66,7 +66,7 @@
 	if(isset($_POST['submit']) AND $_POST['submit'] == 1) {
 		$result = add_admin($dbc, $_POST['adminQuery']);
 		if ($result == 1) {
-			echo "Admin successfully added";
+			echo "Admin successfully added.";
 		} else {
 			echo "Unable to add admin.";
 		}
@@ -75,7 +75,7 @@
 	if(isset($_POST['submit']) AND $_POST['submit'] == 2) {
 		$result = remove_admin($dbc, $_POST['adminQuery']);
 		if ($result == 1) {
-			echo "Admin successfully removed";
+			echo "Admin successfully removed.";
 		} else {
 			echo "Unable to remove admin.";
 		}
