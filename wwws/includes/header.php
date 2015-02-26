@@ -15,7 +15,7 @@
 		?>
 		</td>
     <td align="center" width=550px>
-			<h1>Queens Bicycle Registration System</h1>
+			<h1>Queen's Bicycle Registration System</h1>
     </td>
 		<?php
 			if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
