@@ -21,7 +21,7 @@
         $da = date("Y-m-d H:i:s");
     ?>
 
-        <form align="center" action="POST">
+        <form align="center" action="POST" action="missing-report.php" enctype="multipart/form-data">
         <table align="center">
             <tr><td>Bicycle: </td><td><input name="id" value="<?php echo $_GET['id']; ?>" /></td></tr>
             <tr><td>Date: </td><td><input name="date"></input></td></tr>     
