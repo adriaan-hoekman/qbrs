@@ -25,10 +25,10 @@
             if ($miss != false){
                 header('Location: ./home.php');
             }else{
-                echo "Fail";
+                header('Location: ./missing-report.php?id='.$row['idx'].'&serial='.$row['Serial'].'');
             }
         }else{
-            echo "Fail";
+                header('Location: ./missing-report.php?id='.$row['idx'].'&serial='.$row['Serial'].'');
         }
     }
 ?>

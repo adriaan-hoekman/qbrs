@@ -42,7 +42,8 @@
                           <td id='cyclist-show-td'>".$row['Serial']."</td>
                           <td id='cyclist-show-td'>".$row['Make']."</td>
                           <td id='cyclist-show-td'>".$row['Model']."</td>
-                          <td id='cyclist-show-td'><input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='if (this.checked) { window.location = this.value;}'</input></td>
+                          <td id='cyclist-show-td'>
+                          <input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='if (this.checked) {window.location = this.value;}' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input></td>
                     </tr>";
             }
             echo "</table>";

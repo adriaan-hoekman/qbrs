@@ -47,15 +47,22 @@
 
 <?php
     if(isset($_POST['addReport']) AND $_POST['addReport']) { 
-        $result = report_bicycle_add($dbc, $_POST['date'],
-                                       $_POST['time'],
-                                       $_POST['location'],
-                                       $_POST['desc'],
-                                       $_POST['id']);
+        $mysql_date = date('Y-m-d',strtotime($_POST['date']));
+        $mysql_time = date('G:i:s',strtotime($_POST['time']));
+        echo $mysql_date;
+        echo $_POST['location'];
+        echo $_POST['desc'];
+        echo $_POST['idx'];
+        echo $_POST['serialx'];
+        $result = report_bicycle_add($dbc, $mysql_date,
+                                      $mysql_time,
+                                      $_POST['location'],
+                                      $_POST['desc'],
+                                      $_POST['idx']);
         if ($result != false) {
-            $miss = report_bicycle($dbc, $_POST['serial']);
+            $miss = report_bicycle($dbc, $_POST['serialx']);
             if ($miss != false){
-                header('./home.php');
+                header('Location: ./home.php');
             }else{
                 echo "Fail";
             }
