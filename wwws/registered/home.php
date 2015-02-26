@@ -12,9 +12,7 @@
 </nav>
 
 <div class="container">
-    <form action="./add-bicycle.php">
-        <button type="submit" class="btn btn-info btn-block">Add Bicycle</button>
-    </form>
+    <button onclick="location.href='./add-bicycle.php'">Add Bicycle</button>
 
     <?php
 

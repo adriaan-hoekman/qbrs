@@ -27,7 +27,7 @@
                 <tr><td>Date: </td><td><input name="date"></input></td></tr>     
                 <tr><td>Time: </td><td><input name="time"></input></td></tr>     
                 <tr><td>Location: </td><td><input name="location"></input></td></tr>    
-                <tr><td>Description: </td><td><input name="desc"></input></td></tr>
+                <tr><td>Description: </td><td><textarea name="desc" rows="10" cols=auto></textarea></td></tr>
             </table>
             </br>
             <input type="hidden" name="addReport" value="1">
@@ -35,6 +35,7 @@
             <input type="hidden" id = "idx" name="idx" value="<?php echo $_GET['id']; ?>">
             <input type="hidden" id = "serialx" name="serialx" value="<?php echo $_GET['serial']; ?>">
             <input type="submit" name="submit" value="Submit">
+            <input type="button" value="Cancel" onClick="history.go(-1);">
         </form>
 
 

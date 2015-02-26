@@ -32,6 +32,7 @@
             </table>
             </br>
             <input type="submit" name="submit" value="Submit">
+            <input type="button" value="Cancel" onClick="history.go(-1);">
             <input type="hidden" name="addBicycle" value="1">
             <input type="hidden" id = "netidx" name="netidx" value="<?php echo $netid; ?>">
         </form>
