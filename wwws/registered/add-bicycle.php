@@ -53,7 +53,7 @@
                                        $_POST['other'], 
                                        $netid);
         if ($result != false) {
-            header('./home.php');
+            header('Location: ./home.php');
         }else{
             echo "Fail";
         }

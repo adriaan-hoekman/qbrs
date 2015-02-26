@@ -34,23 +34,15 @@ function delete_bicycle($dbc, $serialNum) {
 
 function report_bicycle($dbc, $serialNum) {
 	$sql = "UPDATE Bicycle SET Missing = '1' WHERE Serial = '$serialNum' ";
-	$query = $dbc -> query($sql);
+	$result = mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query report.");
 
-	$result = $query -> fetch_array();
-
-	if(empty($result)){
-		// No report bicycle is not success
-		return 0;
-	} else {
-		// success
-		return 1;
-	}
+	return $result;
 }
 
 function report_bicycle_add($dbc, $date, $time, $loca, $desc, $bikeid){
-	$result = mysqli_query($dbc, "INSERT INTO Report (Date, Time, Location, Description, Return, BicycleID) 
-				VALUES ('$date','$time','$loca','$desc','0','$bikeid');")
-				or die ("<br />Couldn't execute query.");
+	$result = mysqli_query($dbc, "INSERT INTO Report (`Date`, `Time`, `Location`, `Description`, `Return`, `BicycleID`) 
+				VALUES ('$date', '$time','$loca','$desc','0','$bikeid');")
+				or die ("<br />Couldn't execute query add.");
 
 	return $result;
 }
