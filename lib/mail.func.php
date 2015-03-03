@@ -8,7 +8,7 @@ function missing_send_mail($to, $name){
 	<title>This is Your Missing Report</title>
 	</head>
 	<body>
-	<p>Hi David</p>
+	<p>Hi ".$name."</p>
 	<p>The Following information is your missing report. Please keep on file for furture uses.</p>
 	</body>
 	</html>
@@ -19,10 +19,10 @@ function missing_send_mail($to, $name){
 	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
 
 	// More Header
-	$headers .= 'From: Bicycle Registration System<Do-Not-Reply@Queensu.ca>' . "\r\n";
+	$headers .= 'From: Queens Bicycle Registration System<Do-Not-Reply@Queensu.ca>' . "\r\n";
 	//$headers .= 'Cc: myboss@example.com' . "\r\n";
 
-mail($to,$subject,$message,$headers);
+	mail($to,$subject,$message,$headers);
 } 
 
 function found_send_mail($to, $name){
