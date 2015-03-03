@@ -10,7 +10,9 @@
 			<!-- Blank Cell under the Queens Logo. -->
 		</td>
 		<td align="center">
-			<h3>Enter the Serial Number Here to search for a Bicycle:</h3>
+			<br />
+			<h2>Found a bicycle?</h2>
+			<h3>Enter the serial number here to check if it has been reported missing:</h3>
 				<!-- <input name="SerialSearch" type="text" id="SerialSearch" value="Enter Serial Number here to Search" size="50" -->
 
 			<FORM METHOD="POST" ACTION="search-result.php">
