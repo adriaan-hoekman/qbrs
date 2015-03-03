@@ -136,7 +136,7 @@
 		<table id="admin-search" align="center">
 			<tr>
 				<th id="admin-th">Picture</th>
-				<th id="admin-th">Email</th>
+				<th id="admin-th">NetID</th>
 				<th id="admin-th">Serial Number</th>
 				<th id="admin-th">Make</th>
 				<th id="admin-th">Model</th>
@@ -146,7 +146,7 @@
 			while($row = mysqli_fetch_assoc($result)){
 				$missing = ($row['Missing'] == 0 ? "No" : "Yes");
 				echo "<tr><td id='admin-search-td'>".$row['Image']."</td>
-							<td id='admin-search-td'>".$row['Email']."</td>
+							<td id='admin-search-td'>".$row['NetID']."</td>
 						  <td id='admin-search-td'>".$row['Serial']."</td>
 						  <td id='admin-search-td'>".$row['Make']."</td>
 						  <td id='admin-search-td'>".$row['Model']."</td>
