@@ -5,10 +5,40 @@
  */
 
 function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
-	$result = mysqli_query($dbc,
-		"INSERT INTO Bicycle (Serial, Make, Model, Image, Other, Missing, UserID)
+
+	if (empty($other) == False){
+		// other is input
+		if (empty($pic) == False){
+			// Other and Pic not empty
+			$result = mysqli_query($dbc,
+			"INSERT INTO Bicycle (Serial, Make, Model, Image, Other, Missing, UserID)
 			VALUES ('$serialNum', '$make', '$model', '$pic', '$other', '0', '$userid');")
-		or die ("<br />Couldn't execute query.");
+			or die ("<br />Couldn't execute query.");
+		}else{
+			$result = mysqli_query($dbc,
+			"INSERT INTO Bicycle (Serial, Make, Model, Other, Missing, UserID)
+			VALUES ('$serialNum', '$make', '$model', '$other', '0', '$userid');")
+			or die ("<br />Couldn't execute query.");
+		}
+	}else{
+		if (empty($pic) == False){
+			$result = mysqli_query($dbc,
+			"INSERT INTO Bicycle (Serial, Make, Model, Image, Missing, UserID)
+			VALUES ('$serialNum', '$make', '$model', '$pic', '0', '$userid');")
+			or die ("<br />Couldn't execute query.");
+		}else{
+			$result = mysqli_query($dbc,
+			"INSERT INTO Bicycle (Serial, Make, Model, Missing, UserID)
+			VALUES ('$serialNum', '$make', '$model', '0', '$userid');")
+			or die ("<br />Couldn't execute query.");
+		}
+	}
+
+	// $result = mysqli_query($dbc,
+	// 	"INSERT INTO Bicycle (Serial, Make, Model, Image, Other, Missing, UserID)
+	// 		VALUES ('$serialNum', '$make', '$model', '$pic', '$other', '0', '$userid');")
+	// 	or die ("<br />Couldn't execute query.");
+	
 	return $result;
 }
 
@@ -34,22 +64,14 @@ function delete_bicycle($dbc, $serialNum) {
 
 function report_bicycle($dbc, $serialNum) {
 	$sql = "UPDATE Bicycle SET Missing = '1' WHERE Serial = '$serialNum' ";
-	$query = $dbc -> query($sql);
+	$result = mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
 
-	$result = $query -> fetch_array();
-
-	if(empty($result)){
-		// No report bicycle is not success
-		return 0;
-	} else {
-		// success
-		return 1;
-	}
+	return $result;
 }
 
 function report_bicycle_add($dbc, $date, $time, $loca, $desc, $bikeid){
-	$result = mysqli_query($dbc, "INSERT INTO Report (Date, Time, Location, Description, Return, BicycleID) 
-				VALUES ('$date','$time','$loca','$desc','0','$bikeid');")
+	$result = mysqli_query($dbc, "INSERT INTO Report (`Date`, `Time`, `Location`, `Description`, `Return`, `BicycleID`) 
+				VALUES ('$date', '$time','$loca','$desc','0','$bikeid');")
 				or die ("<br />Couldn't execute query.");
 
 	return $result;
