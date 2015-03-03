@@ -145,7 +145,7 @@
 <?php
 			while($row = mysqli_fetch_assoc($result)){
 				$missing = ($row['Missing'] == 0 ? "No" : "Yes");
-				echo "<tr><td id='admin-search-td'>".$row['Image']."</td>
+				echo "<tr><td id='admin-search-td'><img height='75px' src=".$row['Image']."></td>
 							<td id='admin-search-td'>".$row['NetID']."</td>
 						  <td id='admin-search-td'>".$row['Serial']."</td>
 						  <td id='admin-search-td'>".$row['Make']."</td>
