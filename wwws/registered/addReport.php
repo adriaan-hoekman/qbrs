@@ -4,6 +4,7 @@
     include_once '../../lib/reg.func.php';
     include_once '../../lib/search.func.php';
     include_once '../../lib/bicycle.func.php';
+    include_once '../../lib/mail.func.php';
 ?>
 
 <?php
@@ -24,6 +25,7 @@
         if ($result != false) {
             $miss = report_bicycle($dbc, $_POST['serialx']);
             if ($miss != false){
+                missing_send_mail($_SERVER['HTTP_QUEENSU_MAIL'], $_SERVER['HTTP_COMMON_NAME']);
                 header('Location: ./home.php');
             }else{
                 header('Location: ./missing-report.php?id='.$row['idx'].'&serial='.$row['Serial'].'');
