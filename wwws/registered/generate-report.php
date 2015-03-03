@@ -6,7 +6,7 @@
 ?>
 
 <nav>
-<h1>GENERATE REPORT</h1>
+<h1>GENERATE SPREADSHEET</h1>
 </nav>
 
 <section id="admin-basic">
@@ -20,7 +20,7 @@
 <?php
 			echo "<button id='admin-button' name='submit' value='1'>All Bicycles</button>";
 			echo "<button id='admin-button' name='submit' value='2'>Missing Bicycles</button>";
-			echo "<button id='admin-button' name='submit' value='3'>Recovered Bicycles</button>";
+			echo "<button id='admin-button' name='submit' value='3'>Not Missing Bicycles</button>";
 ?>
 		</td>
 		<td>
