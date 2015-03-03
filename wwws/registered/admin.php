@@ -92,8 +92,8 @@
 		echo '<ul style="list-style-type:none;padding:0;">';
 		echo '<li><h4 style="margin-bottom:0.2em;">Missing Bicycles</h4></li>';
 		echo '<div style="border:1px solid black;padding:5px;height:80px;overflow: scroll;">';
-		foreach($result as $var) {
-			echo "<li>".$var."</li>";
+		while($row = mysqli_fetch_assoc($result)) {
+			echo "<li>".$row['Serial']."</li>";
 		}
 		echo "</ul>";
 		echo "</div>";

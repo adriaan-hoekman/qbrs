@@ -74,9 +74,7 @@ function search_missing($dbc) {
 	$sql = "SELECT Serial FROM Bicycle WHERE Missing > 0";
 	$query = $dbc -> query($sql);
 
-	$result = $query -> fetch_assoc();
-
-	return $result;
+	return $query;
 }
 
 function search_bicycle($dbc, $serial, $make, $model, $missing) {
