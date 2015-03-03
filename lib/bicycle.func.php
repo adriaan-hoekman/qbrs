@@ -15,6 +15,7 @@ function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 			VALUES ('$serialNum', '$make', '$model', '$pic', '$other', '0', '$userid');")
 			or die ("<br />Couldn't execute query.");
 		}else{
+			// Other is not empty but pic is
 			$result = mysqli_query($dbc,
 			"INSERT INTO Bicycle (Serial, Make, Model, Other, Missing, UserID)
 			VALUES ('$serialNum', '$make', '$model', '$other', '0', '$userid');")
@@ -22,11 +23,13 @@ function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 		}
 	}else{
 		if (empty($pic) == False){
+			// Other is empty but pic is not
 			$result = mysqli_query($dbc,
 			"INSERT INTO Bicycle (Serial, Make, Model, Image, Missing, UserID)
 			VALUES ('$serialNum', '$make', '$model', '$pic', '0', '$userid');")
 			or die ("<br />Couldn't execute query.");
 		}else{
+			// Other and pic is all empty
 			$result = mysqli_query($dbc,
 			"INSERT INTO Bicycle (Serial, Make, Model, Missing, UserID)
 			VALUES ('$serialNum', '$make', '$model', '0', '$userid');")
