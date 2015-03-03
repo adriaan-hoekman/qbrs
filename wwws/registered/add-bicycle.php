@@ -45,8 +45,13 @@
 
 <?php 
     if(isset($_POST['addBicycle']) AND $_POST['addBicycle']) { 
-        $pic_name = "../images/" . $_POST['serial'] . basename($_FILES["pics"]["name"]);
-        move_uploaded_file($_FILES["pics"]["tmp_name"], $pic_name);
+        if (!file_exists($_FILES['pics']['tmp_name']) || !is_uploaded_file($_FILES['pics']['tmp_name'])){
+            $pic_name = NULL;        
+        }else{
+            $pic_name = "../images/" . $_POST['serial'] . basename($_FILES["pics"]["name"]);
+            move_uploaded_file($_FILES["pics"]["tmp_name"], $pic_name);        
+        } 
+
         $result = add_bicycle($dbc, $_POST['serial'],
                                        $_POST['make'],
                                        $_POST['model'],

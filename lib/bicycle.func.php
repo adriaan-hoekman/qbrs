@@ -75,7 +75,7 @@ function report_bicycle($dbc, $serialNum) {
 }
 
 function report_bicycle_add($dbc, $date, $time, $loca, $desc, $bikeid){
-	$result = mysqli_query($dbc, "INSERT INTO Report (`Date`, `Time`, `Location`, `Description`, `Return`, `BicycleID`) 
+	$result = mysqli_query($dbc, "INSERT INTO Report (`Date`, `Time`, `Location`, `Description`, `ReturnLocation`, `BicycleID`) 
 				VALUES ('$date', '$time','$loca','$desc','0','$bikeid');")
 				or die ("<br />Couldn't execute query.");
 

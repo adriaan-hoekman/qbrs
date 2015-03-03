@@ -11,6 +11,7 @@
         $mysql_date = date('Y-m-d',strtotime($_POST['date']));
         $mysql_time = date('G:i:s',strtotime($_POST['time']));
         echo $mysql_date;
+        echo $mysql_time;
         echo $_POST['location'];
         echo $_POST['desc'];
         echo $_POST['idx'];
