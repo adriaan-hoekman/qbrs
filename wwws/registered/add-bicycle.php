@@ -24,12 +24,13 @@
     ?>
         <form align="center" method="post" action="add-bicycle.php" enctype="multipart/form-data">
             <table align="center">
-                <tr><td>Serial Number: </td><td><input type="text" name="serial"></input></td></tr>     
-                <tr><td>Make: </td><td><input type="text" name="make"></input></td></tr>
-                <tr><td>Model: </td><td><input type="text" name="model"></input></td></tr> 
+                <tr><td>Serial Number*: </td><td><input type="text" name="serial"></input></td></tr>     
+                <tr><td>Make*: </td><td><input type="text" name="make"></input></td></tr>
+                <tr><td>Model*: </td><td><input type="text" name="model"></input></td></tr> 
                 <tr><td>Other: </td><td><textarea name="other" rows="10" cols=auto></textarea></td></tr>
                 <tr><td>Select Your Bicycle's Image: </td><td><input type="file" name="pics" accept="image/*" /></td></tr>
             </table>
+        </br> * is required filed.
             </br>
             <input type="submit" name="submit" value="Submit">
             <input type="button" value="Cancel" onClick="history.go(-1);">

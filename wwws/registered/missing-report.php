@@ -24,8 +24,8 @@
         <form align="center" method="POST" action="addReport.php" enctype="multipart/form-data">
             <table align="center">
                 <tr><td>Bicycle: </td><td><input name="id" value="<?php echo $_GET['serial']; ?>" /></td></tr>
-                <tr><td>Date: </td><td><input name="date"></input></td></tr>     
-                <tr><td>Time: </td><td><input name="time"></input></td></tr>     
+                <tr><td>Date: </td><td><input type="date" name="date"></input></td></tr>     
+                <tr><td>Time: </td><td><input type="time" name="time"></input></td></tr>     
                 <tr><td>Location: </td><td><input name="location"></input></td></tr>    
                 <tr><td>Description: </td><td><textarea name="desc" rows="10" cols=auto></textarea></td></tr>
             </table>
