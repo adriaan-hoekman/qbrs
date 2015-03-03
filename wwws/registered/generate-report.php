@@ -17,18 +17,18 @@
 	</tr>
 	<tr>
 		<td style='padding-right:5%'>
-		<?php
+<?php
 			echo "<button id='admin-button' name='submit' value='1'>All Bicycles</button>";
 			echo "<button id='admin-button' name='submit' value='2'>Missing Bicycles</button>";
 			echo "<button id='admin-button' name='submit' value='3'>Recovered Bicycles</button>";
-		?>
+?>
 		</td>
 		<td>
-		<?php
+<?php
 			echo "<button id='admin-button' name='submit' value='4'>All Reports</button>";
 			echo "<button id='admin-button' name='submit' value='5'>Missing Reports</button>";
 			echo "<button id='admin-button' name='submit' value='6'>Found Reports</button>";
-		?>
+?>
 		</td>
 	</tr>
 </form>
