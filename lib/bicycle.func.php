@@ -6,7 +6,7 @@
 
 function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 
-	$id = "SELECT UserID FROM User WHERE NetID = $userid";
+	$id = array_values(mysqli_fetch_array($dbc->query("SELECT UserID FROM User WHERE NetID = '$userid'")))[0];
 
 	if (empty($other) == False){
 		// other is input
