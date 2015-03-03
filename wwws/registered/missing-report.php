@@ -35,7 +35,7 @@
             <input type="hidden" id = "idx" name="idx" value="<?php echo $_GET['id']; ?>">
             <input type="hidden" id = "serialx" name="serialx" value="<?php echo $_GET['serial']; ?>">
             <input type="submit" name="submit" value="Submit">
-            <input type="button" value="Cancel" onClick="history.go(-1);">
+            <input type="button" value="Cancel" onClick="javascript:window.location='./home.php';">
         </form>
 
 
