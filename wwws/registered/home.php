@@ -13,6 +13,12 @@
 
 <div class="container">
     <button onclick="location.href='./add-bicycle.php'">Add Bicycle</button>
+<?php
+    $netid = $_SERVER['HTTP_QUEENSU_NETID'];
+    if (is_admin($dbc, $netid) != 0) {
+        echo "<button onclick='location.href='./admin.php''>Admin Panel</button>";
+    }
+?>
 
     <?php
 
@@ -36,8 +42,14 @@
                         <td id='cyclist-show-td'>Missing Report</td>
                     </tr>";
             while($row = mysqli_fetch_assoc($result)){
-                echo "<tr><td id='cyclist-show-td'><img height='75px' src=".$row['Image']."></td>
-                          <td id='cyclist-show-td'>".$row['Serial']."</td>
+                echo "<tr>";
+                if ($row['Image'] == NULL){
+                    echo "<td id='cyclist-show-td'><img height='75px' src='../images/Queens_logo.png'></td>";
+                }else{
+                    echo "<td id='cyclist-show-td'><img height='75px' src=".$row['Image']."></td>";
+                }
+
+                    echo "<td id='cyclist-show-td'>".$row['Serial']."</td>
                           <td id='cyclist-show-td'>".$row['Make']."</td>
                           <td id='cyclist-show-td'>".$row['Model']."</td>
                           <td id='cyclist-show-td'>
