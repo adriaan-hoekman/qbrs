@@ -1,17 +1,17 @@
 <DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="/includes/styles.css">
+	<link rel="stylesheet" href="/pps/qbrs/includes/styles.css">
   	<title>Queen's Bicycle Registration System</title>
 </head>
 
 <body>
 <header>
-<table cellspacing="50" align="center" border=1>
+<table cellspacing="50" align="center">
 	<tr>
 		<td>
 		<?php
-			echo '<img src=/images/Queens_logo.png width="192" height="146">';
+			echo '<img src=/pps/qbrs/images/Queens_logo.png width="192" height="146">';
 		?>
 		</td>
     <td align="center" width=550px>
@@ -21,8 +21,8 @@
 			if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
 			{
 				echo '<td align="center" width=100px>';
-				echo '<FORM METHOD="LINK" ACTION="../index.php">';
-				echo '<INPUT TYPE="submit" VALUE="Logout">';
+				echo '<FORM>';
+				echo '<INPUT TYPE="button" VALUE="Logout" onClick="parent.location=\'https://login.queensu.ca/idp/logout.jsp?goto=https://webapp.queensu.ca/pps/qbrs/\'">';
 				echo "</FORM>";
 				echo "</td>";
 			} else {

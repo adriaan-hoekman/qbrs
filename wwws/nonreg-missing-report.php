@@ -1,8 +1,10 @@
 <?php
-  include_once '/includes/header.php';
+  include_once './includes/header.php';
   include_once '../lib/global.conf.php';
   include_once '../lib/reg.func.php';
   include_once '../lib/search.func.php';
+  include_once '../lib/report.func.php';
+  include_once '../lib/mail.func.php';
 ?>
 
 <nav>
@@ -18,18 +20,10 @@
 
     $da = date("Y-m-d H:i:s");
   ?>
-  <form METHOD="POST" ACTION="nonreg-report-confirm.php">
+  <form METHOD="POST" ACTION="nonreg-missing-report.php">
   <table align="center" cellpadding=5px>
     <tr>
-      <td width=175px>Bicycle Model: </td>
-      <td><input name="BicycleModel"></input></td>
-    </tr>
-    <tr>
-      <td>Bicycle Make: </td>
-      <td><input name="BicycleMake"></input></td>
-    </tr>
-    <tr>
-      <td>Date Found: </td>
+      <td width=175px>Date Found: </td>
       <td><input type="date" name="DateFound"></input></td>
     </tr>     
     <tr>
@@ -49,6 +43,7 @@
       <td>
         <select name="ReturnMethod" id="ReturnMethod" onchange="DirectContact()">
           <option value="security">Will return to Campus Security</option>
+          <option value="parking">Will return to Campus Parking</option>
           <option value="police">Will return to Kingston Police</option>
           <option value="directContact">Contact me directly</option>
         </select>
@@ -63,12 +58,30 @@
   </table>
   </br>
   <input type="hidden" name="SerialNumber" value="<?php echo htmlspecialchars($serialnumber); ?>">
+  <input type="hidden" name="submitReport" value="1">
   <INPUT type="submit" value="Submit">
   <input type="button" value="Cancel" onClick="window.location.href='../index.php'">
   </form>
   
 </section>
 
+<?php 
+    if(isset($_POST['submitReport']) AND $_POST['submitReport']) { 
+      $result = nonreg_submit_report($dbc,
+                                     $_POST['DateFound'],
+                                     $_POST['TimeFound'],
+                                     $_POST['LocationFound'],
+                                     $_POST['OtherInfo'], 
+                                     $_POST['ReturnMethod'],
+                                     $serialnumber);
+        if ($result != false) {
+
+            header('Location: nonreg-report-confirm.php');
+        }else{
+            echo "Fail";
+        }
+    }
+?>
 
 <?php
   include_once './includes/footer.php';
