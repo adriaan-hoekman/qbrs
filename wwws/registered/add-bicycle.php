@@ -6,17 +6,14 @@
     include_once '../../lib/bicycle.func.php';
 ?>
 
-<section>
+<!--<section>-->
 <nav>
-<h1>Add Bicycle</h1>
-<h2>Please Add your bicycle information</h2>
+<h1 align='center'>Add Bicycle</h1>
+<h2 align='center'>Please Add your bicycle information</h2>
 </nav>
 
-<div class="container">
+<div class="container" align='center'>
     <?php
-
-        date_default_timezone_set("America/Toronto");
-
         $netid = $_SERVER['HTTP_QUEENSU_NETID'];
         $name = $_SERVER['HTTP_COMMON_NAME'];
         $email = $_SERVER['HTTP_QUEENSU_MAIL'];
@@ -38,11 +35,7 @@
             <input type="hidden" id = "netidx" name="netidx" value="<?php echo $netid; ?>">
         </form>
 </div>
-</section>
-
-<?php
-	include_once '../includes/footer.php';
-?>
+<!--</section>-->
 
 <?php 
     if(isset($_POST['addBicycle']) AND $_POST['addBicycle']) { 
@@ -52,7 +45,6 @@
             $pic_name = "../images/" . $_POST['serial'] . basename($_FILES["pics"]["name"]);
             move_uploaded_file($_FILES["pics"]["tmp_name"], $pic_name);        
         } 
-
         $result = add_bicycle($dbc, $_POST['serial'],
                                        $_POST['make'],
                                        $_POST['model'],
@@ -65,4 +57,8 @@
             echo "Fail";
         }
     }
+?>
+
+<?php
+	include_once '../includes/footer.php';
 ?>

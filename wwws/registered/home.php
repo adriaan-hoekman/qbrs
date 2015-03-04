@@ -7,11 +7,11 @@
 
 <section>
 <nav>
-<h1>CYCLIST HOME PAGE</h1>
-<h2>Welcome <?php echo $_SERVER['HTTP_COMMON_NAME']; ?></h2>
+<h1 align='center'>CYCLIST HOME PAGE</h1>
+<h2 align='center'>Welcome <?php echo $_SERVER['HTTP_COMMON_NAME']; ?></h2>
 </nav>
 
-<div class="container">
+<div class="container" align='center'>
     <button onclick="location.href='./add-bicycle.php'">Add Bicycle</button>
 <?php
     $netid = $_SERVER['HTTP_QUEENSU_NETID'];
@@ -58,7 +58,7 @@
             }
             echo "</table>";
         } else {
-            echo "You do not have any bicycle that registered with system";
+            echo "</br>You do not have any bicycle that registered with system";
         }
     ?>
 </div>

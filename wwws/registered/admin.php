@@ -6,7 +6,7 @@
 ?>
 
 <nav>
-<h1>ADMINISTRATOR</h1>
+<h1 align="center">ADMINISTRATOR</h1>
 </nav>
 
 <section id="admin-basic">

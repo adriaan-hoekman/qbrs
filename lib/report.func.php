@@ -13,7 +13,16 @@ function format_report() {
 }
 
 function nonreg_submit_report($dbc, $date, $time, $location, $description, $returnlocation, $serialnumber) {
+<<<<<<< HEAD
   $bicycleid = array_values(mysqli_fetch_array($dbc->query("SELECT BicycleID FROM bicycle WHERE Serial = '$serialnumber'")))[0];
+=======
+  //$bicycleid = array_values(mysqli_fetch_array($dbc->query("SELECT BicycleID FROM bicycle WHERE Serial = '$serialnumber'")))[0];
+
+  $query = mysqli_query($dbc, "SELECT BicycleID FROM Bicycle WHERE Serial = '$serialnumber';");
+  $row = mysqli_fetch_assoc($query);
+  $bicycleid = $row['BicycleID'];
+
+>>>>>>> eba8d44c8ede10b7bde88dd7f4546c12a19ba957
   $mysql_date = date('Y-m-d',strtotime($date));
   $mysql_time = date('G:i:s',strtotime($time));
   switch ($returnlocation) {

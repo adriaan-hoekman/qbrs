@@ -6,10 +6,10 @@
 ?>
 
 <nav>
-<h1>GENERATE SPREADSHEET</h1>
+<h1 align='center'>GENERATE SPREADSHEET</h1>
 </nav>
 
-<section id="admin-basic">
+<section id="admin-basic"  align='center'>
 <table align="center" style="width:60%">
 <form method="post">
 	<tr>

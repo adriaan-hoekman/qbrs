@@ -1,5 +1,5 @@
 <?php
-  include_once '/includes/header.php';
+  include_once './includes/header.php';
   include_once '../lib/global.conf.php';
   include_once '../lib/reg.func.php';
   include_once '../lib/search.func.php';
