@@ -15,10 +15,7 @@
 
     $(document).ready(function() {
     $.fn.editable.defaults.mode ="inline";
-    $('#serialNumber').editable();
-    $('#bicycleMake').editable();  
-    $('#bicycleModel').editable();   
-
+    $('#cyclist-show a').editable(); 
     });
 </script>
 
