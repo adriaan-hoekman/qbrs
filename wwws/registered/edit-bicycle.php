@@ -30,4 +30,11 @@ if($_POST['name']=='bicycleModel'){
 	  mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
 }
 
+if($_POST['name']=='bicycleOther'){
+    $id=$_POST['pk'];
+    $other=$_POST['value'];
+    $sql = "UPDATE Bicycle SET Other = '". $other ."' WHERE BicycleID = '$id' ";
+      mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
+}
+
 ?>

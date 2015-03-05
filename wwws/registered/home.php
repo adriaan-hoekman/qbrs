@@ -55,7 +55,10 @@
                         <td id='cyclist-show-td'>Serial Number</td>
                         <td id='cyclist-show-td'>Make</td>
                         <td id='cyclist-show-td'>Model</td>
+                        <td id='cyclist-show-td'>Description</td>
                         <td id='cyclist-show-td'>Missing Report</td>
+                        <td id='cyclist-show-td'>Delete Bicycle</td>
+                        <td id='cyclist-show-td'>Edit Picture</td> 
                     </tr>";
             while($row = mysqli_fetch_assoc($result)){
                 echo "<tr>";
@@ -70,11 +73,27 @@
                     //       <td id='cyclist-show-td'>".$row['Model']."</td>";
                 echo "<td id='cyclist-show-td'><a href='#' id='serialNumber' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Serial']."</a></td>
                            <td id='cyclist-show-td'><a href='#' id='bicycleMake' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Make']."</a></td>
-                           <td id='cyclist-show-td'><a href='#' id='bicycleModel' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Model']."</a></td>";
+                           <td id='cyclist-show-td'><a href='#' id='bicycleModel' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Model']."</a>
+                           <td id='cyclist-show-td'><a href='#' id='bicycleOther' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Other']."</a></td></td>";
 
                 echo "<td id='cyclist-show-td'>
-                          <input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='if (this.checked) {window.location = this.value;}' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input></td>
-                    </tr>";
+                          <input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='if (this.checked) {window.location = this.value;}' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input></td>";
+
+                        echo "<td id='cyclist-show-td'>";
+                          //<button class='btn btn-primary' onClick='window.location='./delete-bicycle.php?serial=".$row['Serial']."''>Delete</button>
+                        if($row['Missing'] != 0){echo 'Cannot delete this bicycle. </br> A Report has been recorded.';}
+                        else{
+                        echo '<FORM>';
+                        echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Delete" onClick="parent.location=\'./delete-bicycle.php?id='.$row['BicycleID'].'\'">';
+                        echo "</FORM>";
+                        echo "</td>";
+                        }
+                        echo "<td id='cyclist-show-td'>";
+                        echo '<FORM>';
+                        echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Edit Picture" onClick="parent.location=\'./edit-picture.php?id='.$row['BicycleID'].'\'">';
+                        echo "</FORM>";
+                        echo "</td>";
+                    echo "</tr>";
             }
             echo "</table>";
         } else {

@@ -53,24 +53,19 @@ function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 	return $result;
 }
 
-function edit_bicycle($dbc, $serialNum, $make, $model, $pic) 
+function edit_picture($dbc, $bicycleid, $pic) 
 {
-	// Edit Bicycle
+	$sql = "UPDATE Bicycle SET Image = '$pic' WHERE BicycleID = '$bicycleid' ";
+	$result = mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
+
+	return $result;
 }
 
-function delete_bicycle($dbc, $serialNum) {
-	$sql = "DELETE FROM Bicycle WHERE Serial = '$serialNum' limit 1";
-	$query = $dbc -> query($sql);
-
-	$result = $query -> fetch_array();
-
-	if(empty($result)){
-		// No User with this net ID in the database
-		return 0;
-	} else {
-		// User is already in the database
-		return 1;
-	}
+function delete_bicycle($dbc, $bicycleid) {
+	$sql = "DELETE FROM Bicycle WHERE `BicycleID` = '$bicycleid' limit 1";
+	$result = mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
+	
+	return $result;
 }
 
 function report_bicycle($dbc, $serialNum) {
