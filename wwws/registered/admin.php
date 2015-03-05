@@ -6,9 +6,10 @@
 ?>
 
 <nav>
-<h1 align="center">ADMINISTRATOR</h1>
+<h3 align="center">ADMINISTRATOR</h1>
 </nav>
 
+<div class="container" align='center'>
 <section id="admin-basic">
 <table align="center">
 	<tr>
@@ -21,7 +22,7 @@
 			$email = $_SERVER['HTTP_QUEENSU_MAIL'];
 			$da = date("Y-m-d H:i:s");
 
-			echo "Search for bicycles by:";
+			echo "<b>Search for bicycles by:</b>";
 			echo "<br />";
 			?>
 		</td>
@@ -32,7 +33,7 @@
 			Serial Number:
 		</td>
 		<td>
-			<input type="text" name="serialQuery" value="">
+			<input CLASS="form-control" type="text" name="serialQuery" value="">
 		 </td>
 	</tr>
 	<tr>
@@ -40,7 +41,7 @@
 			Make:
 		</td>
 		<td>
-			<input type="text" name="makeQuery" value="">
+			<input CLASS="form-control" type="text" name="makeQuery" value="">
 		</td>
 	</tr>
 	<tr>
@@ -48,7 +49,7 @@
 			Model:
 		</td>
 		<td>
-			<input type="text" name="modelQuery" value="">
+			<input CLASS="form-control" type="text" name="modelQuery" value="">
 		</td>
 	</tr>
 	<tr>
@@ -69,19 +70,20 @@
 	</tr>
 	<tr>
 		<td>
-			<button id="admin-button">Submit</button>
+			<button class="btn btn-primary btn-sm" id="admin-button">Submit</button>
 			<input type="hidden" name="doSearch" value="1">
 		</td>
 </form>
 <form method="post">
 		<td>
-			<button id="admin-button">Reset</button>
+			<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
 			<input type="hidden" name="doSearch" value="0">
 		</td>
 </form>
 	</tr>
 </table>
 </section>
+
 
 <aside>
 <table>
@@ -91,7 +93,7 @@
 		echo "<tr><td>";
 		echo '<ul style="list-style-type:none;padding:0;">';
 		echo '<li><h4 style="margin-bottom:0.2em;">Missing Bicycles</h4></li>';
-		echo '<div style="border:1px solid black;padding:5px;height:80px;overflow: scroll;">';
+		echo '<div class="panel panel-default" style="border:1px solid black;padding:5px;height:80px;overflow: scroll;">';
 		while($row = mysqli_fetch_assoc($result)) {
 			echo "<li>".$row['Serial']."</li>";
 		}
@@ -103,21 +105,21 @@
 	<tr>
 		<td>
 		<form method="link" action="./manage-admin.php">
-			<button id="admin-button">Manage Administrators</button>
+			<button class="btn btn-primary" id="admin-button">Manage Administrators</button>
 		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<form method="link" action="./home.php">
-			<button id="admin-button">Manage Personal Bicycles</button>
+			<button class="btn btn-primary" id="admin-button">Manage Personal Bicycles</button>
 		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<form method="link" action="./generate-report.php">
-			<button id="admin-button">Generate Report</button>
+			<button class="btn btn-primary" id="admin-button">Generate Report</button>
 		</form>
 		</td>
 	</tr>
@@ -133,7 +135,7 @@
 								       $_POST['missingQuery']);
 		if ($result != false && $result -> num_rows != 0) {
 ?>
-		<table id="admin-search" align="center">
+		<table class='table table-striped table-hover' id="admin-search" align="center">
 			<tr>
 				<th id="admin-th">Picture</th>
 				<th id="admin-th">NetID</th>
@@ -160,6 +162,8 @@
 	}
 ?>
 </section>
+
+</div>
 
 <?php
 	include_once '../includes/footer.php';

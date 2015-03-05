@@ -5,18 +5,37 @@
     include_once '../../lib/search.func.php';
 ?>
 
+<script type="text/javascript">
+    type = "";
+    $('#inline').change(function() {
+        type = $(this).val();
+        console.log((type != "" ? "inline" : "popup"));
+        $.fn.editable.defaults.mode = (type != "" ? "inline" : "popup");
+    });
+
+    $(document).ready(function() {
+    $.fn.editable.defaults.mode ="inline";
+    $('#serialNumber').editable();
+    $('#bicycleMake').editable();  
+    $('#bicycleModel').editable();   
+
+    });
+</script>
+
 <section>
 <nav>
-<h1 align='center'>CYCLIST HOME PAGE</h1>
-<h2 align='center'>Welcome <?php echo $_SERVER['HTTP_COMMON_NAME']; ?></h2>
+<h3 align='center'>CYCLIST HOME PAGE</h1>
+<h4 align='center'>Welcome <?php echo $_SERVER['HTTP_COMMON_NAME']; ?></h2>
 </nav>
 
 <div class="container" align='center'>
-    <button onclick="location.href='./add-bicycle.php'">Add Bicycle</button>
+    <button class="btn btn-primary" onclick="location.href='./add-bicycle.php'">Add Bicycle</button>
 <?php
     $netid = $_SERVER['HTTP_QUEENSU_NETID'];
     if (is_admin($dbc, $netid) != 0) {
-        echo "<button onclick='location.href='./admin.php''>Admin Panel</button>";
+        ?>
+        <button class="btn btn-primary" onclick="location.href='./admin.php'">Admin Panel</button>
+        <?php
     }
 ?>
 
@@ -33,7 +52,7 @@
         $result = search_netid($dbc, $netid);
 
         if ($result != false && $result -> num_rows != 0) {
-            echo "<table id='cyclist-show' align='center'>";
+            echo "<table class='table table-striped table-hover' id='cyclist-show' align='center'>";
                 echo "<tr>
                         <td id='cyclist-show-td'>Image</td>
                         <td id='cyclist-show-td'>Serial Number</td>
@@ -49,10 +68,14 @@
                     echo "<td id='cyclist-show-td'><img height='75px' src=".$row['Image']."></td>";
                 }
 
-                    echo "<td id='cyclist-show-td'>".$row['Serial']."</td>
-                          <td id='cyclist-show-td'>".$row['Make']."</td>
-                          <td id='cyclist-show-td'>".$row['Model']."</td>
-                          <td id='cyclist-show-td'>
+                    // echo "<td id='cyclist-show-td'>".$row['Serial']."</td>
+                    //       <td id='cyclist-show-td'>".$row['Make']."</td>
+                    //       <td id='cyclist-show-td'>".$row['Model']."</td>";
+                echo "<td id='cyclist-show-td'><a href='#' id='serialNumber' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Serial']."</a></td>
+                           <td id='cyclist-show-td'><a href='#' id='bicycleMake' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Make']."</a></td>
+                           <td id='cyclist-show-td'><a href='#' id='bicycleModel' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Model']."</a></td>";
+
+                echo "<td id='cyclist-show-td'>
                           <input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='if (this.checked) {window.location = this.value;}' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input></td>
                     </tr>";
             }

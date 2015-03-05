@@ -6,28 +6,28 @@
 ?>
 
 <nav>
-<h1 align='center'>GENERATE SPREADSHEET</h1>
+<h3 align='center'>GENERATE SPREADSHEET</h3>
 </nav>
 
 <section id="admin-basic"  align='center'>
 <table align="center" style="width:60%">
 <form method="post">
 	<tr>
-		<td style='padding-right:5%'>Bicycles:</td><td>Reports:</td>
+		<td style='padding-right:5%'><b>Bicycles:</b></td><td><b>Reports:</b></td>
 	</tr>
 	<tr>
 		<td style='padding-right:5%'>
 <?php
-			echo "<button id='admin-button' name='submit' value='1'>All Bicycles</button>";
-			echo "<button id='admin-button' name='submit' value='2'>Missing Bicycles</button>";
-			echo "<button id='admin-button' name='submit' value='3'>Not Missing Bicycles</button>";
+			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='1'>All Bicycles</button>";
+			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='2'>Missing Bicycles</button>";
+			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='3'>Not Missing Bicycles</button>";
 ?>
 		</td>
 		<td>
 <?php
-			echo "<button id='admin-button' name='submit' value='4'>All Reports</button>";
-			echo "<button id='admin-button' name='submit' value='5'>Missing Reports</button>";
-			echo "<button id='admin-button' name='submit' value='6'>Found Reports</button>";
+			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='4'>All Reports</button>";
+			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='5'>Missing Reports</button>";
+			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='6'>Found Reports</button>";
 ?>
 		</td>
 	</tr>
@@ -40,21 +40,21 @@
 	<tr>
 		<td>
 		<form method="link" action="./admin.php">
-			<button id="admin-button">Admin Home</button>
+			<button class='btn btn-primary' id="admin-button">Admin Home</button>
 		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<form method="link" action="./home.php">
-			<button id="admin-button">Manage Personal Bicycles</button>
+			<button class='btn btn-primary' id="admin-button">Manage Personal Bicycles</button>
 		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<form method="link" action="./manage-admin.php">
-			<button id="admin-button">Manage Administrators</button>
+			<button class='btn btn-primary' id="admin-button">Manage Administrators</button>
 		</form>
 		</td>
 	</tr>
@@ -78,8 +78,8 @@
 
 		if ($result != false && $result -> num_rows != 0) {
 			echo "<h3>".get_report_name($_POST['submit'])."</h3>";
-			echo "<form method='post'> <button id='admin-report-button' name='export' value='".$_POST['submit']."'>Download</button></form>";
-			echo "<table id='admin-search' align='center'>";
+			echo "<form method='post'> <button class='btn btn-primary' id='admin-report-button' name='export' value='".$_POST['submit']."'>Download</button></form>";
+			echo "<table class='table table-striped table-hover' id='admin-search' align='center'>";
 
 			if ($_POST['submit'] < 4) {
 ?>

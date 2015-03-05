@@ -20,47 +20,47 @@
 
     $da = date("Y-m-d H:i:s");
   ?>
-  <form METHOD="POST" ACTION="nonreg-missing-report.php">
+  <form class="form-horizontal" METHOD="POST" ACTION="nonreg-missing-report.php">
   <table align="center" cellpadding=5px>
     <tr>
-      <td width=175px>Date Found: </td>
-      <td><input type="date" name="DateFound"></input></td>
+      <td width=175px><label class="col-lg-10 control-label">Date Found: </label></td>
+      <td><div class="col-lg-20"><input class="form-control" type="date" name="DateFound"></input></div></td>
     </tr>     
     <tr>
-      <td>Time Found: </td>
-      <td><input type="time" name="TimeFound"></input></td>
+      <td><label class="col-lg-10 control-label">Time Found: </label></td>
+      <td><div class="col-lg-20"><input class="form-control" type="time" name="TimeFound"></input></div></td>
     </tr>     
     <tr>
-      <td>Location Found: </td>
-      <td><input name="LocationFound"></input></td>
+      <td><label class="col-lg-10 control-label">Location Found: </label></td>
+      <td><div class="col-lg-20"><input class="form-control" name="LocationFound"></input></div></td>
     </tr>    
     <tr>
-      <td>Other Information: </td>
-      <td><textarea rows="6" cols="25" name="OtherInfo"></textarea></td>
+      <td><label class="col-lg-10 control-label">Other Information: </label></td>
+      <td><div class="col-lg-20"><textarea class="form-control" rows="6" cols="25" name="OtherInfo"></textarea></div></td>
     </tr>
     <tr>
-      <td>Return Method: </td>
+      <td><label class="col-lg-10 control-label">Return Method: </label></div></td>
       <td>
-        <select name="ReturnMethod" id="ReturnMethod" onchange="DirectContact()">
+        <div class="col-lg-20"><select class="form-control" name="ReturnMethod" id="ReturnMethod" onchange="DirectContact()">
           <option value="security">Will return to Campus Security</option>
           <option value="parking">Will return to Campus Parking</option>
           <option value="police">Will return to Kingston Police</option>
           <option value="directContact">Contact me directly</option>
-        </select>
+        </select></div>
       </td>
     </tr>
     <tr>
-      <td id="contactLabel"style="display: none">Phone Number or Email: </td>
+      <td id="contactLabel"style="display: none"><label class="col-lg-10 control-label">Phone Number or Email: </label></td>
       <td>
-        <input type="text" name="contactField" id="contactField" style="display: none" />
+        <div class="col-lg-20"><input class="form-control" type="text" name="contactField" id="contactField" style="display: none" /></div>
       </td>
     </tr>
   </table>
   </br>
   <input type="hidden" name="SerialNumber" value="<?php echo htmlspecialchars($serialnumber); ?>">
   <input type="hidden" name="submitReport" value="1">
-  <INPUT type="submit" value="Submit">
-  <input type="button" value="Cancel" onClick="window.location.href='../index.php'">
+  <INPUT class="btn btn-primary" type="submit" value="Submit">
+  <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='../index.php'">
   </form>
   
 </section>
