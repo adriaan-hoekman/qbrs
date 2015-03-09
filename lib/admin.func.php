@@ -19,6 +19,27 @@ function remove_admin($dbc, $netid) {
 	}
 }
 
+function get_get_email($dbc, $netid) {
+	$sql = "SELECT GetEmail
+					FROM User
+					WHERE NetID = '$netid'";
+
+	if ($dbc -> query($sql) -> fetch_assoc()['GetEmail'] == 0) {
+		return 0;
+	} else {
+		return 1;
+	}
+}
+
+function set_get_email($dbc, $netid, $get_email) {
+	$sql = "UPDATE User SET GetEmail = '$get_email' WHERE NetID = '$netid'";
+	if ($dbc -> query($sql) === TRUE) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
 function get_report_location($loc) {
 	switch ($loc) {
 		case 1:

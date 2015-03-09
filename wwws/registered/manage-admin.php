@@ -32,6 +32,22 @@
 		</td>
 	</tr>
 </form>
+	<tr><td></br></td>
+	</tr>
+	<tr>
+		<td>
+			Receive Emails: <br/>
+		</td>
+	<form method="post">
+		<td>
+			<input type='checkbox' value='1' name='checket'
+				<?php if((get_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID']) != 0)){echo 'checked';} ?>>
+			</input>
+			<button name='get_email' value='1'>Save</button>
+		</td>
+	</tr>
+	<tr>
+</form>
 </table>
 </section>
 
@@ -63,7 +79,7 @@
 
 <section id="admin-results">
 <?php
-	if(isset($_POST['submit']) AND $_POST['submit'] == 1) {
+	if (isset($_POST['submit']) AND $_POST['submit'] == 1) {
 		$result = add_admin($dbc, $_POST['adminQuery']);
 		if ($result == 1) {
 			echo "Admin successfully added.";
@@ -72,13 +88,22 @@
 		}
 	}
 
-	if(isset($_POST['submit']) AND $_POST['submit'] == 2) {
+	if (isset($_POST['submit']) AND $_POST['submit'] == 2) {
 		$result = remove_admin($dbc, $_POST['adminQuery']);
 		if ($result == 1) {
 			echo "Admin successfully removed.";
 		} else {
 			echo "Unable to remove admin.";
 		}
+	}
+
+	if (isset($_POST['get_email'])) {
+		if (get_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID']) == 0) {
+			set_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID'], 1);
+		} else {
+			set_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID'], 0);
+		}
+		header("Location: manage-admin.php");
 	}
 ?>
 </section>
