@@ -122,7 +122,7 @@
 									<td id='admin-search-td'>".$missing."</td>
 									</tr>";
 					}
-			} else if ($_POST['submit'] === 5) {
+			} else if ($_POST['submit'] == 5) {
 ?>
 					<tr>
 						<th id="admin-th">Serial Number</th>
@@ -134,14 +134,14 @@
 <?php
 					while($row = mysqli_fetch_assoc($result)){
 						echo "<tr>
-									<td id='admin-search-td'>".$row['Bicycle.Serial']."</td>
+									<td id='admin-search-td'>".$row['Serial']."</td>
 									<td id='admin-search-td'>".$row['Date']."</td>
 									<td id='admin-search-td'>".$row['Time']."</td>
 									<td id='admin-search-td'>".$row['Location']."</td>
 									<td id='admin-search-td'>".$row['Description']."</td>
 									</tr>";
 					}
-			} else if ($_POST['submit'] === 4 || $_POST['submit'] === 6)  {
+			} else if ($_POST['submit'] == 4 OR $_POST['submit'] == 6)  {
 ?>
 					<tr>
 						<th id="admin-th">Serial Number</th>
@@ -188,8 +188,10 @@
 			echo "</table>";
 		} else if ($_POST['submit'] < 4) {
 			echo "No bicycles could be found matching those criteria.";
-		} else if ($_POST['submit'] > 3) {
+		} else if ($_POST['submit'] > 3 AND $_POST['submit'] < 7) {
 			echo "No reports could be found matching those criteria.";
+		} else if ($_POST['submit'] > 6) {
+			echo "No users could be found matching those criteria.";
 		} else {
 			echo "Something went wrong while trying to generate the Report.";
 		}

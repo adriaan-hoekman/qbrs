@@ -161,7 +161,9 @@ function report_to_csv($dbc, $report_type, $attachment = True, $headers = True) 
 	}
 
 	while($row = $query -> fetch_assoc()) {
-		if ($report_type > 3 && $report_type < 7) {
+		if ($report_type < 3) {
+			$row['Missing'] = ($row['Missing'] == 0 ? "No" : "Yes");
+		} else if ($report_type > 3 && $report_type < 7) {
 			$row['ReturnLocation'] = ($row['ReturnLocation'] == 0 ? "----" : $row['ReturnLocation']);
 		} else if ($report_type > 6) {
 			$row['Phone'] = ($row['Phone'] == Null ? "----" : $row['Phone']);
