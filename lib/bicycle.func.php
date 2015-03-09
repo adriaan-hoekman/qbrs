@@ -62,7 +62,13 @@ function edit_picture($dbc, $bicycleid, $pic)
 }
 
 function delete_bicycle($dbc, $bicycleid) {
-	$sql = "DELETE FROM Bicycle WHERE `BicycleID` = '$bicycleid' limit 1";
+	$query = mysqli_query($dbc, "SELECT Serial, COUNT(*) FROM Bicycle WHERE BicycleID = '$bicycleid';");
+	$row = mysqli_fetch_assoc($query);
+	$serialNum = $row['Serial'];
+	$count = $row['COUNT(*)'];
+	$newSerial = $serialNum.'-DELETE-'.($count++);
+
+	$sql = "UPDATE Bicycle SET `Serial` = '$newSerial'	WHERE `BicycleID` = '$bicycleid' limit 1";
 	$result = mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
 	
 	return $result;

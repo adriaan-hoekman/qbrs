@@ -81,13 +81,13 @@
 
                         echo "<td id='cyclist-show-td'>";
                           //<button class='btn btn-primary' onClick='window.location='./delete-bicycle.php?serial=".$row['Serial']."''>Delete</button>
-                        if($row['Missing'] != 0){echo 'Cannot delete this bicycle. </br> A Report has been recorded.';}
-                        else{
+                        //if($row['Missing'] != 0){echo 'Cannot delete this bicycle. </br> A Report has been recorded.';}
+                        //else{
                         echo '<FORM>';
                         echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Delete" onClick="parent.location=\'./delete-bicycle.php?id='.$row['BicycleID'].'\'">';
                         echo "</FORM>";
                         echo "</td>";
-                        }
+                        //}
                         echo "<td id='cyclist-show-td'>";
                         echo '<FORM>';
                         echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Edit Picture" onClick="parent.location=\'./edit-picture.php?id='.$row['BicycleID'].'\'">';

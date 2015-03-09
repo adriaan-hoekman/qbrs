@@ -7,4 +7,8 @@
 ./wwws/uploads/
 lib/global.conf.php
 lib/global.conf.php-backup
+<<<<<<< HEAD
 wwws/uploads/
+=======
+wwws/uploads/
+>>>>>>> 4fb2823b11ddab4cbbf614e53c36e7cc7be0917e

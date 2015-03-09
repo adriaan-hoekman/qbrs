@@ -64,7 +64,7 @@ function search_make($dbc, $make) {
 }
 
 function search_netid($dbc, $netid) {
-	$sql = "SELECT * FROM User, Bicycle WHERE User.NetID = '$netid' AND Bicycle.UserID = User.UserID";
+	$sql = "SELECT * FROM User, Bicycle WHERE User.NetID = '$netid' AND Bicycle.UserID = User.UserID AND Bicycle.Serial NOT LIKE '%DELETE%'";
 	$query = $dbc -> query($sql);
 
 	return $query;
