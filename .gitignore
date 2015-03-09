@@ -1,6 +1,10 @@
 ./lib/global.conf.php
 ./lib/global.conf.php-backup
 ./wwws/testMySQL.php
-wwws/testMySQL.php
+./wwws/testMySQL.php
+./lib/global.conf.php
+./lib/global.conf.php-backup
+./wwws/uploads/
 lib/global.conf.php
 lib/global.conf.php-backup
+wwws/uploads/
