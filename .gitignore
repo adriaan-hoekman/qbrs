@@ -5,3 +5,6 @@
 ./lib/global.conf.php
 ./lib/global.conf.php-backup
 ./wwws/uploads/
+lib/global.conf.php
+lib/global.conf.php-backup
+wwws/uploads/
