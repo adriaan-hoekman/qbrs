@@ -68,14 +68,15 @@
 						 	echo 'checked="checked"'; ?>>Either
 		</td>
 	</tr>
+	<tr><td></br></td><tr>
 	<tr>
-		<td>
+		<td style="padding-right: 5px">
 			<button class="btn btn-primary btn-sm" id="admin-button">Submit</button>
 			<input type="hidden" name="doSearch" value="1">
 		</td>
 </form>
 <form method="post">
-		<td>
+		<td style="padding-left: 5px">
 			<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
 			<input type="hidden" name="doSearch" value="0">
 		</td>

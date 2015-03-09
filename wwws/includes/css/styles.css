@@ -39,7 +39,6 @@ section#admin-results {
 	text-align:center;
 	float:left;
 	padding:5px;
-	margin-bottom:5%;
 }
 section#non-reg-search {
 	width:100%;
@@ -52,7 +51,6 @@ table, th, td {
 }
 table#admin-search {
 	width: 60%;
-	margin-bottom:5%;
 	border:1px solid black
 }
 th#admin-th, td#admin-search-td {
@@ -67,6 +65,10 @@ table#cyclist-show {
 td#cyclist-show-td {
 	border: 1px solid black;
 	text-align: center;
+}
+td#gen-report {
+	padding-bottom:5px;
+	padding-right:5%;
 }
 button#admin-button {
 	width:100%;

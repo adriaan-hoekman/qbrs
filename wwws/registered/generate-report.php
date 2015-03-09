@@ -13,22 +13,39 @@
 <table align="center" style="width:60%">
 <form method="post">
 	<tr>
-		<td style='padding-right:5%'><b>Bicycles:</b></td><td><b>Reports:</b></td>
+		<td id="gen-report"><b>Bicycles:</b></td><td id="gen-report"><b>Reports:</b></td><td id="gen-report"><b>Users:</b></td>
 	</tr>
 	<tr>
-		<td style='padding-right:5%'>
-<?php
-			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='1'>All Bicycles</button>";
-			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='2'>Missing Bicycles</button>";
-			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='3'>Not Missing Bicycles</button>";
-?>
+		<td id="gen-report">
+			<button class='btn btn-primary' id='admin-button' name='submit' value='1'>All Bicycles</button>
 		</td>
-		<td>
-<?php
-			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='4'>All Reports</button>";
-			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='5'>Missing Reports</button>";
-			echo "<button class='btn btn-primary' id='admin-button' name='submit' value='6'>Found Reports</button>";
-?>
+		<td id="gen-report">
+			<button class='btn btn-primary' id='admin-button' name='submit' value='4'>All Reports</button>
+		</td>
+		<td id="gen-report">
+			<button class='btn btn-primary' id='admin-button' name='submit' value='7'>All Users</button>
+		</td>
+	</tr>
+	<tr>
+		<td id="gen-report">
+			<button class='btn btn-primary' id='admin-button' name='submit' value='2'>Missing Bicycles</button>
+		</td>
+		<td id="gen-report">
+			<button class='btn btn-primary' id='admin-button' name='submit' value='5'>Missing Reports</button>
+		</td>
+		<td id="gen-report">
+			<button class='btn btn-primary' id='admin-button' name='submit' value='8'>Admins Only</button>
+		</td>
+	</tr>
+	<tr>
+		<td id="gen-report">
+			<button class='btn btn-primary' id='admin-button' name='submit' value='3'>Not Missing Bicycles</button>
+		</td>
+		<td id="gen-report">
+			<button class='btn btn-primary' id='admin-button' name='submit' value='6'>Found Reports</button>
+		</td>
+		<td id="gen-report">
+			<button class='btn btn-primary' id='admin-button' name='submit' value='9'>Cyclists Only</button>
 		</td>
 	</tr>
 </form>
@@ -78,7 +95,11 @@
 
 		if ($result != false && $result -> num_rows != 0) {
 			echo "<h3>".get_report_name($_POST['submit'])."</h3>";
-			echo "<form method='post'> <button class='btn btn-primary' id='admin-report-button' name='export' value='".$_POST['submit']."'>Download</button></form>";
+			echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+							<button class='btn btn-primary' id='admin-report-button' name='export' value='".$_POST['submit']."'>
+								Download
+							</button>
+						</form>";
 			echo "<table class='table table-striped table-hover' id='admin-search' align='center'>";
 
 			if ($_POST['submit'] < 4) {
@@ -120,7 +141,7 @@
 									<td id='admin-search-td'>".$row['Description']."</td>
 									</tr>";
 					}
-			} else {
+			} else if ($_POST['submit'] === 4 || $_POST['submit'] === 6)  {
 ?>
 					<tr>
 						<th id="admin-th">Serial Number</th>
@@ -143,6 +164,26 @@
 								<td id='admin-search-td'>".$return_location."</td>
 								</tr>";
 				}
+			} else {
+?>
+					<tr>
+						<th id="admin-th">NetID</th>
+						<th id="admin-th">Name</th>
+						<th id="admin-th">E-mail</th>
+						<th id="admin-th">Phone</th>
+						<th id="admin-th">Admin</th>
+					</tr>
+<?php
+					while($row = mysqli_fetch_assoc($result)){
+						$is_admin = ($row['Admin'] == 0 ? "No" : "Yes");
+						echo "<tr>
+									<td id='admin-search-td'>".$row['NetID']."</td>
+									<td id='admin-search-td'>".$row['Name']."</td>
+									<td id='admin-search-td'>".$row['Email']."</td>
+									<td id='admin-search-td'>".$row['Phone']."</td>
+									<td id='admin-search-td'>".$is_admin."</td>
+									</tr>";
+					}
 			}
 			echo "</table>";
 		} else if ($_POST['submit'] < 4) {

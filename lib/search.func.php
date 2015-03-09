@@ -102,4 +102,20 @@ function search_bicycle($dbc, $serial, $make, $model, $missing) {
 	return $query;
 }
 
+function search_users($dbc, $user_role) {
+	$sql = "SELECT * FROM User";
+	switch ($user_role) {
+		case 1:
+			$sql .= " WHERE Admin > 0";
+		case 2:
+			$sql .= " WHERE Admin = 0";
+		default:
+			break;
+	}
+
+	$query = $dbc -> query($sql);
+
+	return $query;
+}
+
 ?>
