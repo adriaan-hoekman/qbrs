@@ -6,14 +6,13 @@
 
 function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 
-	
 	//$id = array_values(mysqli_fetch_array(mysqli_query($dbc, "SELECT UserID FROM User WHERE NetID = '$userid'")))[0];
-	
+
 	$query = mysqli_query($dbc, "SELECT UserID FROM User WHERE NetID = '$userid';");
 	$row = mysqli_fetch_assoc($query);
 	$id = $row['UserID'];
-	
-	
+
+
 	if (empty($other) == False){
 		// other is input
 		if (empty($pic) == False){
@@ -49,11 +48,11 @@ function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 	// 	"INSERT INTO Bicycle (Serial, Make, Model, Image, Other, Missing, UserID)
 	// 		VALUES ('$serialNum', '$make', '$model', '$pic', '$other', '0', '$userid');")
 	// 	or die ("<br />Couldn't execute query.");
-	
+
 	return $result;
 }
 
-function edit_picture($dbc, $bicycleid, $pic) 
+function edit_picture($dbc, $bicycleid, $pic)
 {
 	$sql = "UPDATE Bicycle SET Image = '$pic' WHERE BicycleID = '$bicycleid' ";
 	$result = mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
@@ -66,11 +65,11 @@ function delete_bicycle($dbc, $bicycleid) {
 	$row = mysqli_fetch_assoc($query);
 	$serialNum = $row['Serial'];
 	$count = $row['COUNT(*)'];
-	$newSerial = $serialNum.'-DELETE-'.($count++);
+	$newSerial = $serialNum.'-DELETED-'.($count++);
 
 	$sql = "UPDATE Bicycle SET `Serial` = '$newSerial'	WHERE `BicycleID` = '$bicycleid' limit 1";
 	$result = mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
-	
+
 	return $result;
 }
 
