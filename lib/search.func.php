@@ -20,7 +20,7 @@ function search_serial_nonreg ($dbc, $serialNum) {
 
 function search_bicycle_id($dbc, $bicycleid) {
 	$query = mysqli_query($dbc, "SELECT * FROM Bicycle WHERE BicycleID = '$bicycleid';");
-	
+
 	return $query;
 }
 
@@ -90,10 +90,10 @@ function search_bicycle($dbc, $serial, $make, $model, $missing) {
 		$sql .= " AND Serial LIKE '%$serial%'";
 	}
 	if (empty($make) == False) {
-		$sql .= " AND Make = '$make'";
+		$sql .= " AND Make LIKE '%$make%'";
 	}
 	if (empty($model) == False) {
-		$sql .= " AND Model = '$model'";
+		$sql .= " AND Model LIKE '%$model%'";
 	}
 	if (empty($missing) == False) {
 		if (strcmp($missing, "True") == 0) {
