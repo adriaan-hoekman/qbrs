@@ -1,6 +1,4 @@
 <?php
-    include_once './global.conf.php';
-
 
 function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemodel, $bicycledesc, $datemissing, $timemissing, $missinglocation, $missingdetail){
 	
@@ -21,16 +19,16 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 	<body>
 	<p>Hello ".$name."</p>
 	<p>The Following information is your missing report. Please keep on file for furture uses.</p>
-	<p>Bicycle Serial Number: ".$bicycleserial."</p>
-	<p>Bicycle Make: ".$bicyclemake."</p>
-	<p>Bicycle Model: ".$bicyclemodel."</p>
-	<p>Other Information: ".$bicycledesc."</p>
+	<p><b>Bicycle Serial Number: </b>".$bicycleserial."</p>
+	<p><b>Bicycle Make: </b>".$bicyclemake."</p>
+	<p><b>Bicycle Model: </b>".$bicyclemodel."</p>
+	<p><b>Other Information: </b>".$bicycledesc."</p>
 	<p>The Bicycle Show above has been filed as missing bicycle by your self.</p>
 	<p>The following information is missing detail.</p>
-	<p>Date Missing: ".$datemissing."</p>
-	<p>Time Missing: ".$timemissing."</p>
-	<p>Location Missing: ".$missinglocation."</p>
-	<p>Other Information: ".$missingdetail."</p>
+	<p><b>Date Missing: </b>".$datemissing."</p>
+	<p><b>Time Missing: </b>".$timemissing."</p>
+	<p><b>Location Missing: </b>".$missinglocation."</p>
+	<p><b>Other Information: </b>".$missingdetail."</p>
 	<p>The following contact information may useful.</p>
 	<p>Campus Security. Phone: ".$securityphone." Email: ".$securityemail."</p>
   <p>Campus Parking. Phone: ".$parkingphone." Email: ".$parkingemail."</p>
