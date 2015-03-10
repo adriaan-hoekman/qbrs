@@ -4,6 +4,7 @@
 ?>
 
 <body>
+<div class="container">
 <table cellspacing="50" align="center">
 	<tr>
 		<td>
@@ -11,17 +12,22 @@
 		</td>
 		<td align="center">
 			<br />
-			<h2>Found a bicycle?</h2>
-			<h3>Enter the serial number here to check if it has been reported missing:</h3>
+			<h3>Found a bicycle?</h3>
+			<h4>Enter the serial number here to check if it has been reported missing:</h4>
 				<!-- <input name="SerialSearch" type="text" id="SerialSearch" value="Enter Serial Number here to Search" size="50" -->
-
 			<FORM METHOD="POST" ACTION="search-result.php">
-			<INPUT TYPE="TEXT" NAME = "SerialNumber" placeholder="Enter Serial Number here and Click Search" size="50">
-			<INPUT TYPE="submit" VALUE="Search">
+			<div class="col-lg-10">
+			<INPUT CLASS="form-control" TYPE="TEXT" NAME = "SerialNumber" placeholder="Enter Serial Number here and Click Search" size="50">
+			</div>
+			<!-- <INPUT TYPE="submit" VALUE="Search"> -->
+			<div class="col-lg-2">
+			<button type="submit" class="btn btn-primary">Search</button>
+			</div>
 			</FORM>
 		</td>
 	</tr>
 </table>
+</div>
 </body>
 
 <?php
