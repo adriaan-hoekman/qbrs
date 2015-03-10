@@ -21,26 +21,26 @@
     $da = date("Y-m-d H:i:s");
   ?>
   <form class="form-horizontal" METHOD="POST" ACTION="nonreg-missing-report.php">
-  <table align="center" cellpadding=5px>
+  <table align="center" cellspacing="100">
     <tr>
-      <td width=175px><label class="col-lg-10 control-label">Date Found: </label></td>
+      <td style="padding-right: 5px" align="right" width=200px><label>Date Found: </label></td>
       <td><div class="col-lg-20"><input class="form-control" type="date" name="DateFound"></input></div></td>
     </tr>     
     <tr>
-      <td><label class="col-lg-10 control-label">Time Found: </label></td>
-      <td><div class="col-lg-20"><input class="form-control" type="time" name="TimeFound"></input></div></td>
+      <td style="padding-right: 5px" align="right"><label>Time Found: </label></td>
+      <td style="padding-top: 5px"><div class="col-lg-20"><input class="form-control" type="time" name="TimeFound"></input></div></td>
     </tr>     
     <tr>
-      <td><label class="col-lg-10 control-label">Location Found: </label></td>
-      <td><div class="col-lg-20"><input class="form-control" name="LocationFound"></input></div></td>
+      <td style="padding-right: 5px" align="right"><label>Location Found: </label></td>
+      <td style="padding-top: 5px"><div class="col-lg-20"><input class="form-control" name="LocationFound"></input></div></td>
     </tr>    
     <tr>
-      <td><label class="col-lg-10 control-label">Other Information: </label></td>
-      <td><div class="col-lg-20"><textarea class="form-control" rows="6" cols="25" name="OtherInfo"></textarea></div></td>
+      <td style="padding-right: 5px" align="right"><label>Other Information: </label></td>
+      <td style="padding-top: 5px"><div class="col-lg-20"><textarea class="form-control" rows="6" cols="25" name="OtherInfo"></textarea></div></td>
     </tr>
     <tr>
-      <td><label class="col-lg-10 control-label">Return Method: </label></div></td>
-      <td>
+      <td style="padding-right: 5px" align="right"><label>Return Method: </label></div></td>
+      <td style="padding-top: 5px">
         <div class="col-lg-20"><select class="form-control" name="ReturnMethod" id="ReturnMethod" onchange="DirectContact()">
           <option value="security">Will return to Campus Security</option>
           <option value="parking">Will return to Campus Parking</option>
@@ -50,8 +50,8 @@
       </td>
     </tr>
     <tr>
-      <td id="contactLabel"style="display: none"><label class="col-lg-10 control-label">Phone Number or Email: </label></td>
-      <td>
+      <td align="right" id="contactLabel"style="display: none; padding-right: 5px"><label>Phone Number or Email: </label></td>
+      <td style="padding-top: 5px">
         <div class="col-lg-20"><input class="form-control" type="text" name="contactField" id="contactField" style="display: none" /></div>
       </td>
     </tr>
@@ -75,10 +75,19 @@
                                      $_POST['ReturnMethod'],
                                      $serialnumber);
         if ($result != false) {
-
-            header('Location: nonreg-report-confirm.php');
-        }else{
-            echo "Fail";
+            $result = nonreg_missing_send_mail($dbc, 
+                                               $_POST['DateFound'],
+                                               $_POST['TimeFound'],
+                                               $_POST['LocationFound'],
+                                               $_POST['OtherInfo'], 
+                                               $_POST['ReturnMethod'],
+                                               $_POST['contactField'],
+                                                $serialnumber);
+            if ($result != false) { 
+              header('Location: nonreg-report-confirm.php');
+            }else{
+              echo "Fail";
+            }
         }
     }
 ?>
