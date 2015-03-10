@@ -4,7 +4,6 @@
     include_once '../../lib/reg.func.php';
     include_once '../../lib/search.func.php';
 
-
     date_default_timezone_set("America/Toronto");
 
     $netid = $_SERVER['HTTP_QUEENSU_NETID'];
@@ -36,7 +35,6 @@
         $query = mysqli_query($dbc, "SELECT Phone from User Where NetID = '$netid';");
         $phoneResult = mysqli_fetch_assoc($query);
         $phone = $phoneResult['Phone'];
-        
 
         echo "</br>Your Phone Number is: <a href='#' id='phoneNumber' data-type='text' data-pk='".$netid."' data-url='edit-bicycle.php'>".$phoneResult['Phone']."</a>";
     ?>

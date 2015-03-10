@@ -1,7 +1,7 @@
 <?php
 
 function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemodel, $bicycledesc, $datemissing, $timemissing, $missinglocation, $missingdetail){
-	
+
 	$parkingphone = $_SERVER['parkingphone'];
 	$parkingemail = $_SERVER['parkingemail'];
 	$securityphone = $_SERVER['securityphone'];
@@ -18,21 +18,24 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 	</head>
 	<body>
 	<p>Hello ".$name."</p>
-	<p>The Following information is your missing report. Please keep on file for furture uses.</p>
+	<p>The following is the information detailed in the missing report for your bicycle. Please keep it on file for future use.</p>
+	<br/>
+	<p>You have reported the following bicycle as missing.</p>
 	<p><b>Bicycle Serial Number: </b>".$bicycleserial."</p>
 	<p><b>Bicycle Make: </b>".$bicyclemake."</p>
 	<p><b>Bicycle Model: </b>".$bicyclemodel."</p>
 	<p><b>Other Information: </b>".$bicycledesc."</p>
-	<p>The Bicycle Show above has been filed as missing bicycle by your self.</p>
-	<p>The following information is missing detail.</p>
+	<br/>
+	<p>The following information is the missing report's details.</p>
 	<p><b>Date Missing: </b>".$datemissing."</p>
 	<p><b>Time Missing: </b>".$timemissing."</p>
 	<p><b>Location Missing: </b>".$missinglocation."</p>
 	<p><b>Other Information: </b>".$missingdetail."</p>
-	<p>The following contact information may useful.</p>
-	<p>Campus Security. Phone: ".$securityphone." Email: ".$securityemail."</p>
-  <p>Campus Parking. Phone: ".$parkingphone." Email: ".$parkingemail."</p>
-  <p>Kingston Police. Phone: ".$kingstonpolicephone." Email: ".$kingstonpoliceemail."</p>
+	<br/>
+	<p>You may find the following contact information useful.</p>
+	<p>Campus Security. Phone: ".$securityphone." E-mail: ".$securityemail."</p>
+  <p>Campus Parking. Phone: ".$parkingphone." E-mail: ".$parkingemail."</p>
+  <p>Kingston Police. Phone: ".$kingstonpolicephone." E-mail: ".$kingstonpoliceemail."</p>
 	</body>
 	</html>
 	";
@@ -59,7 +62,7 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 	//mail($to,$subject,$message,$headers);
 	// return true;
 	// -------------------------------------------
-} 
+}
 
 function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $returnlocation, $contactfield, $serialnumber){
 
@@ -74,19 +77,19 @@ function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $
   $row = mysqli_fetch_assoc($query);
   $to = $row['Email'];
   $name = $row['Name'];
-  
+
 switch ($returnlocation) {
     case 'security' :
-      $locationmessage = "Campus Security. Phone: ".$securityphone." Email: ".$securityemail;
+      $locationmessage = "Campus Security. Phone: ".$securityphone." E-mail: ".$securityemail;
       break;
     case 'parking' :
-      $locationmessage = "Campus Parking. Phone: ".$parkingphone." Email: ".$parkingemail;
+      $locationmessage = "Campus Parking. Phone: ".$parkingphone." E-mail: ".$parkingemail;
       break;
     case 'police' :
-      $locationmessage = "Kingston Police. Phone: ".$kingstonpolicephone." Email: ".$kingstonpoliceemail;
+      $locationmessage = "Kingston Police. Phone: ".$kingstonpolicephone." E-mail: ".$kingstonpoliceemail;
       break;
     case 'directContact' :
-      $locationmessage = "Direct Contact. Phone or Email: ".$contactfield;
+      $locationmessage = "Direct Contact. Phone or E-mail: ".$contactfield;
       break;
   }
 
@@ -99,7 +102,7 @@ switch ($returnlocation) {
 	</head>
 	<body>
 	<p>Hello ".$name."</p>
-	<p>The Following information was provided by the person who found your missing bicycle. Please keep on file.</p>
+	<p>The Following information was provided by the person who found your missing bicycle. Please keep it on file.</p>
 	<p>Bicycle Serial Number: ".$serialnumber."</p>
 	<p>Date Found: ".$date."</p>
 	<p>Time Found: ".$time."</p>
@@ -132,7 +135,7 @@ switch ($returnlocation) {
 	//mail($to,$subject,$message,$headers);
 	// return true;
 	// -------------------------------------------
-} 
+}
 
 
 ?>
