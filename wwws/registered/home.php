@@ -48,8 +48,9 @@
         // Get Bicycle list from batadase.
         $result = search_netid($dbc, $netid);
 
+
         if ($result != false && $result -> num_rows != 0) {
-            echo "<table class='table table-striped table-hover' id='cyclist-show' align='center'>";
+            echo "<table class='table-striped table-hover' id='cyclist-show' align='center'>";
                 echo "<tr>
                         <td id='cyclist-show-td'>Image</td>
                         <td id='cyclist-show-td'>Serial Number</td>
