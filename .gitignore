@@ -1,7 +1,3 @@
 lib/global.conf.php
-<<<<<<< HEAD
-lib/global.conf.php-backup
-wwws/uploads/
-=======
 wwws/uploads/*
->>>>>>> bootstrap
+
