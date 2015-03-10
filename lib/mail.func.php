@@ -39,12 +39,12 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 
 function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $returnlocation, $contactfield, $serialnumber){
 
-	$parkingphone = '613-533-6979';
-	$parkingemail = 'parking@queensu.ca';
-	$securityphone = '613-533-6733';
-	$securityemail = 'Campus.Security@queensu.ca';
-	$kingstonpolicephone = '613-549-4660';
-	$kingstonpoliceemail = 'media@kpf.ca';
+	$parkingphone = $_SERVER['parkingphone'];
+	$parkingemail = $_SERVER['parkingemail'];
+	$securityphone = $_SERVER['securityphone'];
+	$securityemail = $_SERVER['securityemail'];
+	$kingstonpolicephone = $_SERVER['kingstonpolicephone'];
+	$kingstonpoliceemail = $_SERVER['kingstonpoliceemail'];
 
 	$query = mysqli_query($dbc, "SELECT * from user,bicycle WHERE serial='$serialnumber';");
   $row = mysqli_fetch_assoc($query);
