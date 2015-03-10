@@ -59,13 +59,13 @@
 		<td>
 			<input type="radio" name="missingQuery" value="True"
 				<?php if(isset($_POST['doSearch']) && isset($_POST['missingQuery']) && strcmp($_POST['missingQuery'], "True") == 0)
-						 	echo 'checked="checked"'; ?>>Yes
+						 	echo 'checked="checked"'; ?>> Yes &nbsp
 			<input type="radio" name="missingQuery" value="False"
 				<?php if(isset($_POST['doSearch']) && isset($_POST['missingQuery']) && strcmp($_POST['missingQuery'], "False") == 0)
-						 	echo 'checked="checked"'; ?>>No
+						 	echo 'checked="checked"'; ?>> No &nbsp
 			<input type="radio" name="missingQuery" value=""
 				<?php if(empty($_POST['missingQuery']))
-						 	echo 'checked="checked"'; ?>>Either
+						 	echo 'checked="checked"'; ?>> Either
 		</td>
 	</tr>
 	<tr><td></br></td><tr>
