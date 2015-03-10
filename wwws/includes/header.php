@@ -14,6 +14,9 @@
 	<link href="/includes/css/bootstrap-editable.css" rel="stylesheet">
 	<script src="/includes/js/bootstrap-editable.js"></script>
 
+	<!-- Adding Table CSS -->
+	<link href="/includes/css/NoMoreTables.css" rel="stylesheet">
+
 	<!-- Custom Style -->
 	<link rel="stylesheet" href="/includes/css/styles.css">
   <title>Queen's Bicycle Registration System</title>
