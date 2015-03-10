@@ -1,7 +1,7 @@
 <?php
 
 
-function missing_send_mail($to, $name){
+function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemodel, $bicycledesc, $datemissing, $timemissing, $missinglocation, $missingdetail){
 	$subject = "This is Your Missing Report";
 
 	$message = "
@@ -10,8 +10,18 @@ function missing_send_mail($to, $name){
 	<title>This is Your Missing Report</title>
 	</head>
 	<body>
-	<p>Hi ".$name."</p>
+	<p>Hello ".$name."</p>
 	<p>The Following information is your missing report. Please keep on file for furture uses.</p>
+	<p>Bicycle Serial Number: ".$bicycleserial."</p>
+	<p>Bicycle Make: ".$bicyclemake."</p>
+	<p>Bicycle Model: ".$bicyclemodel."</p>
+	<p>Other Information: ".$bicycledesc."</p>
+	<p>The Bicycle Show above has been filed as missing bicycle by your self.</p>
+	<p>The following information is missing detail.</p>
+	<p>Date Missing: ".$datemissing."</p>
+	<p>Time Missing: ".$timemissing."</p>
+	<p>Location Missing: ".$missinglocation."</p>
+	<p>Other Information: ".$missingdetail."</p>
 	</body>
 	</html>
 	";
@@ -99,34 +109,6 @@ switch ($returnlocation) {
 	// return true;
 	// -------------------------------------------
 } 
-
-
-function found_send_mail($to, $name){
-	$subject = "Your bicycle has been found";
-
-	$message = "
-	<html>
-	<head>
-	<title>Your Bicycle has been found</title>
-	</head>
-	<body>
-	<p>Hi David</p>
-	<p>The Following information is your missing report. Please keep on file for furture uses.</p>
-	</body>
-	</html>
-	";
-
-	// always set content-type for HTML email
-	$headers = "MIME-Version: 1.0" . "\r\n";
-	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-
-	// More Header
-	$headers .= 'From: Bicycle Registration System<Do-Not-Reply@Queensu.ca>' . "\r\n";
-	//$headers .= 'Cc: myboss@example.com' . "\r\n";
-
-mail($to,$subject,$message,$headers);
-
-}
 
 
 ?>

@@ -23,9 +23,13 @@
                                       $_POST['desc'],
                                       $_POST['idx']);
         if ($result != false) {
+
+            $bicycle = search_bicycle_id($dbc, $_POST['idx']);
+            $bicycleInfo = mysqli_fetch_assoc($bicycle);
+
             $miss = report_bicycle($dbc, $_POST['serialx']);
             if ($miss != false){
-                missing_send_mail($_SERVER['HTTP_QUEENSU_MAIL'], $_SERVER['HTTP_COMMON_NAME']);
+                missing_send_mail($_SERVER['HTTP_QUEENSU_MAIL'], $_SERVER['HTTP_COMMON_NAME'], $bicycleInfo['Serial'], $bicycleInfo['Make'], $bicycleInfo['Model'], $bicycleInfo['Other'], $mysql_date, $mysql_time, $_POST['location'], $_POST['desc']);
                 header('Location: ./home.php');
             }else{
                 header('Location: ./missing-report.php?id='.$row['idx'].'&serial='.$row['Serial'].'');

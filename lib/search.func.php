@@ -18,6 +18,12 @@ function search_serial_nonreg ($dbc, $serialNum) {
 	}
 }
 
+function search_bicycle_id($dbc, $bicycleid) {
+	$query = mysqli_query($dbc, "SELECT * FROM Bicycle WHERE BicycleID = '$bicycleid';");
+	
+	return $query;
+}
+
 function search_serial($dbc, $serialNum) {
 	$sql = "SELECT * FROM Bicycle WHERE Serial = '$serialNum' limit 1";
 	$query = $dbc -> query($sql);
