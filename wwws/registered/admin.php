@@ -284,8 +284,8 @@
 												 $_POST['missingQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 ?>
-				<h3>Bicycle Search Results</h3>
-				<table class='table table-striped table-hover' id="admin-search" align="center">
+				<h3 align="left">Bicycle Search Results</h3>
+				<table class='table table-striped table-hover' id="admin-search">
 					<tr>
 						<th id="admin-th">Picture</th>
 						<th id="admin-th">NetID</th>
@@ -316,8 +316,8 @@
 												 $_POST['datePeriodQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 ?>
-				<h3>Report Search Results</h3>
-				<table class='table table-striped table-hover' id="admin-search" align="center">
+				<h3 align="left">Report Search Results</h3>
+				<table class='table table-striped table-hover' id="admin-search">
 					<tr>
 						<th id="admin-th">Serial Number</th>
 						<th id="admin-th">Date</th>
@@ -348,8 +348,8 @@
 												 $_POST['adminQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 ?>
-				<h3>User Search Results</h3>
-				<table class='table table-striped table-hover' id="admin-search" align="center">
+				<h3 align="left">User Search Results</h3>
+				<table class='table table-striped table-hover' id="admin-search">
 					<tr>
 						<th id="admin-th">NetID</th>
 						<th id="admin-th">Name</th>
