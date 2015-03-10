@@ -16,41 +16,42 @@
 		<td id="gen-report"><b>Bicycles:</b></td><td id="gen-report"><b>Reports:</b></td><td id="gen-report"><b>Users:</b></td>
 	</tr>
 	<tr>
-		<td id="gen-report">
+		<td style="padding:5px" id="gen-report">
 			<button class='btn btn-primary' id='admin-button' name='submit' value='1'>All Bicycles</button>
 		</td>
-		<td id="gen-report">
+		<td style="padding:5px" id="gen-report">
 			<button class='btn btn-primary' id='admin-button' name='submit' value='4'>All Reports</button>
 		</td>
-		<td id="gen-report">
+		<td style="padding:5px" id="gen-report">
 			<button class='btn btn-primary' id='admin-button' name='submit' value='7'>All Users</button>
 		</td>
 	</tr>
 	<tr>
-		<td id="gen-report">
+		<td style="padding:5px" id="gen-report">
 			<button class='btn btn-primary' id='admin-button' name='submit' value='2'>Missing Bicycles</button>
 		</td>
-		<td id="gen-report">
+		<td style="padding:5px" id="gen-report">
 			<button class='btn btn-primary' id='admin-button' name='submit' value='5'>Missing Reports</button>
 		</td>
-		<td id="gen-report">
+		<td style="padding:5px" id="gen-report">
 			<button class='btn btn-primary' id='admin-button' name='submit' value='8'>Admins Only</button>
 		</td>
 	</tr>
 	<tr>
-		<td id="gen-report">
+		<td style="padding:5px" id="gen-report">
 			<button class='btn btn-primary' id='admin-button' name='submit' value='3'>Not Missing Bicycles</button>
 		</td>
-		<td id="gen-report">
+		<td style="padding:5px" id="gen-report">
 			<button class='btn btn-primary' id='admin-button' name='submit' value='6'>Found Reports</button>
 		</td>
-		<td id="gen-report">
+		<td style="padding:5px" id="gen-report">
 			<button class='btn btn-primary' id='admin-button' name='submit' value='9'>Cyclists Only</button>
 		</td>
 	</tr>
 </form>
 </table>
 </section>
+
 
 <aside>
 <table align="center">
