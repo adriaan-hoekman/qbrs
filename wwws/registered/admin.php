@@ -4,204 +4,232 @@
 	include_once '../../lib/reg.func.php';
 	include_once '../../lib/search.func.php';
 	include_once '../../lib/admin.func.php';
-	require_once '../includes/tabs.php';
 ?>
 
 <nav>
-<h3 align="center">ADMINISTRATOR</h1>
+<h3 align="center">ADMINISTRATOR</h3>
 </nav>
 
 <div class="container" align='center'>
 <section id="admin-basic">
 
-<form method="post" action="admin.php">
-<?php tabs_header(); ?>
-<?php tabs_start(); ?>
-<?php tab( "Bicycles" ); ?>
-<input type="hidden" name="bicycleSearch" value="1">
-<table align="center">
-	<tr>
-		<td>
-			<?php
-			date_default_timezone_set("America/Toronto");
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#bicycle-tab" data-toggle="tab" aria-expanded="true">Bicycles</a></li>
+	<li class=""><a href="#report-tab" data-toggle="tab" aria-expanded="false">Reports</a></li>
+	<li class=""><a href="#user-tab" data-toggle="tab" aria-expanded="false">Users</a></li>
+</ul>
 
-			$netid = $_SERVER['HTTP_QUEENSU_NETID'];
-			$name = $_SERVER['HTTP_COMMON_NAME'];
-			$email = $_SERVER['HTTP_QUEENSU_MAIL'];
-			$da = date("Y-m-d H:i:s");
-?>
-			<b>Search for Bicycles by:</b>
-			<br />
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Serial Number:
-		</td>
-		<td>
-			<input CLASS="form-control" type="text" name="serialQuery" value="">
-		 </td>
-	</tr>
-	<tr>
-		<td>
-			Make:
-		</td>
-		<td>
-			<input CLASS="form-control" type="text" name="makeQuery" value="">
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Model:
-		</td>
-		<td>
-			<input CLASS="form-control" type="text" name="modelQuery" value="">
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Missing:
-		</td>
-		<td>
-			<input type="radio" name="missingQuery" value="True"
-				<?php if(isset($_POST['doSearch']) && isset($_POST['missingQuery']) && strcmp($_POST['missingQuery'], "True") == 0)
-						 	echo 'checked="checked"'; ?>> Yes &nbsp
-			<input type="radio" name="missingQuery" value="False"
-				<?php if(isset($_POST['doSearch']) && isset($_POST['missingQuery']) && strcmp($_POST['missingQuery'], "False") == 0)
-						 	echo 'checked="checked"'; ?>> No &nbsp
-			<input type="radio" name="missingQuery" value=""
-				<?php if(empty($_POST['missingQuery']))
-						 	echo 'checked="checked"'; ?>> Either
-		</td>
-	</tr>
-</table>
-
-<?php tab( "Reports" ); ?>
-<input type="hidden" name="reportSearch" value="1">
-<table align="center">
-	<tr>
-		<td>
-			<b>Search for Reports by:</b>
-			<br/>
-		</td>
-	</tr>
 <form method="post" action="admin.php">
-	<tr>
-		<td>
-			Serial Number:
-		</td>
-		<td>
-			<input CLASS="form-control" type="text" name="serialReportQuery" value="">
-		 </td>
-	</tr>
-	<tr>
-		<td>
-			Return Method:
-		</td>
-		<td>
-        <div class="col-lg-20"><select class="form-control" name="returnMethodQuery" id="ReturnMethod" onchange="DirectContact()">
-        	<option value="allMethods">All</option>
-          <option value="security">Campus Security</option>
-          <option value="parking">Campus Parking</option>
-          <option value="police">Kingston Police</option>
-          <option value="directContact">Direct Contact</option>
-        </select></div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Date:
-		</td>
-		<td>
-			<input CLASS="form-control" type="date" name="dateQuery" value="">
-		</td>
-	</tr>
-	<tr>
-		<td>
-		</td>
-		<td>
-			<input type="radio" name="datePeriodQuery" value="1"
-				<?php if(isset($_POST['doSearch']) && isset($_POST['datePeriodQuery']) && $_POST['datePeriodQuery'] == 1)
-						 	echo 'checked="checked"'; ?>> After &nbsp
-			<input type="radio" name="datePeriodQuery" value="2"
-				<?php if(isset($_POST['doSearch']) && isset($_POST['datePeriodQuery']) && $_POST['datePeriodQuery']== 2)
-						 	echo 'checked="checked"'; ?>> Before &nbsp
-			<input type="radio" name="datePeriodQuery" value="0"
-				<?php if(empty($_POST['datePeriodQuery']) OR (isset($_POST['datePeriodQuery']) && $_POST['datePeriodQuery']== 0))
-						 	echo 'checked="checked"'; ?>> On
-		</td>
-	</tr>
-</table>
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade active in" id="bicycle-tab">
+		<input type="hidden" name="bicycleSearch" value="1">
+		<table align="center">
+			<tr>
+				<td>
+					<b>Search for Bicycles by:</b>
+					<br />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Serial Number:
+				</td>
+				<td>
+					<input CLASS="form-control" type="text" name="serialQuery" value="">
+				 </td>
+			</tr>
+			<tr>
+				<td>
+					Make:
+				</td>
+				<td>
+					<input CLASS="form-control" type="text" name="makeQuery" value="">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Model:
+				</td>
+				<td>
+					<input CLASS="form-control" type="text" name="modelQuery" value="">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Missing:
+				</td>
+				<td>
+					<input type="radio" name="missingQuery" value="True"
+						<?php if(isset($_POST['doSearch']) && isset($_POST['missingQuery']) && strcmp($_POST['missingQuery'], "True") == 0)
+									echo 'checked="checked"'; ?>> Yes &nbsp
+					<input type="radio" name="missingQuery" value="False"
+						<?php if(isset($_POST['doSearch']) && isset($_POST['missingQuery']) && strcmp($_POST['missingQuery'], "False") == 0)
+									echo 'checked="checked"'; ?>> No &nbsp
+					<input type="radio" name="missingQuery" value=""
+						<?php if(empty($_POST['missingQuery']))
+									echo 'checked="checked"'; ?>> Either
+				</td>
+			</tr>
+		</table>
 
-<?php tab( "Users" ); ?>
-<input type="hidden" name="userSearch" value="1">
-<table align="center">
-	<tr>
-		<td>
-			<b>Search for Users by:</b>
-			<br/>
-		</td>
-	</tr>
-<form method="post" action="admin.php">
-	<tr>
-		<td>
-			NetID:
-		</td>
-		<td>
-			<input CLASS="form-control" type="text" name="netidQuery" value="">
-		 </td>
-	</tr>
-	<tr>
-		<td>
-			Name:
-		</td>
-		<td>
-			<input CLASS="form-control" type="text" name="nameQuery" value="">
-		</td>
-	</tr>
-	<tr>
-		<td>
-			Admin:
-		</td>
-		<td>
-			<input type="radio" name="adminQuery" value="1"
-				<?php if(isset($_POST['doSearch']) && isset($_POST['adminQuery']) && $_POST['adminQuery'] == 1)
-						 	echo 'checked="checked"'; ?>> Yes &nbsp
-			<input type="radio" name="adminQuery" value="2"
-				<?php if(isset($_POST['doSearch']) && isset($_POST['adminQuery']) && $_POST['adminQuery'] == 2)
-						 	echo 'checked="checked"'; ?>> No &nbsp
-			<input type="radio" name="adminQuery" value="0"
-				<?php if(empty($_POST['adminQuery']) OR (isset($_POST['adminQuery']) && $_POST['adminQuery']== 0))
-						 	echo 'checked="checked"'; ?>> Both
-		</td>
-	</tr>
-</table>
-<?php tabs_end(); ?>
-<table align="center">
-	<tr><td></br></td><tr>
-	<tr>
-		<td style="padding-right: 5px">
-			<button class="btn btn-primary btn-sm" id="admin-button">Submit</button>
-			<input type="hidden" name="doSearch" value="1">
-<?php
-			if (isset($_GET['tabindex'])) {
-				echo '<input type="hidden" name="tabindex" value="'.$_GET['tabindex'].'">';
-			} else if (isset($_POST['tabindex'])){
-				echo '<input type="hidden" name="tabindex" value="'.$_POST['tabindex'].'">';
-			} else {
-				echo '<input type="hidden" name="tabindex" value="0">';
-			}
-?>
-		</td>
-</form>
-<form method="post">
-		<td style="padding-left: 5px">
-			<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
-			<input type="hidden" name="doSearch" value="0">
-		</td>
-</form>
-	</tr>
-</table>
+		<table align="center">
+			<tr><td></br></td><tr>
+			<tr>
+				<td style="padding-right: 5px">
+					<button class="btn btn-primary btn-sm" id="admin-button">Submit</button>
+					<input type="hidden" name="doBicycleSearch" value="1">
+					<input type="hidden" name="doSearch" value="1">
+				</td>
+		</form>
+		<form method="post">
+				<td style="padding-left: 5px">
+					<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
+					<input type="hidden" name="doSearch" value="0">
+				</td>
+		</form>
+			</tr>
+		</table>
+	</div>
+
+	<div class="tab-pane fade" id="report-tab">
+		<input type="hidden" name="reportSearch" value="1">
+		<table align="center">
+			<tr>
+				<td>
+					<b>Search for Reports by:</b>
+					<br/>
+				</td>
+			</tr>
+		<form method="post" action="admin.php">
+			<tr>
+				<td>
+					Serial Number:
+				</td>
+				<td>
+					<input CLASS="form-control" type="text" name="serialReportQuery" value="">
+				 </td>
+			</tr>
+			<tr>
+				<td>
+					Return Method:
+				</td>
+				<td>
+						<div class="col-lg-20"><select class="form-control" name="returnMethodQuery" id="ReturnMethod" onchange="DirectContact()">
+							<option value="allMethods">All</option>
+							<option value="security">Campus Security</option>
+							<option value="parking">Campus Parking</option>
+							<option value="police">Kingston Police</option>
+							<option value="directContact">Direct Contact</option>
+						</select></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Date:
+				</td>
+				<td>
+					<input CLASS="form-control" type="date" name="dateQuery" value="">
+				</td>
+			</tr>
+			<tr>
+				<td>
+				</td>
+				<td>
+					<input type="radio" name="datePeriodQuery" value="1"
+						<?php if(isset($_POST['doSearch']) && isset($_POST['datePeriodQuery']) && $_POST['datePeriodQuery'] == 1)
+									echo 'checked="checked"'; ?>> After &nbsp
+					<input type="radio" name="datePeriodQuery" value="2"
+						<?php if(isset($_POST['doSearch']) && isset($_POST['datePeriodQuery']) && $_POST['datePeriodQuery']== 2)
+									echo 'checked="checked"'; ?>> Before &nbsp
+					<input type="radio" name="datePeriodQuery" value="0"
+						<?php if(empty($_POST['datePeriodQuery']) OR (isset($_POST['datePeriodQuery']) && $_POST['datePeriodQuery']== 0))
+									echo 'checked="checked"'; ?>> On
+				</td>
+			</tr>
+		</table>
+
+		<table align="center">
+			<tr><td></br></td><tr>
+			<tr>
+				<td style="padding-right: 5px">
+					<button class="btn btn-primary btn-sm" id="admin-button">Submit</button>
+					<input type="hidden" name="doReportSearch" value="1">
+					<input type="hidden" name="doSearch" value="1">
+				</td>
+		</form>
+		<form method="post">
+				<td style="padding-left: 5px">
+					<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
+					<input type="hidden" name="doSearch" value="0">
+				</td>
+		</form>
+			</tr>
+		</table>
+	</div>
+
+	<div class="tab-pane fade" id="user-tab">
+		<input type="hidden" name="userSearch" value="1">
+		<table align="center">
+			<tr>
+				<td>
+					<b>Search for Users by:</b>
+					<br/>
+				</td>
+			</tr>
+		<form method="post" action="admin.php">
+			<tr>
+				<td>
+					NetID:
+				</td>
+				<td>
+					<input CLASS="form-control" type="text" name="netidQuery" value="">
+				 </td>
+			</tr>
+			<tr>
+				<td>
+					Name:
+				</td>
+				<td>
+					<input CLASS="form-control" type="text" name="nameQuery" value="">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Admin:
+				</td>
+				<td>
+					<input type="radio" name="adminQuery" value="1"
+						<?php if(isset($_POST['doSearch']) && isset($_POST['adminQuery']) && $_POST['adminQuery'] == 1)
+									echo 'checked="checked"'; ?>> Yes &nbsp
+					<input type="radio" name="adminQuery" value="2"
+						<?php if(isset($_POST['doSearch']) && isset($_POST['adminQuery']) && $_POST['adminQuery'] == 2)
+									echo 'checked="checked"'; ?>> No &nbsp
+					<input type="radio" name="adminQuery" value="0"
+						<?php if(empty($_POST['adminQuery']) OR (isset($_POST['adminQuery']) && $_POST['adminQuery']== 0))
+									echo 'checked="checked"'; ?>> Both
+				</td>
+			</tr>
+		</table>
+
+		<table align="center">
+			<tr><td></br></td><tr>
+			<tr>
+				<td style="padding-right: 5px">
+					<button class="btn btn-primary btn-sm" id="admin-button">Submit</button>
+					<input type="hidden" name="doUserSearch" value="1">
+					<input type="hidden" name="doSearch" value="1">
+				</td>
+		</form>
+		<form method="post">
+				<td style="padding-left: 5px">
+					<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
+					<input type="hidden" name="doSearch" value="0">
+				</td>
+		</form>
+			</tr>
+		</table>
+	</div>
+</div>
 </section>
 
 
@@ -249,13 +277,14 @@
 <section id="admin-results">
 <?php
 	if (isset($_POST['doSearch']) AND $_POST['doSearch']) {
-		if (isset($_POST['bicycleSearch'])) {
+		if (isset($_POST['doBicycleSearch'])) {
 			$result = search_bicycle($dbc, $_POST['serialQuery'],
 												 $_POST['makeQuery'],
 												 $_POST['modelQuery'],
 												 $_POST['missingQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 ?>
+				<h3>Bicycle Search Results</h3>
 				<table class='table table-striped table-hover' id="admin-search" align="center">
 					<tr>
 						<th id="admin-th">Picture</th>
@@ -280,13 +309,14 @@
 			} else {
 				echo "No bicycles could be found matching those criteria.";
 			}
-		} else if (isset($_POST['reportSearch'])) {
+		} else if (isset($_POST['doReportSearch'])) {
 			$result = search_report($dbc, $_POST['serialReportQuery'],
 												 $_POST['returnMethodQuery'],
 												 $_POST['dateQuery'],
 												 $_POST['datePeriodQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 ?>
+				<h3>Report Search Results</h3>
 				<table class='table table-striped table-hover' id="admin-search" align="center">
 					<tr>
 						<th id="admin-th">Serial Number</th>
@@ -312,12 +342,13 @@
 			} else {
 				echo "No reports could be found matching those criteria.";
 			}
-		} else if (isset($_POST['userSearch'])) {
+		} else if (isset($_POST['doUserSearch'])) {
 			$result = search_user($dbc, $_POST['netidQuery'],
 												 $_POST['nameQuery'],
 												 $_POST['adminQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 ?>
+				<h3>User Search Results</h3>
 				<table class='table table-striped table-hover' id="admin-search" align="center">
 					<tr>
 						<th id="admin-th">NetID</th>
