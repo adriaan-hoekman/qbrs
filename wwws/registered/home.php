@@ -15,7 +15,7 @@
 
     $(document).ready(function() {
     $.fn.editable.defaults.mode ="inline";
-    $('#cyclist-show a').editable(); 
+    $('#cyclist-show a').editable();
     });
 </script>
 
@@ -56,9 +56,9 @@
                         <td id='cyclist-show-td'>Make</td>
                         <td id='cyclist-show-td'>Model</td>
                         <td id='cyclist-show-td'>Description</td>
-                        <td id='cyclist-show-td'>Missing Report</td>
+                        <td id='cyclist-show-td'>Missing</td>
                         <td id='cyclist-show-td'>Delete Bicycle</td>
-                        <td id='cyclist-show-td'>Edit Picture</td> 
+                        <td id='cyclist-show-td'>Edit Picture</td>
                     </tr>";
             while($row = mysqli_fetch_assoc($result)){
                 echo "<tr>";

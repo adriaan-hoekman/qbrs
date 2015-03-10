@@ -102,15 +102,62 @@ function search_bicycle($dbc, $serial, $make, $model, $missing) {
 	return $query;
 }
 
-function search_users($dbc, $user_role) {
-	$sql = "SELECT * FROM User";
-	switch ($user_role) {
+function search_report($dbc, $serial, $return_location, $date, $period) {
+	$sql = "SELECT * FROM Bicycle, Report
+					WHERE Bicycle.BicycleID = Report.BicycleID";
+	if (empty($serial) == False) {
+		$sql .= " AND Bicycle.Serial LIKE '%$serial%'";
+	}
+	if (empty($return_method) == False) {
+		$sql .= " AND ReturnLocation = '$return_method'";
+	}
+	if (empty($date) == False AND isset($period) == True ) {
+		switch ($period) {
 		case 1:
-			$sql .= " WHERE Admin > 0";
-		case 2:
-			$sql .= " WHERE Admin = 0";
-		default:
+			$sql .= " AND Date > '$date'";
 			break;
+		case 2:
+			$sql .= " AND Date < '$date'";
+			break;
+		default:
+			$sql .= " AND Date = '$date'";
+		}
+	}
+
+	$query = $dbc -> query($sql);
+
+	return $query;
+}
+
+function search_user($dbc, $netid, $name, $user_role) {
+	$sql = "SELECT * FROM User";
+
+	if (empty($netid) == False OR empty($name) == False OR $user_role > 0) {
+		$sql .= " WHERE";
+	}
+	if (empty($netid) == False) {
+		$sql .= " NetID = '$netid'";
+	}
+	if (empty($name) == False) {
+		if (empty($netid) == False) {
+			$sql .= " AND";
+		}
+		$sql .= " Name LIKE '%$name%'";
+	}
+	if ($user_role > 0) {
+		if (empty($netid) == False OR empty($name) == False) {
+			$sql .= " AND";
+		}
+		switch ($user_role) {
+			case 1:
+				$sql .= " Admin > 0";
+				break;
+			case 2:
+				$sql .= " Admin = 0";
+				break;
+			default:
+				break;
+		}
 	}
 
 	$query = $dbc -> query($sql);
