@@ -3,6 +3,14 @@
     include_once '../../lib/global.conf.php';
     include_once '../../lib/reg.func.php';
     include_once '../../lib/search.func.php';
+
+
+    date_default_timezone_set("America/Toronto");
+
+    $netid = $_SERVER['HTTP_QUEENSU_NETID'];
+    $name = $_SERVER['HTTP_COMMON_NAME'];
+    $email = $_SERVER['HTTP_QUEENSU_MAIL'];
+    $da = date("Y-m-d H:i:s");
 ?>
 
 <script type="text/javascript">
@@ -16,6 +24,7 @@
     $(document).ready(function() {
     $.fn.editable.defaults.mode ="inline";
     $('#cyclist-show a').editable();
+    $('#phoneNumber').editable();
     });
 </script>
 
@@ -23,6 +32,14 @@
 <nav>
 <h3 align='center'>CYCLIST HOME PAGE</h1>
 <h4 align='center'>Welcome <?php echo $_SERVER['HTTP_COMMON_NAME']; ?></h2>
+    <?php
+        $query = mysqli_query($dbc, "SELECT Phone from User Where NetID = '$netid';");
+        $phoneResult = mysqli_fetch_assoc($query);
+        $phone = $phoneResult['Phone'];
+        
+
+        echo "</br>Your Phone Number is: <a href='#' id='phoneNumber' data-type='text' data-pk='".$netid."' data-url='edit-bicycle.php'>".$phoneResult['Phone']."</a>";
+    ?>
 </nav>
 
 <div class="container" align='center'>
@@ -38,16 +55,8 @@
 
     <?php
 
-        date_default_timezone_set("America/Toronto");
-
-        $netid = $_SERVER['HTTP_QUEENSU_NETID'];
-        $name = $_SERVER['HTTP_COMMON_NAME'];
-        $email = $_SERVER['HTTP_QUEENSU_MAIL'];
-        $da = date("Y-m-d H:i:s");
-
         // Get Bicycle list from batadase.
         $result = search_netid($dbc, $netid);
-
 
         if ($result != false && $result -> num_rows != 0) {
             echo "<table class='table-striped table-hover' id='cyclist-show' align='center'>";

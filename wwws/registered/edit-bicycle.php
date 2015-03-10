@@ -37,4 +37,11 @@ if($_POST['name']=='bicycleOther'){
       mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
 }
 
+if($_POST['name']=='phoneNumber'){
+    $id=$_POST['pk'];
+    $phone=$_POST['value'];
+    $sql = "UPDATE User SET Phone = '". $phone ."' WHERE NetID = '$id' ";
+      mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
+}
+
 ?>
