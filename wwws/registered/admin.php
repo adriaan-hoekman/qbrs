@@ -23,11 +23,12 @@
 <div id="myTabContent" class="tab-content">
 	<div class="tab-pane fade active in" id="bicycle-tab">
 		<input type="hidden" name="bicycleSearch" value="1">
+		<br/>
 		<table align="center">
 			<tr>
 				<td>
 					<b>Search for Bicycles by:</b>
-					<br />
+					<br/>
 				</td>
 			</tr>
 			<tr>
@@ -93,6 +94,7 @@
 
 	<div class="tab-pane fade" id="report-tab">
 		<input type="hidden" name="reportSearch" value="1">
+		<br/>
 		<table align="center">
 			<tr>
 				<td>
@@ -169,6 +171,7 @@
 
 	<div class="tab-pane fade" id="user-tab">
 		<input type="hidden" name="userSearch" value="1">
+		<br/>
 		<table align="center">
 			<tr>
 				<td>
