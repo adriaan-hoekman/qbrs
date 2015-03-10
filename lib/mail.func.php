@@ -1,7 +1,16 @@
 <?php
+    include_once './global.conf.php';
 
 
 function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemodel, $bicycledesc, $datemissing, $timemissing, $missinglocation, $missingdetail){
+	
+	$parkingphone = $_SERVER['parkingphone'];
+	$parkingemail = $_SERVER['parkingemail'];
+	$securityphone = $_SERVER['securityphone'];
+	$securityemail = $_SERVER['securityemail'];
+	$kingstonpolicephone = $_SERVER['kingstonpolicephone'];
+	$kingstonpoliceemail = $_SERVER['kingstonpoliceemail'];
+
 	$subject = "This is Your Missing Report";
 
 	$message = "
@@ -22,6 +31,10 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 	<p>Time Missing: ".$timemissing."</p>
 	<p>Location Missing: ".$missinglocation."</p>
 	<p>Other Information: ".$missingdetail."</p>
+	<p>The following contact information may useful.</p>
+	<p>Campus Security. Phone: ".$securityphone." Email: ".$securityemail."</p>
+  <p>Campus Parking. Phone: ".$parkingphone." Email: ".$parkingemail."</p>
+  <p>Kingston Police. Phone: ".$kingstonpolicephone." Email: ".$kingstonpoliceemail."</p>
 	</body>
 	</html>
 	";
@@ -34,7 +47,20 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 	$headers .= 'From: Queens Bicycle Registration System<Do-Not-Reply@Queensu.ca>' . "\r\n";
 	//$headers .= 'Cc: myboss@example.com' . "\r\n";
 
-	mail($to,$subject,$message,$headers);
+		// The following 4 lines of code are for testing the email function on localhost.
+	// Comment them out when moving to the PROD server.
+	// ------------------------------------------------------------
+	echo $to;
+	echo $subject;
+	echo $message;
+	echo $headers;
+	return false;
+	// -----------------------------------------------------------
+	// The following 2 lins of code are MUST be uncommented when this code runs on the PROD server.
+	// -------------------------------------------
+	//mail($to,$subject,$message,$headers);
+	// return true;
+	// -------------------------------------------
 } 
 
 function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $returnlocation, $contactfield, $serialnumber){
