@@ -62,6 +62,14 @@ table#cyclist-show {
 	margin: 5%;
 	border: 1px solid black;
 }
+th#link-show-th {
+	border: 1px solid black;
+	text-align: center;
+}
+td#link-show-td {
+	border: 1px solid black;
+	text-align: center;
+}
 td#cyclist-show-td {
 	border: 1px solid black;
 	text-align: center;

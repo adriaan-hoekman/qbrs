@@ -77,7 +77,7 @@ function search_netid($dbc, $netid) {
 }
 
 function search_missing($dbc) {
-	$sql = "SELECT Serial FROM Bicycle WHERE Missing > 0 AND Serial NOT LIKE '%DELETED%";
+	$sql = "SELECT Serial FROM Bicycle WHERE Missing > 0 AND Serial NOT LIKE '%DELETED%'";
 	$query = $dbc -> query($sql);
 
 	return $query;
