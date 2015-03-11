@@ -7,19 +7,48 @@
   include_once '../lib/mail.func.php';
 ?>
 
-<nav>
-<h1>Missing Bicycle Report</h1>
-<h2>Please enter detailed information about the found bicycle:</h2>
-</nav>
-
-<section>
-  <?php
+<?php
     $serialnumber = $_POST['SerialNumber'];
 
     date_default_timezone_set("America/Toronto");
 
     $da = date("Y-m-d H:i:s");
   ?>
+
+<?php
+    if(isset($_POST['submitReport']) AND $_POST['submitReport']) {
+      $result = nonreg_submit_report($dbc,
+                                     $_POST['DateFound'],
+                                     $_POST['TimeFound'],
+                                     $_POST['LocationFound'],
+                                     $_POST['OtherInfo'],
+                                     $_POST['ReturnMethod'],
+                                     $serialnumber);
+        if ($result != false) {
+            $result = nonreg_missing_send_mail($dbc,
+                                               $_POST['DateFound'],
+                                               $_POST['TimeFound'],
+                                               $_POST['LocationFound'],
+                                               $_POST['OtherInfo'],
+                                               $_POST['ReturnMethod'],
+                                               $_POST['contactField'],
+                                                $serialnumber);
+            if ($result != false) {
+              header('Location: nonreg-report-confirm.php?returnmethod='.$_POST['ReturnMethod']);
+            }else{
+              echo "Fail";
+            }
+        }
+    }
+?>
+
+<nav>
+<h1>Missing Bicycle Report</h1>
+<h2>Please enter detailed information about the found bicycle:</h2>
+</nav>
+
+<section>
+
   <form class="form-horizontal" METHOD="POST" ACTION="nonreg-missing-report.php">
   <table align="center" cellspacing="100">
     <tr>

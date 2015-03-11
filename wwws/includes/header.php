@@ -19,6 +19,20 @@
 
 	<!-- Custom Style -->
 	<link rel="stylesheet" href="/includes/css/styles.css">
+
+	<!-- UNCOMMENT This for PROD Server -->
+	<!-- Inline Editing JS and CSS -->
+	<!--<link href="/pps/qbrs/includes/css/bootstrap-editable.css" rel="stylesheet">
+	<script src="/pps/qbrs/includes/js/bootstrap-editable.js"></script>-->
+
+	<!-- Adding Table CSS -->
+	<!--<link href="/pps/qbrs/includes/css/NoMoreTables.css" rel="stylesheet">-->
+
+	<!-- Custom Style -->
+	<!--<link rel="stylesheet" href="/pps/qbrs/includes/css/styles.css">-->
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
   <title>Queen's Bicycle Registration System</title>
 </head>
 
@@ -27,14 +41,23 @@
 <table cellspacing="50" align="center">
 	<tr>
 		<td>
+			<div class="hidden-xs">
 		<?php
+			// This is for Local Host
+			//-----------------------
 			echo '<img src=/images/Queens_logo.png width="192" height="146">';
+			
+			// UNCOMMENT This for PROD Server
+			//-------------------------------
+			//echo '<img src=/pps/qbrs/images/Queens_logo.png width="192" height="146">';
 		?>
+	</div>
 		</td>
     <td align="center" width=550px>
 			<h2>Queen's Bicycle Registration System</h2>
     </td>
     <td>
+    	<div class = "col-xs-2">
 		<?php
 			if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
 			{
@@ -42,12 +65,12 @@
 				
         // Uncomment the below two lines to switch to PROD server logout button
         // ------------------------------------------------------------------------------------
-        // echo '<FORM>';
+				// echo '<FORM>';
 				// echo '<INPUT class="btn btn-default" TYPE="button" VALUE="Logout" onClick="parent.location=\'https://login.queensu.ca/idp/logout.jsp?goto=https://webapp.queensu.ca/pps/qbrs/\'">';
         // -------------------------------------------------------------------------------------
         // Uncomment the below two lines to switch to the localhost development logout button
 				echo '<FORM METHOD="LINK" ACTION="../index.php">';
-        echo '<INPUT class="btn btn-default" TYPE="submit" VALUE="Logout">';
+			  echo '<INPUT class="btn btn-default" TYPE="submit" VALUE="Logout">';
         // -------------------------------------------------------------------------------------
         echo "</FORM>";
 				echo "</td>";
@@ -59,6 +82,7 @@
 				echo "</td>";
 			}
 		?>
+	</div>
 	</td>
 	</tr>
 </table>
@@ -84,3 +108,4 @@
 	}
 
 ?>
+
