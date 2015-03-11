@@ -21,9 +21,9 @@
     ?>
         <form class="form-horizontal" align="center" method="post" action="add-bicycle.php" enctype="multipart/form-data">
             <table align="center">
-                <tr><td><label class="col-lg-10 control-label">Serial Number*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="serial"></input></div></td></tr>     
+                <tr><td><label class="col-lg-10 control-label">Serial Number*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="serial"></input></div></td></tr>
                 <tr><td><label class="col-lg-10 control-label">Make*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="make"></input></div></td></tr>
-                <tr><td><label class="col-lg-10 control-label">Model*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="model"></input></div></td></tr> 
+                <tr><td><label class="col-lg-10 control-label">Model*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="model"></input></div></td></tr>
                 <tr><td><label class="col-lg-10 control-label">Other: </label></td><td><div class="col-lg-10"><textarea class="form-control" name="other" rows="10" cols=auto></textarea></div></td></tr>
                 <tr><td><label class="col-lg-10 control-label">Select Your Bicycle's Image: </label></td><td><div class="col-lg-10"><input class="form-control" type="file" name="pics" accept="image/*" /></div></td></tr>
             </table>
@@ -37,19 +37,19 @@
 </div>
 <!--</section>-->
 
-<?php 
-    if(isset($_POST['addBicycle']) AND $_POST['addBicycle']) { 
+<?php
+    if(isset($_POST['addBicycle']) AND $_POST['addBicycle']) {
         if (!file_exists($_FILES['pics']['tmp_name']) || !is_uploaded_file($_FILES['pics']['tmp_name'])){
-            $pic_name = NULL;        
+            $pic_name = NULL;
         }else{
             $pic_name = "../uploads/" . $_POST['serial'] . basename($_FILES["pics"]["name"]);
-            move_uploaded_file($_FILES["pics"]["tmp_name"], $pic_name);        
-        } 
+            move_uploaded_file($_FILES["pics"]["tmp_name"], $pic_name);
+        }
         $result = add_bicycle($dbc, $_POST['serial'],
                                        $_POST['make'],
                                        $_POST['model'],
                                        $pic_name,
-                                       $_POST['other'], 
+                                       $_POST['other'],
                                        $netid);
         if ($result != false) {
             header('Location: ./home.php');

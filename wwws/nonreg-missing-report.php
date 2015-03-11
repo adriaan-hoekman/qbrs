@@ -25,15 +25,15 @@
     <tr>
       <td style="padding-right: 5px" align="right" width=200px><label>Date Found: </label></td>
       <td><div class="col-lg-20"><input class="form-control" type="date" name="DateFound"></input></div></td>
-    </tr>     
+    </tr>
     <tr>
       <td style="padding-right: 5px" align="right"><label>Time Found: </label></td>
       <td style="padding-top: 5px"><div class="col-lg-20"><input class="form-control" type="time" name="TimeFound"></input></div></td>
-    </tr>     
+    </tr>
     <tr>
       <td style="padding-right: 5px" align="right"><label>Location Found: </label></td>
       <td style="padding-top: 5px"><div class="col-lg-20"><input class="form-control" name="LocationFound"></input></div></td>
-    </tr>    
+    </tr>
     <tr>
       <td style="padding-right: 5px" align="right"><label>Other Information: </label></td>
       <td style="padding-top: 5px"><div class="col-lg-20"><textarea class="form-control" rows="6" cols="25" name="OtherInfo"></textarea></div></td>
@@ -62,28 +62,28 @@
   <INPUT class="btn btn-primary" type="submit" value="Submit">
   <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='../index.php'">
   </form>
-  
+
 </section>
 
-<?php 
-    if(isset($_POST['submitReport']) AND $_POST['submitReport']) { 
+<?php
+    if(isset($_POST['submitReport']) AND $_POST['submitReport']) {
       $result = nonreg_submit_report($dbc,
                                      $_POST['DateFound'],
                                      $_POST['TimeFound'],
                                      $_POST['LocationFound'],
-                                     $_POST['OtherInfo'], 
+                                     $_POST['OtherInfo'],
                                      $_POST['ReturnMethod'],
                                      $serialnumber);
         if ($result != false) {
-            $result = nonreg_missing_send_mail($dbc, 
+            $result = nonreg_missing_send_mail($dbc,
                                                $_POST['DateFound'],
                                                $_POST['TimeFound'],
                                                $_POST['LocationFound'],
-                                               $_POST['OtherInfo'], 
+                                               $_POST['OtherInfo'],
                                                $_POST['ReturnMethod'],
                                                $_POST['contactField'],
                                                 $serialnumber);
-            if ($result != false) { 
+            if ($result != false) {
               header('Location: nonreg-report-confirm.php');
             }else{
               echo "Fail";
