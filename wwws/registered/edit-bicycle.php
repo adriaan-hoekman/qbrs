@@ -44,4 +44,11 @@ if($_POST['name']=='phoneNumber'){
       mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
 }
 
+if($_GET['found']=='1'){
+    $id=$_GET['id'];
+    $sql = "UPDATE Bicycle SET Missing = '0' WHERE BicycleID = '$id' ";
+    mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
+    header('Location: ./home.php');
+}
+
 ?>

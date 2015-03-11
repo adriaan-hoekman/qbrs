@@ -87,7 +87,7 @@
 
                 echo "<td id='cyclist-show-td'>
                         
-                        <input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='if (this.checked) {window.location = this.value;}' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input>
+                        <input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." src=".htmlspecialchars('./edit-bicycle.php?found=1&id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='location.assign(this.checked?this.value:this.src)' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input>
                         
                         </td>";
 
