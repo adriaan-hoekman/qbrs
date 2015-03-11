@@ -124,16 +124,16 @@ switch ($returnlocation) {
 	// The following 4 lines of code are for testing the email function on localhost.
 	// Comment them out when moving to the PROD server.
 	// ------------------------------------------------------------
-	echo $to;
-	echo $subject;
-	echo $message;
-	echo $headers;
-	return false;
+	//echo $to;
+	//echo $subject;
+	//echo $message;
+	//echo $headers;
+	//return false;
 	// -----------------------------------------------------------
 	// The following 2 lins of code are MUST be uncommented when this code runs on the PROD server.
 	// -------------------------------------------
-	//mail($to,$subject,$message,$headers);
-	// return true;
+	mail($to,$subject,$message,$headers);
+	 return true;
 	// -------------------------------------------
 }
 
