@@ -17,7 +17,8 @@
     date_default_timezone_set("America/Toronto");
 
     $da = date("Y-m-d H:i:s");
-    missing_send_mail("11ld20@queensu.ca","Luke Dowker");
+    
+    
   ?>
   <h1>SUCCESS!</h1>
 

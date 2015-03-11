@@ -6,9 +6,9 @@
 ?>
 
 <nav>
-  <h1>
+  <h3>
 	SEARCH RESULTS
-  </h1>
+  </h3>
 </nav>
 
 <section>	
@@ -16,12 +16,16 @@
 	$serialnumber = $_POST['SerialNumber'];
 	$results = search_serial_nonreg ($dbc,$serialnumber);
 	if ($results == 0){
-		echo "No bicycles matching the entered serial number were found.";
+    ?>
+		<h4>No bicycles matching the entered serial number were found.</h4>
+
+    <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='../index.php'">
+  <?php
 	} else {
   ?>
-  <h2>
+  <h4>
 	A bicycle matching that serial number has been found.
-  </h2>
+  </h4>
 	<br />
   If you would like to report the bicycle found, please click the Report button below
   <br />
@@ -30,8 +34,8 @@
   <br />
   <FORM METHOD="POST" ACTION="nonreg-missing-report.php">
     <input type="hidden" name="SerialNumber" value="<?php echo htmlspecialchars($serialnumber); ?>">
-    <INPUT TYPE="submit" VALUE="Report">
-  <input type="button" value="Cancel" onClick="window.location.href='../index.php'">
+    <INPUT class="btn btn-primary" TYPE="submit" VALUE="Report">
+  <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='../index.php'">
   </FORM>
   <?php
 	 }

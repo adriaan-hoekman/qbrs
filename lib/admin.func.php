@@ -67,6 +67,12 @@ function get_report_name($report_type) {
 			return "Missing Reports";
 		case 6:
 			return "Found Reports";
+		case 7:
+			return "All Users";
+		case 8:
+			return "Admins Only";
+		case 9:
+			return "Cyclists Only";
 		default:
 			return "----";
 	}
@@ -97,6 +103,17 @@ function get_report_sql($report_type) {
 		return "SELECT Serial, Date, Time, Location, Description, ReturnLocation
 						FROM Report, Bicycle
 						WHERE Report.BicycleID = Bicycle.BicycleID AND ReturnLocation > 0";
+	} else if ($report_type == 7) {
+		return "SELECT NetID, Name, Email, Phone, Admin
+						FROM User";
+	} else if ($report_type == 8) {
+		return "SELECT NetID, Name, Email, Phone, Admin
+						FROM User
+						WHERE Admin > 0";
+	} else if ($report_type == 9) {
+		return "SELECT NetID, Name, Email, Phone, Admin
+						FROM User
+						WHERE Admin = 0";
 	} else {
 		return 0;
 	}
@@ -115,6 +132,12 @@ function generate_report_filename($report_type) {
 		return "mising-reports-".date("Y-m-d-H-i-s").".csv";
 	} else if ($report_type == 6) {
 		return "found-reports-".date("Y-m-d-H-i-s").".csv";
+	} else if ($report_type == 7) {
+		return "all-users-".date("Y-m-d-H-i-s").".csv";
+	} else if ($report_type == 8) {
+		return "admin-users-".date("Y-m-d-H-i-s").".csv";
+	} else if ($report_type == 9) {
+		return "cyclist-users-".date("Y-m-d-H-i-s").".csv";
 	} else {
 		return 0;
 	}
@@ -159,8 +182,13 @@ function report_to_csv($dbc, $report_type, $attachment = True, $headers = True) 
 	}
 
 	while($row = $query -> fetch_assoc()) {
-		if ($report_type > 3) {
+		if ($report_type < 3) {
+			$row['Missing'] = ($row['Missing'] == 0 ? "No" : "Yes");
+		} else if ($report_type > 3 && $report_type < 7) {
 			$row['ReturnLocation'] = ($row['ReturnLocation'] == 0 ? "----" : $row['ReturnLocation']);
+		} else if ($report_type > 6) {
+			$row['Phone'] = ($row['Phone'] == Null ? "----" : $row['Phone']);
+			$row['Admin'] = ($row['Admin'] == 0 ? "No" : "Yes");
 		}
 		fputcsv($fp, $row);
 	}

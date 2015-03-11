@@ -6,14 +6,14 @@
 ?>
 
 <nav>
-<h1>ADMINISTRATOR MANAGEMENT</h1>
+<h3>ADMINISTRATOR MANAGEMENT</h3>
 </nav>
 
 <section id="admin-basic">
 <table align="center">
 	<tr>
     	<td>
-	    	Edit Administrator: <br/>
+	    	<b>Edit Administrator: </b><br/>
 			</td>
 	</tr>
 	<tr>
@@ -22,13 +22,13 @@
 		</td>
 <form method="post">
 		<td>
-			<input type="text" name="adminQuery" value="">
+			<input CLASS="form-control" type="text" name="adminQuery" value="">
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<button name='submit' value='1'>Add</button>
-			<button name='submit' value='2'>Remove</button>
+			<button class="btn btn-primary" name='submit' value='1'>Add</button>
+			<button class="btn btn-primary" name='submit' value='2'>Remove</button>
 		</td>
 	</tr>
 </form>
@@ -56,21 +56,21 @@
 	<tr>
 		<td>
 		<form method="link" action="./admin.php">
-			<button id="admin-button">Admin Home</button>
+			<button class="btn btn-primary" id="admin-button">Admin Home</button>
 		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<form method="link" action="./home.php">
-			<button id="admin-button">Manage Personal Bicycles</button>
+			<button class="btn btn-primary" id="admin-button">Manage Personal Bicycles</button>
 		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
 		<form method="link" action="./generate-report.php">
-			<button id="admin-button">Generate Report</button>
+			<button class="btn btn-primary" id="admin-button">Generate Report</button>
 		</form>
 		</td>
 	</tr>
