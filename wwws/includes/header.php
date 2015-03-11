@@ -65,12 +65,12 @@
 				
         // Uncomment the below two lines to switch to PROD server logout button
         // ------------------------------------------------------------------------------------
-				echo '<FORM>';
-				echo '<INPUT class="btn btn-default" TYPE="button" VALUE="Logout" onClick="parent.location=\'https://login.queensu.ca/idp/logout.jsp?goto=https://webapp.queensu.ca/pps/qbrs/\'">';
+				// echo '<FORM>';
+				// echo '<INPUT class="btn btn-default" TYPE="button" VALUE="Logout" onClick="parent.location=\'https://login.queensu.ca/idp/logout.jsp?goto=https://webapp.queensu.ca/pps/qbrs/\'">';
         // -------------------------------------------------------------------------------------
         // Uncomment the below two lines to switch to the localhost development logout button
-				// echo '<FORM METHOD="LINK" ACTION="../index.php">';
-				// echo '<INPUT class="btn btn-default" TYPE="submit" VALUE="Logout">';
+				echo '<FORM METHOD="LINK" ACTION="../index.php">';
+			  echo '<INPUT class="btn btn-default" TYPE="submit" VALUE="Logout">';
         // -------------------------------------------------------------------------------------
         echo "</FORM>";
 				echo "</td>";
