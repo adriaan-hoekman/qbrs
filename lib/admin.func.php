@@ -23,8 +23,9 @@ function get_get_email($dbc, $netid) {
 	$sql = "SELECT GetEmail
 					FROM User
 					WHERE NetID = '$netid'";
-
-	if ($dbc -> query($sql) -> fetch_assoc()['GetEmail'] == 0) {
+	$result = mysqli_query($dbc, $sql) -> fetch_assoc();
+	$var = $result['GetEmail'];
+	if ($var == 0) {
 		return 0;
 	} else {
 		return 1;

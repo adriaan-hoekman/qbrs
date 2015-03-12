@@ -41,12 +41,11 @@
 	<form method="post">
 		<td>
 			<input type='checkbox' value='1' name='checket'
-				<?php if((get_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID']) != 0)){echo 'checked';} ?>>
+				<?php if((get_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID']) != 0)){echo "checked='checked'";} ?>>
 			</input>
 			<button name='get_email' value='1'>Save</button>
 		</td>
 	</tr>
-	<tr>
 </form>
 </table>
 </section>
