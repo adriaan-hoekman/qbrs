@@ -51,16 +51,15 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 		// The following 4 lines of code are for testing the email function on localhost.
 	// Comment them out when moving to the PROD server.
 	// ------------------------------------------------------------
-	echo $to;
-	echo $subject;
-	echo $message;
-	echo $headers;
-	return false;
+	// echo $to;
+	// echo $subject;
+	// echo $message;
+	// echo $headers;
+	// return false;
 	// -----------------------------------------------------------
 	// The following 2 lins of code are MUST be uncommented when this code runs on the PROD server.
 	// -------------------------------------------
-	//mail($to,$subject,$message,$headers);
-	// return true;
+	return mail($to,$subject,$message,$headers);
 	// -------------------------------------------
 }
 
@@ -73,7 +72,7 @@ function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $
 	$kingstonpolicephone = $_SERVER['kingstonpolicephone'];
 	$kingstonpoliceemail = $_SERVER['kingstonpoliceemail'];
 
-	$query = mysqli_query($dbc, "SELECT * from user,bicycle WHERE serial='$serialnumber';");
+	$query = mysqli_query($dbc, "SELECT * from User,Bicycle WHERE Bicycle.Serial='$serialnumber' AND Bicycle.UserID = User.UserID;");
   $row = mysqli_fetch_assoc($query);
   $to = $row['Email'];
   $name = $row['Name'];
@@ -130,10 +129,9 @@ switch ($returnlocation) {
 	//echo $headers;
 	//return false;
 	// -----------------------------------------------------------
-	// The following 2 lins of code are MUST be uncommented when this code runs on the PROD server.
+	// The following line of code are MUST be uncommented when this code runs on the PROD server.
 	// -------------------------------------------
-	mail($to,$subject,$message,$headers);
-	 return true;
+	return mail($to,$subject,$message,$headers);
 	// -------------------------------------------
 }
 
