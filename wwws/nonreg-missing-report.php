@@ -25,7 +25,7 @@
                                      $_POST['ReturnMethod'],
                                      $serialnumber);
         if ($result != false) {
-            $result = nonreg_missing_send_mail($dbc,
+            $emailresult = nonreg_missing_send_mail($dbc,
                                                $_POST['DateFound'],
                                                $_POST['TimeFound'],
                                                $_POST['LocationFound'],
@@ -33,7 +33,7 @@
                                                $_POST['ReturnMethod'],
                                                $_POST['contactField'],
                                                 $serialnumber);
-            if ($result != false) {
+            if ($emailresult != false) {
               header('Location: nonreg-report-confirm.php?returnmethod='.$_POST['ReturnMethod']);
             }else{
               echo "Fail";
