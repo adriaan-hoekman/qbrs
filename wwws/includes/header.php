@@ -60,8 +60,7 @@
     <td align="center" width=550px>
 			<h2>Queen's Bicycle Registration System</h2>
     </td>
-    <td>
-    	<div class = "col-xs-2">
+    <div class = "col-xs-2">
 		<?php
 			if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
 			{
@@ -87,7 +86,6 @@
 			}
 		?>
 	</div>
-	</td>
 	</tr>
 </table>
 </header>
