@@ -19,7 +19,12 @@
         $email = $_SERVER['HTTP_QUEENSU_MAIL'];
         $da = date("Y-m-d H:i:s");
     ?>
-        <form class="form-horizontal" align="center" method="post" action="add-bicycle.php" enctype="multipart/form-data">
+    <div class="alert alert-danger hide" role="alert" id="addBicycleError">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    Serial Number, Make and Model cannot be empty. 
+    </div>
+        <form name="addBicycleForm" class="form-horizontal" align="center" method="post" action="add-bicycle.php" enctype="multipart/form-data">
             <table align="center">
                 <tr><td><label class="col-lg-10 control-label">Serial Number*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="serial"></input></div></td></tr>
                 <tr><td><label class="col-lg-10 control-label">Make*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="make"></input></div></td></tr>
@@ -57,7 +62,7 @@
         if ($result != false) {
             header('Location: ./home.php');
         }else{
-            echo "Fail";
+            echo "Fails";
         }
     }
 ?>
@@ -65,3 +70,35 @@
 <?php
 	include_once '../includes/footer.php';
 ?>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    // Run this code only when the DOM (all elements) are ready
+
+    $('form[name="addBicycleForm"]').on("submit", function (e) {
+        // Find all <form>s with the name "register", and bind a "submit" event handler
+
+        // Find the <input /> element with the name "username"
+        var serial = $(this).find('input[name="serial"]');
+        var make = $(this).find('input[name="make"]');
+        var model = $(this).find('input[name="model"]');
+        if ($.trim(serial.val()) === "" || $.trim(make.val()) === "" || $.trim(model.val()) === "") {
+            // If its value is empty
+            e.preventDefault();    // Stop the form from submitting
+            $("#addBicycleError").slideDown(400);    // Show the Alert
+        } else {
+            e.preventDefault();    // Not needed, just for demonstration
+            $("#addBicycleError").slideUp(400, function () {    // Hide the Alert (if visible)
+                alert("Would be submitting form");    // Not needed, just for demonstration
+            });
+        }
+    });
+
+    $(".alert").find(".close").on("click", function (e) {
+        // Find all elements with the "alert" class, get all descendant elements with the class "close", and bind a "click" event handler
+        e.stopPropagation();    // Don't allow the click to bubble up the DOM
+        e.preventDefault();    // Don't let any default functionality occur (in case it's a link)
+        $(this).closest(".alert").slideUp(400);    // Hide this specific Alert
+    });
+});
+</script>
