@@ -1,6 +1,8 @@
 <html>
 <?php
 	include_once './includes/header.php';
+	include_once '../lib/header.func.php';
+	include_once '../lib/global.conf.php';
 ?>
 
 <body>
@@ -24,6 +26,16 @@
 			<button type="submit" class="btn btn-primary">Search</button>
 			</div>
 			</FORM>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td align="center">
+			<?php
+  echo "<br />";
+  echo "The number of bicycles that have been returned: ".implode('',returned_bicycles_count($dbc));
+			?>
 		</td>
 	</tr>
 </table>
