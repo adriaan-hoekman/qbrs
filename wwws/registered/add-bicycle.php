@@ -19,6 +19,7 @@
         $email = $_SERVER['HTTP_QUEENSU_MAIL'];
         $da = date("Y-m-d H:i:s");
     ?>
+    <div id="message"> </div>
         <form class="form-horizontal" align="center" method="post" action="add-bicycle.php" enctype="multipart/form-data">
             <table align="center">
                 <tr><td><label class="col-lg-10 control-label">Serial Number*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="serial"></input></div></td></tr>
@@ -39,6 +40,52 @@
 
 <?php
     if(isset($_POST['addBicycle']) AND $_POST['addBicycle']) {
+
+        if ($_POST['serial'] == ""){
+           ?>
+            <script type="text/javascript">
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>Please enter your Serial Number!</div>');
+            </script>
+            <?php
+            exit();
+        }
+
+        if ($_POST['make'] == ""){
+           ?>
+            <script type="text/javascript">
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>Please enter Make of your Bicycle</div>');
+            </script>
+            <?php
+            exit();
+        }
+
+        if ($_POST['model'] == ""){
+           ?>
+            <script type="text/javascript">
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>Please enter Model of your Bicycle</div>');
+            </script>
+            <?php
+            exit();
+        }
+
+        if (bicycle_is_exist($dbc, $_POST['serial']) == 1){
+           ?>
+            <script type="text/javascript">
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>This Bicycle (Serial Number) is already in database, Please contact Administrator for more detail!!</div>');
+            </script>
+            <?php
+            exit();
+        }
+
+        if ($_FILES["pics"]["size"] > 3000000){
+           ?>
+            <script type="text/javascript">
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>This Bicycle Image is too big, the image size cannot be larger than 3MB. Thanks!</div>');
+            </script>
+            <?php
+            exit();
+        }
+
         if (!file_exists($_FILES['pics']['tmp_name']) || !is_uploaded_file($_FILES['pics']['tmp_name'])){
             $pic_name = NULL;
         }else{

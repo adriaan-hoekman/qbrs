@@ -89,4 +89,19 @@ function report_bicycle_add($dbc, $date, $time, $loca, $desc, $bikeid){
 	return $result;
 }
 
+function bicycle_is_exist($dbc, $serialNum){
+	$sql = "SELECT * FROM Bicycle WHERE Serial = '$serialNum' limit 1";
+	$query = $dbc -> query($sql);
+
+	$result = $query -> fetch_array();
+
+	if(empty($result)){
+		// No Bicycle with this serial in the database
+		return 0;
+	} else {
+		// Bicycle is already in the database
+		return 1;
+	}
+}
+
 ?>
