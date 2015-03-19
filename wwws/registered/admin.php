@@ -14,14 +14,36 @@
 <section id="admin-basic">
 
 <ul class="nav nav-tabs">
-	<li class="active"><a href="#bicycle-tab" data-toggle="tab" aria-expanded="true">Bicycles</a></li>
-	<li class=""><a href="#report-tab" data-toggle="tab" aria-expanded="false">Reports</a></li>
-	<li class=""><a href="#user-tab" data-toggle="tab" aria-expanded="false">Users</a></li>
+<?php
+	if (isset($_POST['doBicycleSearch']) OR !isset($_POST['doSearch'])) {
+		echo '<li class="active"><a href="#bicycle-tab" data-toggle="tab" aria-expanded="true">Bicycles</a></li>
+					<li class=""><a href="#report-tab" data-toggle="tab" aria-expanded="false">Reports</a></li>
+					<li class=""><a href="#user-tab" data-toggle="tab" aria-expanded="false">Users</a></li>';
+	} else if (isset($_POST['doReportSearch'])){
+		echo '<li class=""><a href="#bicycle-tab" data-toggle="tab" aria-expanded="true">Bicycles</a></li>
+					<li class="active"><a href="#report-tab" data-toggle="tab" aria-expanded="false">Reports</a></li>
+					<li class=""><a href="#user-tab" data-toggle="tab" aria-expanded="false">Users</a></li>';
+	} else if (isset($_POST['doUserSearch'])){
+		echo '<li class=""><a href="#bicycle-tab" data-toggle="tab" aria-expanded="true">Bicycles</a></li>
+					<li class=""><a href="#report-tab" data-toggle="tab" aria-expanded="false">Reports</a></li>
+					<li class="active"><a href="#user-tab" data-toggle="tab" aria-expanded="false">Users</a></li>';
+	} else {
+		echo '<li class="active"><a href="#bicycle-tab" data-toggle="tab" aria-expanded="true">Bicycles</a></li>
+					<li class=""><a href="#report-tab" data-toggle="tab" aria-expanded="false">Reports</a></li>
+					<li class=""><a href="#user-tab" data-toggle="tab" aria-expanded="false">Users</a></li>';
+	}
+?>
 </ul>
 
 <form method="post" action="admin.php">
 <div id="myTabContent" class="tab-content">
-	<div class="tab-pane fade active in" id="bicycle-tab">
+<?php
+	if (isset($_POST['doBicycleSearch']) OR !isset($_POST['doSearch'])) {
+		echo '<div class="tab-pane fade active in" id="bicycle-tab">';
+	} else {
+		echo '<div class="tab-pane fade" id="bicycle-tab">';
+	}
+?>
 		<input type="hidden" name="bicycleSearch" value="1">
 		<br/>
 		<table align="center">
@@ -91,8 +113,13 @@
 			</tr>
 		</table>
 	</div>
-
-	<div class="tab-pane fade" id="report-tab">
+<?php
+	if (isset($_POST['doReportSearch'])) {
+		echo '<div class="tab-pane fade active in" id="report-tab">';
+	} else {
+		echo '<div class="tab-pane fade" id="report-tab">';
+	}
+?>
 		<input type="hidden" name="reportSearch" value="1">
 		<br/>
 		<table align="center">
@@ -122,6 +149,18 @@
 							<option value="parking">Campus Parking</option>
 							<option value="police">Kingston Police</option>
 							<option value="directContact">Direct Contact</option>
+						</select></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Report Type:
+				</td>
+				<td>
+						<div class="col-lg-20"><select class="form-control" name="reportTypeQuery" id="ReportType" onchange="DirectContact()">
+							<option value="0">All</option>
+							<option value="1">Missing</option>
+							<option value="2">Found</option>
 						</select></div>
 				</td>
 			</tr>
@@ -168,8 +207,13 @@
 			</tr>
 		</table>
 	</div>
-
-	<div class="tab-pane fade" id="user-tab">
+<?php
+	if (isset($_POST['doUserSearch'])) {
+		echo '<div class="tab-pane fade active in" id="user-tab">';
+	} else {
+		echo '<div class="tab-pane fade" id="user-tab">';
+	}
+?>
 		<input type="hidden" name="userSearch" value="1">
 		<br/>
 		<table align="center">
@@ -289,9 +333,49 @@
 	if (isset($_POST['doSearch']) AND $_POST['doSearch']) {
 		if (isset($_POST['doBicycleSearch'])) {
 			$result = search_bicycle($dbc, $_POST['serialQuery'],
-												 $_POST['makeQuery'],
-												 $_POST['modelQuery'],
-												 $_POST['missingQuery']);
+																	$_POST['makeQuery'],
+																	$_POST['modelQuery'],
+																	$_POST['missingQuery']);
+			echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+							<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='1'>
+								Download
+							</button>
+							<input type='hidden' name='serialQuery' value='".$_POST['serialQuery']."'>
+							<input type='hidden' name='makeQuery' value='".$_POST['makeQuery']."'>
+							<input type='hidden' name='modelQuery' value='".$_POST['modelQuery']."'>
+							<input type='hidden' name='missingQuery' value='".$_POST['missingQuery']."'>
+						</form>";
+		} else if (isset($_POST['doReportSearch'])) {
+			$result = search_report($dbc, $_POST['serialReportQuery'],
+																 $_POST['returnMethodQuery'],
+																 $_POST['reportTypeQuery'],
+																 $_POST['dateQuery'],
+																 $_POST['datePeriodQuery']);
+			echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+							<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='2'>
+								Download
+							</button>
+							<input type='hidden' name='serialReportQuery' value='".$_POST['serialReportQuery']."'>
+							<input type='hidden' name='returnMethodQuery' value='".$_POST['returnMethodQuery']."'>
+							<input type='hidden' name='reportTypeQuery' value='".$_POST['reportTypeQuery']."'>
+							<input type='hidden' name='dateQuery' value='".$_POST['dateQuery']."'>
+							<input type='hidden' name='datePeriodQuery' value='".$_POST['datePeriodQuery']."'>
+						</form>";
+		} else if (isset($_POST['doUserSearch'])) {
+			$result = search_user($dbc, $_POST['netidQuery'],
+															 $_POST['nameQuery'],
+															 $_POST['adminQuery']);
+			echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+							<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='3'>
+								Download
+							</button>
+							<input type='hidden' name='netidQuery' value='".$_POST['netidQuery']."'>
+							<input type='hidden' name='nameQuery' value='".$_POST['nameQuery']."'>
+							<input type='hidden' name='adminQuery' value='".$_POST['adminQuery']."'>
+						</form>";
+		}
+
+		if (isset($_POST['doBicycleSearch'])) {
 			if ($result != false && $result -> num_rows != 0) {
 ?>
 				<h3 align="left">Bicycle Search Results</h3>
@@ -320,10 +404,6 @@
 				echo "No bicycles could be found matching those criteria.";
 			}
 		} else if (isset($_POST['doReportSearch'])) {
-			$result = search_report($dbc, $_POST['serialReportQuery'],
-												 $_POST['returnMethodQuery'],
-												 $_POST['dateQuery'],
-												 $_POST['datePeriodQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 ?>
 				<h3 align="left">Report Search Results</h3>
@@ -353,9 +433,6 @@
 				echo "No reports could be found matching those criteria.";
 			}
 		} else if (isset($_POST['doUserSearch'])) {
-			$result = search_user($dbc, $_POST['netidQuery'],
-												 $_POST['nameQuery'],
-												 $_POST['adminQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 ?>
 				<h3 align="left">User Search Results</h3>

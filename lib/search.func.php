@@ -85,7 +85,8 @@ function search_missing($dbc) {
 
 function search_bicycle($dbc, $serial, $make, $model, $missing) {
 	$sql = "SELECT * FROM Bicycle, User
-					WHERE Bicycle.UserID = User.UserID";
+					WHERE Bicycle.UserID = User.UserID
+					AND SERIAL NOT LIKE '%DELETE%'";
 	if (empty($serial) == False) {
 		$sql .= " AND Serial LIKE '%$serial%'";
 	}
@@ -104,11 +105,10 @@ function search_bicycle($dbc, $serial, $make, $model, $missing) {
 	}
 
 	$query = $dbc -> query($sql);
-
 	return $query;
 }
 
-function search_report($dbc, $serial, $return_location, $date, $period) {
+function search_report($dbc, $serial, $return_location, $report_type, $date, $period) {
 	$sql = "SELECT * FROM Bicycle, Report
 					WHERE Bicycle.BicycleID = Report.BicycleID";
 	if (empty($serial) == False) {
@@ -116,6 +116,16 @@ function search_report($dbc, $serial, $return_location, $date, $period) {
 	}
 	if (empty($return_method) == False) {
 		$sql .= " AND ReturnLocation = '$return_method'";
+	}
+	if (empty($report_type) == False) {
+		switch ($period) {
+			case 1:
+				$sql .= " AND NOT ReturnLocation > 0";
+				break;
+			case 2:
+				$sql .= " AND ReturnLocation > 0";
+				break;
+		}
 	}
 	if (empty($date) == False AND isset($period) == True ) {
 		switch ($period) {
@@ -131,7 +141,6 @@ function search_report($dbc, $serial, $return_location, $date, $period) {
 	}
 
 	$query = $dbc -> query($sql);
-
 	return $query;
 }
 
@@ -167,7 +176,6 @@ function search_user($dbc, $netid, $name, $user_role) {
 	}
 
 	$query = $dbc -> query($sql);
-
 	return $query;
 }
 

@@ -61,7 +61,7 @@ function get_report_name($report_type) {
 		case 2:
 			return "Missing Bicycles";
 		case 3:
-			return "Recovered Bicycles";
+			return "Not Missing Bicycles";
 		case 4:
 			return "All Reports";
 		case 5:
@@ -156,8 +156,8 @@ function generate_report($dbc, $report_type) {
 }
 
 function report_to_csv($dbc, $report_type, $attachment = True, $headers = True) {
-	$filename = generate_report_filename($report_type);
-	$query = generate_report($dbc, $report_type);
+		$filename = generate_report_filename($report_type);
+		$query = generate_report($dbc, $report_type);
 
 	if ($filename === 0 || $query === 0) {
 		return 0;
@@ -188,6 +188,61 @@ function report_to_csv($dbc, $report_type, $attachment = True, $headers = True) 
 		} else if ($report_type > 3 && $report_type < 7) {
 			$row['ReturnLocation'] = ($row['ReturnLocation'] == 0 ? "----" : $row['ReturnLocation']);
 		} else if ($report_type > 6) {
+			$row['Phone'] = ($row['Phone'] == Null ? "----" : $row['Phone']);
+			$row['Admin'] = ($row['Admin'] == 0 ? "No" : "Yes");
+		}
+		fputcsv($fp, $row);
+	}
+
+	fclose($fp);
+
+	return 1;
+}
+
+function custom_report_to_csv($dbc, $report_type, $query, $attachment = True, $headers = True) {
+	switch ($report_type) {
+		case 1:
+			$filename = "custom-bicycles-".date("Y-m-d-H-i-s").".csv";
+			break;
+		case 2:
+			$filename = "custom-reports-".date("Y-m-d-H-i-s").".csv";
+			break;
+		case 3:
+			$filename = "custom-users-".date("Y-m-d-H-i-s").".csv";
+			break;
+		default:
+			$filename = "custom-search-".date("Y-m-d-H-i-s").".csv";
+	}
+
+	if ($filename === 0 || $query === 0) {
+		return 0;
+	}
+
+	if($attachment) {
+		// send response headers to the browser
+		header( 'Content-Type: text/csv' );
+		header( 'Content-Disposition: attachment;filename='.$filename);
+		$fp = fopen('php://output', 'w');
+	} else {
+		$fp = fopen($filename, 'w');
+	}
+
+	if($headers) {
+		// output header row (if at least one row exists)
+		$row = $query -> fetch_assoc();
+		if($row) {
+			fputcsv($fp, array_keys($row));
+			// reset pointer back to beginning
+			$query -> data_seek(0);
+		}
+	}
+
+	while($row = $query -> fetch_assoc()) {
+		if ($report_type == 1) {
+			$row['Missing'] = ($row['Missing'] == 0 ? "No" : "Yes");
+		} else if ($report_type == 2) {
+			$row['ReturnLocation'] = ($row['ReturnLocation'] == 0 ? "----" : $row['ReturnLocation']);
+		} else if ($report_type == 3) {
 			$row['Phone'] = ($row['Phone'] == Null ? "----" : $row['Phone']);
 			$row['Admin'] = ($row['Admin'] == 0 ? "No" : "Yes");
 		}
