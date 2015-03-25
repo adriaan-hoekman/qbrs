@@ -76,6 +76,13 @@
 		</form>
 		</td>
 	</tr>
+	<tr>
+		<td>
+		<form method="link" action="./edit-links.php">
+			<button class="btn btn-primary" id="admin-button">Edit Useful Links</button>
+		</form>
+		</td>
+	</tr>
 </table>
 </aside>
 
