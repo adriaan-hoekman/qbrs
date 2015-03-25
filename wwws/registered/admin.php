@@ -58,7 +58,13 @@
 					Serial Number:
 				</td>
 				<td>
-					<input CLASS="form-control" type="text" name="serialQuery" value="">
+				<?php
+					if (isset($_POST['serialQuery'])) {
+						echo '<input CLASS="form-control" type="text" name="serialQuery" value="'.$_POST['serialQuery'].'">';
+					} else {
+						echo '<input CLASS="form-control" type="text" name="serialQuery" value="">';
+					}
+				?>
 				 </td>
 			</tr>
 			<tr>
@@ -66,7 +72,13 @@
 					Make:
 				</td>
 				<td>
-					<input CLASS="form-control" type="text" name="makeQuery" value="">
+				<?php
+					if (isset($_POST['makeQuery'])) {
+						echo '<input CLASS="form-control" type="text" name="makeQuery" value="'.$_POST['makeQuery'].'">';
+					} else {
+						echo '<input CLASS="form-control" type="text" name="makeQuery" value="">';
+					}
+				?>
 				</td>
 			</tr>
 			<tr>
@@ -74,7 +86,13 @@
 					Model:
 				</td>
 				<td>
-					<input CLASS="form-control" type="text" name="modelQuery" value="">
+				<?php
+					if (isset($_POST['modelQuery'])) {
+						echo '<input CLASS="form-control" type="text" name="modelQuery" value="'.$_POST['modelQuery'].'">';
+					} else {
+						echo '<input CLASS="form-control" type="text" name="modelQuery" value="">';
+					}
+				?>
 				</td>
 			</tr>
 			<tr>
@@ -135,7 +153,13 @@
 					Serial Number:
 				</td>
 				<td>
-					<input CLASS="form-control" type="text" name="serialReportQuery" value="">
+				<?php
+					if (isset($_POST['serialReportQuery'])) {
+						echo '<input CLASS="form-control" type="text" name="serialReportQuery" value="'.$_POST['serialReportQuery'].'">';
+					} else {
+						echo '<input CLASS="form-control" type="text" name="serialReportQuery" value="">';
+					}
+				?>
 				 </td>
 			</tr>
 			<tr>
@@ -169,7 +193,13 @@
 					Date:
 				</td>
 				<td>
-					<input CLASS="form-control" type="date" name="dateQuery" value="">
+				<?php
+					if (isset($_POST['dateQuery'])) {
+						echo '<input CLASS="form-control" type="text" name="dateQuery" value="'.$_POST['dateQuery'].'">';
+					} else {
+						echo '<input CLASS="form-control" type="text" name="dateQuery" value="">';
+					}
+				?>
 				</td>
 			</tr>
 			<tr>
@@ -229,15 +259,27 @@
 					NetID:
 				</td>
 				<td>
-					<input CLASS="form-control" type="text" name="netidQuery" value="">
-				 </td>
+				<?php
+					if (isset($_POST['netidQuery'])) {
+						echo '<input CLASS="form-control" type="text" name="netidQuery" value="'.$_POST['netidQuery'].'">';
+					} else {
+						echo '<input CLASS="form-control" type="text" name="netidQuery" value="">';
+					}
+				?>
+			 </td>
 			</tr>
 			<tr>
 				<td>
 					Name:
 				</td>
 				<td>
-					<input CLASS="form-control" type="text" name="nameQuery" value="">
+				<?php
+					if (isset($_POST['nameQuery'])) {
+						echo '<input CLASS="form-control" type="text" name="nameQuery" value="'.$_POST['nameQuery'].'">';
+					} else {
+						echo '<input CLASS="form-control" type="text" name="nameQuery" value="">';
+					}
+				?>
 				</td>
 			</tr>
 			<tr>
@@ -289,7 +331,7 @@
 		echo '<ul style="list-style-type:none;padding:0;">';
 		echo '<li><h4 style="margin-bottom:0.2em;">Missing Bicycles</h4></li>';
 		echo '<div class="panel panel-default" style="border:1px solid black;padding:5px;height:80px;overflow: scroll;">';
-		while($row = mysqli_fetch_assoc($result)) {
+		while ($row = mysqli_fetch_assoc($result)) {
 			echo "<li>".$row['Serial']."</li>";
 		}
 		echo "</ul>";
@@ -389,7 +431,7 @@
 						<th id="admin-th">Missing</th>
 					</tr>
 <?php
-				while($row = mysqli_fetch_assoc($result)){
+				while ($row = mysqli_fetch_assoc($result)){
 					$missing = ($row['Missing'] == 0 ? "No" : "Yes");
 					echo "<tr><td id='admin-search-td'><img height='75px' src=".$row['Image']."></td>
 								<td id='admin-search-td'>".$row['NetID']."</td>
@@ -417,7 +459,7 @@
 						<th id="admin-th">Return Location</th>
 					</tr>
 <?php
-				while($row = mysqli_fetch_assoc($result)){
+				while ($row = mysqli_fetch_assoc($result)){
 					$return_location = get_report_location($row['ReturnLocation']);
 					echo "<tr>
 								<td id='admin-search-td'>".$row['Serial']."</td>
@@ -445,7 +487,7 @@
 						<th id="admin-th">Admin</th>
 					</tr>
 <?php
-				while($row = mysqli_fetch_assoc($result)){
+				while ($row = mysqli_fetch_assoc($result)){
 					$is_admin = ($row['Admin'] == 0 ? "No" : "Yes");
 					echo "<tr>
 								<td id='admin-search-td'>".$row['NetID']."</td>

@@ -34,6 +34,12 @@ section#admin-basic {
 	float:left;
 	padding:5px;
 }
+section#admin-home {
+	width:65%;
+	text-align:center;
+	float:left;
+	padding:5px;
+}
 section#admin-results {
 	width:100%;
 	text-align:center;
@@ -53,14 +59,18 @@ table#admin-search {
 	width: 60%;
 	border:1px solid black
 }
-th#admin-th, td#admin-search-td {
-	border:1px solid black;
-	text-align: center;
+table#edit-links-table {
+	width: 85%;
+	margin-left: 10%;
 }
 table#cyclist-show {
 	width: 90%;
 	margin: 5%;
 	border: 1px solid black;
+}
+th#admin-th, td#admin-search-td {
+	border:1px solid black;
+	text-align: center;
 }
 th#link-show-th {
 	border: 1px solid black;
@@ -69,6 +79,11 @@ th#link-show-th {
 td#link-show-td {
 	border: 1px solid black;
 	text-align: center;
+	padding: 1%;
+}
+td#link-delete-td {
+	text-align: center;
+	padding-left: 2%;
 }
 td#cyclist-show-td {
 	border: 1px solid black;

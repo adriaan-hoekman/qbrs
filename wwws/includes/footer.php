@@ -15,9 +15,9 @@
 	<tr>
 		<td align="center" style="padding-bottom:5%">
 <?php
-		$links_array = load_useful_links($link_file);
-		foreach ($links_array as $link_info) {
-			echo '<a href="'.$link_info[1].$link_info[2].'" title="'.$link_info[0].'" target="new">'.$link_info[0].'</a><br/>';
+		$result = get_useful_links($dbc);
+		while ($row = mysqli_fetch_assoc($result)) {
+			echo '<a href="'.$row['Url'].'" title="'.$row['Description'].'" target="new">'.$row['Description'].'</a><br/>';
 		}
 ?>
 		</td>

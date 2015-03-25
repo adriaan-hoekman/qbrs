@@ -1,26 +1,30 @@
 <?php
 
-	function load_useful_links($links_file) {
-		$handle = fopen("$links_file", "r");
-		if ($handle) {
-			while (($line = fgets($handle)) !== false) {
-				$link_array[] = preg_split('~(http)~u',$line , null, PREG_SPLIT_DELIM_CAPTURE);
-			}
+function get_useful_links($dbc) {
+	$sql = "SELECT * FROM UsefulLink";
+	$query = $dbc -> query($sql);
 
-			fclose($handle);
-		}
-		return $link_array;
+	return $query;
+}
+
+function set_useful_links($dbc, $new_links) {
+	foreach ($new_links as $link) {
+		$link_id = $link['LinkID'];
+		$link_desc = $link['Description'];
+		$link_url = $link['Url'];
+		$sql = "INSERT INTO UsefulLink (LinkID, Description, Url)
+						VALUES ('$link_id', '$link_desc', '$link_url')
+						ON DUPLICATE KEY UPDATE
+						Description='$link_desc', Url='$link_url'";
 	}
 
-	function save_useful_links($links_file, $new_links) {
-		$handle = fopen("$links_file", "r");
-		if ($handle) {
-			while (($line = fgets($handle)) !== false) {
-					$link_array[] = (explode("http", $line));
-			}
+	$query = $dbc -> query($sql) or die(0);
 
-			fclose($handle);
-		}
+	if ($query) {
+		return 1;
+	} else {
+		return 0;
 	}
+}
 
 ?>
