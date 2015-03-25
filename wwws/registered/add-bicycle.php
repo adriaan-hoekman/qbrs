@@ -31,7 +31,7 @@
         </br> * is required filed.
             </br>
             <input type="submit" class="btn btn-primary" name="submit" value="Submit">
-            <input type="button" class="btn btn-primary" value="Cancel" onClick="window.location.href='../home.php'">
+            <input type="button" class="btn btn-primary" value="Cancel" onClick="window.location.href='./home.php'">
             <input type="hidden" name="addBicycle" value="1">
             <input type="hidden" id = "netidx" name="netidx" value="<?php echo $netid; ?>">
         </form>
