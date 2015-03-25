@@ -23,13 +23,13 @@
     $(document).ready(function() {
     $.fn.editable.defaults.mode ="inline";
     $('#cyclist-show a').editable(
-{
-validate: function(value) {
-  if (value === null || value === '') {
-    return 'Empty values not allowed';
-  }
-}
-} 
+    {
+        validate: function(value) {
+            if (value === null || value === '') {
+                return 'Empty values not allowed';
+            }
+        }
+    } 
     );
     $('#phoneNumber').editable();
     });
