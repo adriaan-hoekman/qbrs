@@ -11,7 +11,7 @@
 </nav>
 
 <div class="container" align='center'>
-<section id="admin-home">
+<section id="admin-basic">
 
 <ul class="nav nav-tabs">
 <?php
