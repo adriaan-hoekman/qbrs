@@ -23,13 +23,13 @@
     $(document).ready(function() {
     $.fn.editable.defaults.mode ="inline";
     $('#cyclist-show a').editable(
-{
-validate: function(value) {
-  if (value === null || value === '') {
-    return 'Empty values not allowed';
-  }
-}
-} 
+    {
+        validate: function(value) {
+            if (value === null || value === '') {
+                return 'Empty values not allowed';
+            }
+        }
+    } 
     );
     $('#phoneNumber').editable();
     });
@@ -103,7 +103,7 @@ validate: function(value) {
                         echo "<td id='cyclist-show-td'>";
                         echo "<div class='hidden-xs'>";
                         echo '<FORM>';
-                        echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Delete" onClick="parent.location=\'./delete-bicycle.php?id='.$row['BicycleID'].'\'">';
+                        echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="parent.location=\'./delete-bicycle.php?id='.$row['BicycleID'].'\'">';
                         echo "</FORM>";
                         echo "</div>";
                         echo "</td>";
