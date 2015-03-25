@@ -10,6 +10,12 @@
 	<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+	<!-- MemoJS Library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
+	<!-- Date and Time Combdate Library -->
+	<script src="/includes/js/combodate.js"></script>
+
 	<!-- Inline Editing JS and CSS -->
 	<link href="/includes/css/bootstrap-editable.css" rel="stylesheet">
 	<script src="/includes/js/bootstrap-editable.js"></script>
@@ -21,6 +27,10 @@
 	<link rel="stylesheet" href="/includes/css/styles.css">
 
 	<!-- UNCOMMENT This for PROD Server -->
+
+	<!-- Date and Time Combdate Library -->
+	<!--<script src="/pps/qbrs/includes/js/combodate.js"></script>-->
+
 	<!-- Inline Editing JS and CSS -->
 	<!--<link href="/pps/qbrs/includes/css/bootstrap-editable.css" rel="stylesheet">
 	<script src="/pps/qbrs/includes/js/bootstrap-editable.js"></script>-->

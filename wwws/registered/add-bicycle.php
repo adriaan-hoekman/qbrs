@@ -31,7 +31,7 @@
         </br> * is required filed.
             </br>
             <input type="submit" class="btn btn-primary" name="submit" value="Submit">
-            <input type="button" class="btn btn-primary" value="Cancel" onClick="history.go(-1);">
+            <input type="button" class="btn btn-primary" value="Cancel" onClick="window.location.href='./home.php'">
             <input type="hidden" name="addBicycle" value="1">
             <input type="hidden" id = "netidx" name="netidx" value="<?php echo $netid; ?>">
         </form>
@@ -44,7 +44,7 @@
         if ($_POST['serial'] == ""){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>Please enter your Serial Number!</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>Please enter your Serial Number.</div>');
             </script>
             <?php
             exit();
@@ -53,7 +53,7 @@
         if ($_POST['make'] == ""){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>Please enter Make of your Bicycle</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>Please enter Make of your Bicycle.</div>');
             </script>
             <?php
             exit();
@@ -62,7 +62,7 @@
         if ($_POST['model'] == ""){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>Please enter Model of your Bicycle</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>Please enter Model of your Bicycle.</div>');
             </script>
             <?php
             exit();
@@ -71,16 +71,16 @@
         if (bicycle_is_exist($dbc, $_POST['serial']) == 1){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>This Bicycle (Serial Number) is already in database, Please contact Administrator for more detail!!</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>This Bicycle (Serial Number) is already in the database, Please contact an Administrator for more details.</div>');
             </script>
             <?php
             exit();
         }
 
-        if ($_FILES["pics"]["size"] > 3000000){
+        if ($_FILES["pics"]["size"] > 2000000){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>This Bicycle Image is too big, the image size cannot be larger than 3MB. Thanks!</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>The Image of the Bicycle is too big, the image size cannot be larger than 2MB. Thanks.</div>');
             </script>
             <?php
             exit();

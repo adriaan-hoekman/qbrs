@@ -10,7 +10,8 @@
 <?php
     if(isset($_POST['addReport']) AND $_POST['addReport']) { 
         $mysql_date = date('Y-m-d',strtotime($_POST['date']));
-        $mysql_time = date('G:i:s',strtotime($_POST['time']));
+        //$mysql_time = date('G:i:s',strtotime($_POST['time']));
+        $mysql_time = date("H:i:s");
         $result = report_bicycle_add($dbc, $mysql_date,
                                       $mysql_time,
                                       $_POST['location'],
