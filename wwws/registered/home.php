@@ -22,7 +22,15 @@
 
     $(document).ready(function() {
     $.fn.editable.defaults.mode ="inline";
-    $('#cyclist-show a').editable();
+    $('#cyclist-show a').editable(
+{
+validate: function(value) {
+  if (value === null || value === '') {
+    return 'Empty values not allowed';
+  }
+}
+} 
+    );
     $('#phoneNumber').editable();
     });
 </script>
@@ -50,7 +58,7 @@
         <?php
     }
 ?>
-
+<div id="message"> </div>
     <?php
 
         // Get Bicycle list from batadase.
