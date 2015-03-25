@@ -103,7 +103,7 @@
                         echo "<td id='cyclist-show-td'>";
                         echo "<div class='hidden-xs'>";
                         echo '<FORM>';
-                        echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Delete" onClick="parent.location=\'./delete-bicycle.php?id='.$row['BicycleID'].'\'">';
+                        echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="parent.location=\'./delete-bicycle.php?id='.$row['BicycleID'].'\'">';
                         echo "</FORM>";
                         echo "</div>";
                         echo "</td>";

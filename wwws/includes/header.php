@@ -84,14 +84,14 @@
         // -------------------------------------------------------------------------------------
         // Uncomment the below two lines to switch to the localhost development logout button
 				echo '<FORM METHOD="LINK" ACTION="../index.php">';
-			  echo '<INPUT class="btn btn-default" TYPE="submit" VALUE="Logout">';
+			  echo '<INPUT class="btn btn-danger btn-lg" TYPE="submit" VALUE="Logout">';
         // -------------------------------------------------------------------------------------
         echo "</FORM>";
 				echo "</td>";
 			} else {
 				echo '<td align="center" width=100px>';
 				echo '<FORM METHOD="LINK" ACTION="./registered/index.php">';
-				echo '<INPUT class="btn btn-default" TYPE="submit" VALUE="Login">';
+				echo '<INPUT class="btn btn-danger btn-lg" TYPE="submit" VALUE="Login">';
 				echo "</FORM>";
 				echo "</td>";
 			}
