@@ -37,7 +37,7 @@
 
 <section>
 <nav>
-<h3 align='center'>CYCLIST HOME PAGE</h1>
+<h3 align='center'>CYCLIST</h1>
 <h4 align='center'>Welcome <?php echo $_SERVER['HTTP_COMMON_NAME']; ?></h2>
     <?php
         $query = mysqli_query($dbc, "SELECT Phone from User Where NetID = '$netid';");
