@@ -27,7 +27,7 @@
 <section id="admin-basic" align='center'>
 <?php
 	$current_links = get_useful_links($dbc);
-	echo "<table class='table-striped table-hover' id='edit-links-table' style='width: 85%; margin-left: 10%;' align='center'>";
+	echo "<table class='table-responsive' id='edit-links-table' style='width: 85%; margin-left: 10%;' align='center'>";
 	echo "<tr>
 					<th id='link-show-th' style='padding: 1%;'>Link Description</th>
 					<th id='link-show-th' style='padding: 1%;'>Link URL</th>

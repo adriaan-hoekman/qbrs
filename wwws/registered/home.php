@@ -29,7 +29,7 @@
                 return 'Empty values not allowed';
             }
         }
-    } 
+    }
     );
     $('#phoneNumber').editable();
     });
@@ -53,9 +53,9 @@
 <?php
     $netid = $_SERVER['HTTP_QUEENSU_NETID'];
     if (is_admin($dbc, $netid) != 0) {
-        ?>
+?>
         <button class="btn btn-primary" onclick="location.href='./admin.php'">Admin Panel</button>
-        <?php
+<?php
     }
 ?>
 <div id="message"> </div>
@@ -66,16 +66,15 @@
 
         if ($result != false && $result -> num_rows != 0) {
             echo "<div class = 'table-responsive'>";
-            echo "<table class='table-striped table-hover' id='cyclist-show' align='center'>";
+            echo "<table class='table-responsive' id='cyclist-show' align='center'>";
                 echo "<tr>
-                        <td id='cyclist-show-td'><div class='hidden-xs'>Image</div></td>
-                        <td id='cyclist-show-td'>Serial Number</td>
-                        <td id='cyclist-show-td'><div class='hidden-xs'>Make</div></td>
-                        <td id='cyclist-show-td'><div class='hidden-xs'>Model</div></td>
-                        <td id='cyclist-show-td'>Description</td>
-                        <td id='cyclist-show-td'>Missing</td>
-                        <td id='cyclist-show-td'><div class='hidden-xs'>Delete Bicycle</div></td>
-                        <td id='cyclist-show-td'><div class='hidden-xs'>Edit Picture</div></td>
+                        <th id='cyclist-show-th'><div class='hidden-xs'>Image</div></th>
+                        <th id='cyclist-show-th'>Serial Number</th>
+                        <th id='cyclist-show-th'><div class='hidden-xs'>Make</div></th>
+                        <th id='cyclist-show-th'><div class='hidden-xs'>Model</div></th>
+                        <th id='cyclist-show-th'>Description</th>
+                        <th id='cyclist-show-th'>Missing</th>
+
                     </tr>";
             while($row = mysqli_fetch_assoc($result)){
                 echo "<tr>";
@@ -89,34 +88,33 @@
                     //       <td id='cyclist-show-td'>".$row['Make']."</td>
                     //       <td id='cyclist-show-td'>".$row['Model']."</td>";
                 echo "<td id='cyclist-show-td'><a href='#' id='serialNumber' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Serial']."</a></td>
-                           <td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleMake' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Make']."</a></div></td>
-                           <td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleModel' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Model']."</a></div></td>
-                           <td id='cyclist-show-td'><a href='#' id='bicycleOther' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Other']."</a></td>";
+											<td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleMake' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Make']."</a></div></td>
+											<td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleModel' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Model']."</a></div></td>
+											<td id='cyclist-show-td'><a href='#' id='bicycleOther' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Other']."</a></td>";
 
                 echo "<td id='cyclist-show-td'>
-                        
-                        <input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." src=".htmlspecialchars('./edit-bicycle.php?found=1&id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='location.assign(this.checked?this.value:this.src)' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input>
-                        
-                        </td>";
 
-                          
-                        echo "<td id='cyclist-show-td'>";
-                        echo "<div class='hidden-xs'>";
-                        echo '<FORM>';
-                        echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="parent.location=\'./delete-bicycle.php?id='.$row['BicycleID'].'\'">';
-                        echo "</FORM>";
-                        echo "</div>";
-                        echo "</td>";
+								<input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." src=".htmlspecialchars('./edit-bicycle.php?found=1&id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='location.assign(this.checked?this.value:this.src)' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input>
 
-                        echo "<td id='cyclist-show-td'>";
-                        echo "<div class='hidden-xs'>";
-                        echo '<FORM>';
-                        echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Edit Picture" onClick="parent.location=\'./edit-picture.php?id='.$row['BicycleID'].'\'">';
-                        echo "</FORM>";
-                        echo "</div>";
-                        echo "</td>";
-           
-                    echo "</tr>";
+								</td>";
+
+									echo "<td id='cyclist-button-td'>";
+									echo "<div class='hidden-xs'>";
+									echo '<FORM>';
+									echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="parent.location=\'./delete-bicycle.php?id='.$row['BicycleID'].'\'">';
+									echo "</FORM>";
+									echo "</div>";
+									echo "</td>";
+
+									echo "<td id='cyclist-button-td'>";
+									echo "<div class='hidden-xs'>";
+									echo '<FORM>';
+									echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Edit Picture" onClick="parent.location=\'./edit-picture.php?id='.$row['BicycleID'].'\'">';
+									echo "</FORM>";
+									echo "</div>";
+									echo "</td>";
+
+								echo "</tr>";
             }
             echo "</table>";
             echo "</div>";

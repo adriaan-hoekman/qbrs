@@ -378,43 +378,49 @@
 																	$_POST['makeQuery'],
 																	$_POST['modelQuery'],
 																	$_POST['missingQuery']);
-			echo "<form method='post' action='./save-generated-report.php' target='_blank'>
-							<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='1'>
-								Download
-							</button>
-							<input type='hidden' name='serialQuery' value='".$_POST['serialQuery']."'>
-							<input type='hidden' name='makeQuery' value='".$_POST['makeQuery']."'>
-							<input type='hidden' name='modelQuery' value='".$_POST['modelQuery']."'>
-							<input type='hidden' name='missingQuery' value='".$_POST['missingQuery']."'>
-						</form>";
+			if ($result != false && $result -> num_rows != 0) {
+				echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+								<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='1'>
+									Download
+								</button>
+								<input type='hidden' name='serialQuery' value='".$_POST['serialQuery']."'>
+								<input type='hidden' name='makeQuery' value='".$_POST['makeQuery']."'>
+								<input type='hidden' name='modelQuery' value='".$_POST['modelQuery']."'>
+								<input type='hidden' name='missingQuery' value='".$_POST['missingQuery']."'>
+							</form>";
+			}
 		} else if (isset($_POST['doReportSearch'])) {
 			$result = search_report($dbc, $_POST['serialReportQuery'],
 																 $_POST['returnMethodQuery'],
 																 $_POST['reportTypeQuery'],
 																 $_POST['dateQuery'],
 																 $_POST['datePeriodQuery']);
-			echo "<form method='post' action='./save-generated-report.php' target='_blank'>
-							<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='2'>
-								Download
-							</button>
-							<input type='hidden' name='serialReportQuery' value='".$_POST['serialReportQuery']."'>
-							<input type='hidden' name='returnMethodQuery' value='".$_POST['returnMethodQuery']."'>
-							<input type='hidden' name='reportTypeQuery' value='".$_POST['reportTypeQuery']."'>
-							<input type='hidden' name='dateQuery' value='".$_POST['dateQuery']."'>
-							<input type='hidden' name='datePeriodQuery' value='".$_POST['datePeriodQuery']."'>
-						</form>";
+			if ($result != false && $result -> num_rows != 0) {
+				echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+								<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='2'>
+									Download
+								</button>
+								<input type='hidden' name='serialReportQuery' value='".$_POST['serialReportQuery']."'>
+								<input type='hidden' name='returnMethodQuery' value='".$_POST['returnMethodQuery']."'>
+								<input type='hidden' name='reportTypeQuery' value='".$_POST['reportTypeQuery']."'>
+								<input type='hidden' name='dateQuery' value='".$_POST['dateQuery']."'>
+								<input type='hidden' name='datePeriodQuery' value='".$_POST['datePeriodQuery']."'>
+							</form>";
+			}
 		} else if (isset($_POST['doUserSearch'])) {
 			$result = search_user($dbc, $_POST['netidQuery'],
 															 $_POST['nameQuery'],
 															 $_POST['adminQuery']);
-			echo "<form method='post' action='./save-generated-report.php' target='_blank'>
-							<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='3'>
-								Download
-							</button>
-							<input type='hidden' name='netidQuery' value='".$_POST['netidQuery']."'>
-							<input type='hidden' name='nameQuery' value='".$_POST['nameQuery']."'>
-							<input type='hidden' name='adminQuery' value='".$_POST['adminQuery']."'>
-						</form>";
+			if ($result != false && $result -> num_rows != 0) {
+				echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+								<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='3'>
+									Download
+								</button>
+								<input type='hidden' name='netidQuery' value='".$_POST['netidQuery']."'>
+								<input type='hidden' name='nameQuery' value='".$_POST['nameQuery']."'>
+								<input type='hidden' name='adminQuery' value='".$_POST['adminQuery']."'>
+							</form>";
+			}
 		}
 
 		if (isset($_POST['doBicycleSearch'])) {
