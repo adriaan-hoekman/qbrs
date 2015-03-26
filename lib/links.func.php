@@ -9,9 +9,9 @@ function get_useful_links($dbc) {
 
 function set_useful_links($dbc, $new_links) {
 	foreach ($new_links as $link) {
-		$link_id = $link['LinkID'];
-		$link_desc = $link['Description'];
-		$link_url = $link['Url'];
+		$link_id = mysqli_real_escape_string($dbc, $link['LinkID']);
+		$link_desc = mysqli_real_escape_string($dbc, $link['Description']);
+		$link_url = mysqli_real_escape_string($dbc, $link['Url']);
 		$sql = "INSERT INTO UsefulLink (LinkID, Description, Url)
 						VALUES ('$link_id', '$link_desc', '$link_url')
 						ON DUPLICATE KEY UPDATE

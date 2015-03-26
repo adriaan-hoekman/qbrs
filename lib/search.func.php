@@ -4,6 +4,7 @@
  * Bicycle Search functuons file to search Bicycle information.
  */
 function search_serial_nonreg ($dbc, $serialNum) {
+	$serialNum = mysqli_real_escape_string($dbc, $serialNum);
 	$sql = "SELECT * FROM Bicycle WHERE Serial = '$serialNum' limit 1";
 	$query = $dbc -> query($sql);
 
@@ -19,12 +20,14 @@ function search_serial_nonreg ($dbc, $serialNum) {
 }
 
 function search_bicycle_id($dbc, $bicycleid) {
+	$bicycleid = mysqli_real_escape_string($dbc, $bicycleid);
 	$query = mysqli_query($dbc, "SELECT * FROM Bicycle WHERE BicycleID = '$bicycleid';");
 
 	return $query;
 }
 
 function search_serial($dbc, $serialNum) {
+	$serialNum = mysqli_real_escape_string($dbc, $serialNum);
 	$sql = "SELECT * FROM Bicycle WHERE Serial = '$serialNum' limit 1";
 	$query = $dbc -> query($sql);
 
@@ -40,6 +43,7 @@ function search_serial($dbc, $serialNum) {
 }
 
 function search_model($dbc, $model) {
+	$model = mysqli_real_escape_string($dbc, $model);
 	$sql = "SELECT * FROM Bicycle WHERE Model = '$model' limit 1";
 	$query = $dbc -> query($sql);
 
@@ -55,6 +59,7 @@ function search_model($dbc, $model) {
 }
 
 function search_make($dbc, $make) {
+	$make = mysqli_real_escape_string($dbc, $make);
 	$sql = "SELECT * FROM Bicycle WHERE Make = '$make' limit 1";
 	$query = $dbc -> query($sql);
 
@@ -70,6 +75,7 @@ function search_make($dbc, $make) {
 }
 
 function search_netid($dbc, $netid) {
+	$netid = mysqli_real_escape_string($dbc, $netid);
 	$sql = "SELECT * FROM User, Bicycle WHERE User.NetID = '$netid' AND Bicycle.UserID = User.UserID AND Bicycle.Serial NOT LIKE '%DELETE%'";
 	$query = $dbc -> query($sql);
 

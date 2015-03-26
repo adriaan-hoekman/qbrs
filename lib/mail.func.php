@@ -71,13 +71,14 @@ function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $
 	$securityemail = $_SERVER['securityemail'];
 	$kingstonpolicephone = $_SERVER['kingstonpolicephone'];
 	$kingstonpoliceemail = $_SERVER['kingstonpoliceemail'];
+	$serialnumber = mysqli_real_escape_string($dbc, $serialnumber);
 
-	$query = mysqli_query($dbc, "SELECT * from User,Bicycle WHERE Bicycle.Serial='$serialnumber' AND Bicycle.UserID = User.UserID;");
+	$query = mysqli_query($dbc, "SELECT * from User, Bicycle WHERE Bicycle.Serial='$serialnumber' AND Bicycle.UserID = User.UserID;");
   $row = mysqli_fetch_assoc($query);
   $to = $row['Email'];
   $name = $row['Name'];
 
-switch ($returnlocation) {
+	switch ($returnlocation) {
     case 'security' :
       $locationmessage = "Campus Security. Phone: ".$securityphone." E-mail: ".$securityemail;
       break;

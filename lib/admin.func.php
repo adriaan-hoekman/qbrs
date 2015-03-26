@@ -1,6 +1,7 @@
 <?php
 
 function add_admin($dbc, $netid) {
+	$netid = mysqli_real_escape_string($dbc, $netid);
 	$sql = "UPDATE User SET Admin = 1 WHERE NetID = '$netid'";
 	if ($dbc -> query($sql) === TRUE) {
 		return 1;
@@ -10,6 +11,7 @@ function add_admin($dbc, $netid) {
 }
 
 function remove_admin($dbc, $netid) {
+	$netid = mysqli_real_escape_string($dbc, $netid);
 	if ($netid == $_SERVER['HTTP_QUEENSU_NETID']) {
 		return 0;
 	}
