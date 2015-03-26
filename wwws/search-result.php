@@ -19,7 +19,7 @@
     ?>
 		<h4>No bicycles matching the entered serial number were found.</h4>
 
-    <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='../index.php'">
+    <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='./index.php'">
   <?php
 	} else {
   ?>
