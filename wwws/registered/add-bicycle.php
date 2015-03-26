@@ -96,13 +96,18 @@
             copy($_FILES["pics"]["tmp_name"], $uploads_dir. '/' .$_POST['serial'].$name);    
         }
         $result = add_bicycle($dbc, $_POST['serial'],
-                                       $_POST['make'],
-                                       $_POST['model'],
-                                       $pic_name,
-                                       $_POST['other'],
-                                       $netid);
+                                    $_POST['make'],
+                                    $_POST['model'],
+                                    $pic_name,
+                                    $_POST['other'],
+                                    $netid);
         if ($result != false) {
-            header('Location: ./home.php');
+            // header('Location: ./home.php');
+            ?>
+                <script language="JavaScript">
+                window.location.href = './home.php';
+                </script>
+            <?php
         }else{
             echo "Fail";
         }
