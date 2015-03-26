@@ -36,7 +36,7 @@ function nonreg_submit_report($dbc, $date, $time, $location, $description, $retu
       break;
   }
   $result = mysqli_query($dbc,
-      "INSERT INTO report (Date, Time, Location, Description, ReturnLocation, BicycleID)
+      "INSERT INTO Report (Date, Time, Location, Description, ReturnLocation, BicycleID)
                 VALUES ('$date', '$time', '$location', '$description' ,'$returnlocationnum', '$bicycleid');")
       or die ("<br />Couldn't execute query.");
   return $result;
