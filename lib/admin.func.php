@@ -10,6 +10,10 @@ function add_admin($dbc, $netid) {
 }
 
 function remove_admin($dbc, $netid) {
+	if ($netid == $_SERVER['HTTP_QUEENSU_NETID']) {
+		return 0;
+	}
+
 	$sql = "UPDATE User SET Admin = 0 WHERE NetID = '$netid'";
 
 	if ($dbc -> query($sql) === TRUE) {
