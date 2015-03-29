@@ -33,6 +33,13 @@
     );
     $('#phoneNumber').editable();
     });
+
+    function deleteConfirm(bicycleid){
+        var r = confirm("Are you sure you want to delete this bicycle?");
+        if (r == true) {
+            window.location.href = './delete-bicycle.php?id='+bicycleid;
+        }
+    }
 </script>
 
 <section>
@@ -101,7 +108,7 @@
 									echo "<td id='cyclist-button-td'>";
 									echo "<div class='hidden-xs'>";
 									echo '<FORM>';
-									echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="parent.location=\'./delete-bicycle.php?id='.$row['BicycleID'].'\'">';
+									echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="deleteConfirm('.$row['BicycleID'].')">';
 									echo "</FORM>";
 									echo "</div>";
 									echo "</td>";
