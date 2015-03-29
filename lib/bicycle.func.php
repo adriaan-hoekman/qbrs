@@ -12,30 +12,36 @@ function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 	$row = mysqli_fetch_assoc($query);
 	$id = $row['UserID'];
 
+	$serialNum = mysqli_real_escape_string($dbc, $serialNum);
+	$make = mysqli_real_escape_string($dbc, $make);
+	$model = mysqli_real_escape_string($dbc, $model);
 
 	if (empty($other) == False){
 		// other is input
+		$other = mysqli_real_escape_string($dbc, $other);
 		if (empty($pic) == False){
 			// Other and Pic not empty
+			$pic = mysqli_real_escape_string($dbc, $pic);
 			$result = mysqli_query($dbc,
 			"INSERT INTO Bicycle (Serial, Make, Model, Image, Other, Missing, UserID)
 			VALUES ('$serialNum', '$make', '$model', '$pic', '$other', '0', '$id');")
 			or die ("<br />Couldn't execute query.");
-		}else{
+		} else {
 			// Other is not empty but pic is
 			$result = mysqli_query($dbc,
 			"INSERT INTO Bicycle (Serial, Make, Model, Other, Missing, UserID)
 			VALUES ('$serialNum', '$make', '$model', '$other', '0', '$id');")
 			or die ("<br />Couldn't execute query.");
 		}
-	}else{
+	} else {
 		if (empty($pic) == False){
 			// Other is empty but pic is not
+			$pic = mysqli_real_escape_string($dbc, $pic);
 			$result = mysqli_query($dbc,
 			"INSERT INTO Bicycle (Serial, Make, Model, Image, Missing, UserID)
 			VALUES ('$serialNum', '$make', '$model', '$pic', '0', '$id');")
 			or die ("<br />Couldn't execute query.");
-		}else{
+		} else {
 			// Other and pic is all empty
 			$result = mysqli_query($dbc,
 			"INSERT INTO Bicycle (Serial, Make, Model, Missing, UserID)
@@ -54,6 +60,7 @@ function add_bicycle($dbc, $serialNum, $make, $model, $pic, $other, $userid) {
 
 function edit_picture($dbc, $bicycleid, $pic)
 {
+	$pic = mysqli_real_escape_string($dbc, $pic);
 	$sql = "UPDATE Bicycle SET Image = '$pic' WHERE BicycleID = '$bicycleid' ";
 	$result = mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
 
@@ -81,6 +88,10 @@ function report_bicycle($dbc, $serialNum) {
 }
 
 function report_bicycle_add($dbc, $date, $time, $loca, $desc, $bikeid){
+	$date = mysqli_real_escape_string($dbc, $date);
+	$time = mysqli_real_escape_string($dbc, $time);
+	$loca = mysqli_real_escape_string($dbc, $loca);
+	$desc = mysqli_real_escape_string($dbc, $desc);
 	$result = mysqli_query($dbc,
 				"INSERT INTO Report (`Date`, `Time`, `Location`, `Description`, `ReturnLocation`, `BicycleID`)
 				 VALUES ('$date', '$time','$loca','$desc','0','$bikeid');")

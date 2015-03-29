@@ -109,8 +109,8 @@
 	//$via = $_GET['via'];
 
 	if($user_agent){
-    	$is_mobie = preg_match('/(Mobile|iPod|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP)/i', $user_agent);
-    	if($is_mobie){
+    	$is_mobile = preg_match('/(Mobile|iPod|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP)/i', $user_agent);
+    	if($is_mobile){
         	// Set Mobie Version
         	setcookie('mtpl', 'True', $timestamp+86400 * 365, '/'); // Set Cookie
     	}else{

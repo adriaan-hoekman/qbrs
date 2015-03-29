@@ -195,9 +195,9 @@
 				<td>
 				<?php
 					if (isset($_POST['dateQuery'])) {
-						echo '<input CLASS="form-control" type="text" name="dateQuery" value="'.$_POST['dateQuery'].'">';
+						echo '<input CLASS="form-control" type="date" name="dateQuery" value="'.$_POST['dateQuery'].'">';
 					} else {
-						echo '<input CLASS="form-control" type="text" name="dateQuery" value="">';
+						echo '<input CLASS="form-control" type="date" name="dateQuery" value="">';
 					}
 				?>
 				</td>
