@@ -13,7 +13,7 @@
             $pic_name = NULL;        
         }else{
             // $uploads_dir = '/home/users/qbrssec/bbSSttHH/GGaaSSpp/wwws/uploads';
-            $uploads_dir = '../uploads'
+            $uploads_dir = '../uploads';
             $name = $_FILES["pics"]["name"];
             $pic_name = "../uploads/" . $_POST['bicycleid'] . basename($_FILES["pics"]["name"]);
             copy($_FILES["pics"]["tmp_name"], $uploads_dir. '/' .$_POST['bicycleid'].$name);       
