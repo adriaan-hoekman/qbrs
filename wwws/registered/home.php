@@ -40,6 +40,12 @@
             window.location.href = './delete-bicycle.php?id='+bicycleid;
         }
     }
+
+    $('#cyclist-show confirm-delete').on('show.bs.modal', function(e) {
+    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            
+    $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+    });
 </script>
 
 <section>
@@ -113,6 +119,14 @@
 									echo "</div>";
 									echo "</td>";
 
+                                    // echo "<td id='cyclist-button-td'>";
+                                    // echo "<div class='hidden-xs'>";
+                                    // echo "<button class='btn btn-danger' data-href='./delete-bicycle.php?id=".$row['BicycleID']."' data-toggle='modal' data-target='#confirm-delete'>Delete";
+                                    // echo "</button>";
+                                    // echo "</div>";
+                                    // echo "</td>";
+                                    
+
 									echo "<td id='cyclist-button-td'>";
 									echo "<div class='hidden-xs'>";
 									echo '<FORM>';
@@ -131,6 +145,29 @@
     ?>
 </div>
 </section>
+
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Bicycle Delete Confirmation</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <p>You are about to delete this bicycle, this procedure is irreversible.</p>
+                    <p>Do you want to proceed?</p>
+                    <p class="debug-url"></p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <?php
 	include_once '../includes/footer.php';
