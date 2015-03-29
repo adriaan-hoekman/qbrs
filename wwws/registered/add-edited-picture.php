@@ -12,7 +12,12 @@
         if (!file_exists($_FILES['pics']['tmp_name']) || !is_uploaded_file($_FILES['pics']['tmp_name'])){
             $pic_name = NULL;        
         }else{
+            // This following line for PROD Server
+            // -------------------------------------
             // $uploads_dir = '/home/users/qbrssec/bbSSttHH/GGaaSSpp/wwws/uploads';
+
+            // This following line for LocalHost
+            // -------------------------------------
             $uploads_dir = '../uploads';
             $name = $_FILES["pics"]["name"];
             $pic_name = "../uploads/" . $_POST['bicycleid'] . basename($_FILES["pics"]["name"]);
