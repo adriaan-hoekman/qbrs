@@ -22,10 +22,10 @@
 				Login now with your NetID to register your bicycle!
 			</h4>
 			<h4>
-				Registering your bicycle will allow us to help you recover your bicycle if it is stolen or lost!
+				Doing so will allow us to help you recover your bicycle if it is stolen or lost!
 			</h4>
 			<h4>
-				Not part of the Queen's community? No worries, anyone can report a bicycle missing below!
+				Not part of the Queen's community? No worries, report a bicycle missing below!
 			</h4>
 		</td>
 	</tr>
