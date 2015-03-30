@@ -53,7 +53,7 @@
   <table align="center" cellspacing="100">
     <tr>
       <td style="padding-right: 5px" align="right" width=200px><label>Date Found: </label></td>
-      <td><div class="col-lg-20"><input class="form-control" type="date" name="DateFound"></input></div></td>
+      <td><div class="col-lg-20"><input class="form-control" type="text" name="DateFound" id="DateFound"></input></div></td>
     </tr>
     <!-- <tr>
       <td style="padding-right: 5px" align="right"><label>Time Found: </label></td>
@@ -137,11 +137,14 @@
 
         $(function() {
 
-            $( "#LocationFound" ).autocomplete(
-        {
+          $( "#LocationFound" ).autocomplete(
+          {
             source:data
-        })
-});
+          });
+
+          $( "#DateFound" ).datepicker({maxDate: 0});
+        });
+
     </script>
 
 <?php
