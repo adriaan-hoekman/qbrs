@@ -205,4 +205,55 @@ function no_serial_missing_send_mail($dbc, $date, $time, $location, $description
 	// -------------------------------------------
 }
 
+
+function bicycle_alread_in_send_mail($dbc, $netid, $serialNumber){
+
+	
+  $query = mysqli_query($dbc, "SELECT Email from User WHERE User.GetEmail=1 AND User.Admin=1");
+  $row = mysqli_fetch_assoc($query);
+  $to = $row['Email'];
+  while ($row = mysqli_fetch_assoc($query)){
+  	$to = $to.",".$row['Email'];
+  }
+  
+
+	$subject = "A Bicycle is trying to register again which already in database";
+
+	$message = "
+	<html>
+	<head>
+	<title>A Bicycle is trying to register again which already in database</title>
+	</head>
+	<body>
+	<p>Hello</p>
+	<p>The Following information was provided by the system who is trying to register a bicycle that already in database.</p>
+	<p>New User's NetID: ".$netid."</p>
+	<p>Related Bicycle Information: ".$serialnumber."</p>
+	</body>
+	</html>
+	";
+
+	// always set content-type for HTML email
+	$headers = "MIME-Version: 1.0" . "\r\n";
+	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+
+	// More Header
+	$headers .= 'From: Queens Bicycle Registration System<Do-Not-Reply@Queensu.ca>' . "\r\n";
+	//$headers .= 'Cc: myboss@example.com' . "\r\n";
+
+	// The following 4 lines of code are for testing the email function on localhost.
+	// Comment them out when moving to the PROD server.
+	// ------------------------------------------------------------
+	//echo $to;
+	//echo $subject;
+	//echo $message;
+	//echo $headers;
+	//return false;
+	// -----------------------------------------------------------
+	// The following line of code are MUST be uncommented when this code runs on the PROD server.
+	// -------------------------------------------
+	return mail($to,$subject,$message,$headers);
+	// -------------------------------------------
+}
+
 ?>

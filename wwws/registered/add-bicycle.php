@@ -4,6 +4,7 @@
     include_once '../../lib/reg.func.php';
     include_once '../../lib/search.func.php';
     include_once '../../lib/bicycle.func.php';
+    include_once '../../lib/mail.func.php';
 ?>
 
 <!--<section>-->
@@ -74,6 +75,7 @@
             $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>This Bicycle (Serial Number) is already in the database. Please contact an Administrator for more details.</div>');
             </script>
             <?php
+            bicycle_alread_in_send_mail($dbc, $netid, $_POST['serial']);
             exit();
         }
 
