@@ -39,7 +39,7 @@
 					</div></td>
 					<td id='link-delete-td' style='padding-left: 2%; vertical-align: bottom;'><div class='hidden-xs'>
 						<form method='post' action='edit-link.php'>
-							<button class='btn btn-primary' type='submit'><span class='glyphicon glyphicon-remove'></span></button>
+							<button class='btn btn-danger' type='submit'><span class='glyphicon glyphicon-remove'></span></button>
 							<input type='hidden' name='deleteLink' value='".$row['LinkID']."'>
 						</form>
 					</div></td>";
