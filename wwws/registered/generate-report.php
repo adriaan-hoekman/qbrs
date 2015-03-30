@@ -83,7 +83,7 @@
 </table>
 </aside>
 
-<section id="admin-results">
+<section id="admin-results" style='padding-left: 0%;'>
 <?php
 	if(isset($_POST['export'])) {
 		$result = report_to_csv($dbc, $_POST['export']);
@@ -102,7 +102,7 @@
 			echo "<h3>".get_report_name($_POST['submit'])."</h3>";
 			echo "<form method='post' action='./save-generated-report.php' target='_blank'>
 							<button class='btn btn-primary' id='admin-report-button' name='export' value='".$_POST['submit']."'>
-								Download
+								<span class='glyphicon glyphicon-download-alt'></span> Download
 							</button>
 						</form>";
 			echo "<table class='table table-striped table-hover' id='admin-search' align='center'>";

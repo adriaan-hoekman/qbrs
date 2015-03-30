@@ -113,14 +113,18 @@
 			<tr><td></br></td><tr>
 			<tr>
 				<td style="padding-right: 5px">
-					<button class="btn btn-primary btn-sm" id="admin-button">Submit</button>
+					<button class="btn btn-primary btn-sm" id="admin-button">
+						<span class="glyphicon glyphicon-search"></span> Search
+					</button>
 					<input type="hidden" name="doBicycleSearch" value="1">
 					<input type="hidden" name="doSearch" value="1">
 				</td>
 		</form>
 		<form method="post">
 				<td style="padding-left: 5px">
-					<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
+					<button class="btn btn-primary btn-sm" id="admin-button">
+						<span class="glyphicon glyphicon-refresh"></span> Reset
+					</button
 					<input type="hidden" name="doBicycleSearch" value="1">
 					<input type="hidden" name="doSearch" value="0">
 				</td>
@@ -220,14 +224,18 @@
 			<tr><td></br></td><tr>
 			<tr>
 				<td style="padding-right: 5px">
-					<button class="btn btn-primary btn-sm" id="admin-button">Submit</button>
+					<button class="btn btn-primary btn-sm" id="admin-button">
+						<span class="glyphicon glyphicon-search"></span> Search
+					</button>
 					<input type="hidden" name="doReportSearch" value="1">
 					<input type="hidden" name="doSearch" value="1">
 				</td>
 		</form>
 		<form method="post">
 				<td style="padding-left: 5px">
-					<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
+					<button class="btn btn-primary btn-sm" id="admin-button">
+						<span class="glyphicon glyphicon-refresh"></span> Reset
+					</button
 					<input type="hidden" name="doReportSearch" value="1">
 					<input type="hidden" name="doSearch" value="0">
 				</td>
@@ -302,14 +310,18 @@
 			<tr><td></br></td><tr>
 			<tr>
 				<td style="padding-right: 5px">
-					<button class="btn btn-primary btn-sm" id="admin-button">Submit</button>
+					<button class="btn btn-primary btn-sm" id="admin-button">
+						<span class="glyphicon glyphicon-search"></span> Search
+					</button>
 					<input type="hidden" name="doUserSearch" value="1">
 					<input type="hidden" name="doSearch" value="1">
 				</td>
 		</form>
 		<form method="post">
 				<td style="padding-left: 5px">
-					<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
+					<button class="btn btn-primary btn-sm" id="admin-button">
+						<span class="glyphicon glyphicon-refresh"></span> Reset
+					</button>
 					<input type="hidden" name="doUserSearch" value="1">
 					<input type="hidden" name="doSearch" value="0">
 				</td>
@@ -379,9 +391,12 @@
 																	$_POST['missingQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 				echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+								<h3 align='left'>Bicycle Search Results &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+																 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 								<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='1'>
-									Download
+									<span class='glyphicon glyphicon-download-alt'></span> Download
 								</button>
+								</h3>
 								<input type='hidden' name='serialQuery' value='".$_POST['serialQuery']."'>
 								<input type='hidden' name='makeQuery' value='".$_POST['makeQuery']."'>
 								<input type='hidden' name='modelQuery' value='".$_POST['modelQuery']."'>
@@ -396,9 +411,12 @@
 																 $_POST['datePeriodQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 				echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+								<h3 align='left'>Report Search Results &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+																 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 								<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='2'>
-									Download
+									<span class='glyphicon glyphicon-download-alt'></span> Download
 								</button>
+								</h3>
 								<input type='hidden' name='serialReportQuery' value='".$_POST['serialReportQuery']."'>
 								<input type='hidden' name='returnMethodQuery' value='".$_POST['returnMethodQuery']."'>
 								<input type='hidden' name='reportTypeQuery' value='".$_POST['reportTypeQuery']."'>
@@ -412,9 +430,12 @@
 															 $_POST['adminQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 				echo "<form method='post' action='./save-generated-report.php' target='_blank'>
+								<h3 align='left'>User Search Results &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+																 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 								<button class='btn btn-primary' id='admin-report-button' name='exportCustom' value='3'>
-									Download
+									<span class='glyphicon glyphicon-download-alt'></span> Download
 								</button>
+								</h3>
 								<input type='hidden' name='netidQuery' value='".$_POST['netidQuery']."'>
 								<input type='hidden' name='nameQuery' value='".$_POST['nameQuery']."'>
 								<input type='hidden' name='adminQuery' value='".$_POST['adminQuery']."'>
@@ -425,7 +446,6 @@
 		if (isset($_POST['doBicycleSearch'])) {
 			if ($result != false && $result -> num_rows != 0) {
 ?>
-				<h3 align="left">Bicycle Search Results</h3>
 				<table class='table table-striped table-hover' id="admin-search">
 					<tr>
 						<th id="admin-th">Picture</th>
@@ -453,7 +473,6 @@
 		} else if (isset($_POST['doReportSearch'])) {
 			if ($result != false && $result -> num_rows != 0) {
 ?>
-				<h3 align="left">Report Search Results</h3>
 				<table class='table table-striped table-hover' id="admin-search">
 					<tr>
 						<th id="admin-th">Serial Number</th>
@@ -482,7 +501,6 @@
 		} else if (isset($_POST['doUserSearch'])) {
 			if ($result != false && $result -> num_rows != 0) {
 ?>
-				<h3 align="left">User Search Results</h3>
 				<table class='table table-striped table-hover' id="admin-search">
 					<tr>
 						<th id="admin-th">NetID</th>

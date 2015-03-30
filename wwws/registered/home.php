@@ -73,7 +73,9 @@
     </div>
 
 <div class="container" align='center'>
-    <button class="btn btn-primary" onclick="location.href='./add-bicycle.php'">Add Bicycle</button>
+    <button class="btn btn-primary" onclick="location.href='./add-bicycle.php'">
+    	<span class='glyphicon glyphicon-plus'></span> Add Bicycle
+		</button>
 <?php
     $netid = $_SERVER['HTTP_QUEENSU_NETID'];
     if (is_admin($dbc, $netid) != 0) {
@@ -98,13 +100,12 @@
                         <th id='cyclist-show-th'><div class='hidden-xs'>Model</div></th>
                         <th id='cyclist-show-th'>Description</th>
                         <th id='cyclist-show-th'>Missing</th>
-
                     </tr>";
             while($row = mysqli_fetch_assoc($result)){
                 echo "<tr>";
                 if ($row['Image'] == NULL){
                     echo "<td id='cyclist-show-td'><div class='hidden-xs'><img height='75px' src='../images/default_bicycle.png'></div></td>";
-                }else{
+                } else {
                     echo "<td id='cyclist-show-td'><div class='hidden-xs'><img height='75px' src=".$row['Image']."></div></td>";
                 }
 
@@ -130,25 +131,25 @@
 									// echo "</div>";
 									// echo "</td>";
 
-                                    echo "<td id='cyclist-button-td'>";
-                                    echo "<div class='hidden-xs'>";
-                                    ?>
-                                    <button class="btn btn-danger" data-href="./delete-bicycle.php?id=<?php echo $row['BicycleID']?>" data-toggle="modal" data-target="#confirm-delete">
-                                    Delete
-                                    </button>
-                                    <?php
-                                    echo "</div>";
-                                    echo "</td>";
+									echo "<td id='cyclist-button-td'>";
+									echo "<div class='hidden-xs'>";
+									?>
+									<button class="btn btn-danger" data-href="./delete-bicycle.php?id=<?php echo $row['BicycleID']?>" data-toggle="modal" data-target="#confirm-delete">
+										<span class='glyphicon glyphicon-remove'></span>
+									</button>
+									<?php
+									echo "</div>";
+									echo "</td>";
 
-                                    echo "<td id='cyclist-button-td'>";
-                                    echo "<div class='hidden-xs'>";
-                                    ?>
-                                    <button class="btn btn-primary" onclick="location.href='./edit-picture.php?id=<?php echo $row['BicycleID']?>'">
-                                    Edit Picture
-                                    </button>
-                                    <?php
-                                    echo "</div>";
-                                    echo "</td>";
+									echo "<td id='cyclist-button-td'>";
+									echo "<div class='hidden-xs'>";
+									?>
+									<button class="btn btn-primary" onclick="location.href='./edit-picture.php?id=<?php echo $row['BicycleID']?>'">
+										Edit Picture
+									</button>
+									<?php
+									echo "</div>";
+									echo "</td>";
 
 									// echo "<td id='cyclist-button-td'>";
 									// echo "<div class='hidden-xs'>";
