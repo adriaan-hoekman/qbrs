@@ -89,7 +89,7 @@
   <input type="hidden" name="SerialNumber" value="<?php echo htmlspecialchars($serialnumber); ?>">
   <input type="hidden" name="submitReport" value="1">
   <INPUT class="btn btn-primary" type="submit" value="Submit">
-  <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='../index.php'">
+  <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='./index.php'">
   </form>
 
 </section>

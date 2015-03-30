@@ -35,7 +35,7 @@
   <FORM METHOD="POST" ACTION="nonreg-missing-report.php">
     <input type="hidden" name="SerialNumber" value="<?php echo htmlspecialchars($serialnumber); ?>">
     <INPUT class="btn btn-primary" TYPE="submit" VALUE="Report">
-  <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='../index.php'">
+  <input class="btn btn-primary" type="button" value="Cancel" onClick="window.location.href='./index.php'">
   </FORM>
   <?php
 	 }
