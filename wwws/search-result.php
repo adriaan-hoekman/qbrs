@@ -14,6 +14,9 @@
 <section>	
 	<?php
 	$serialnumber = $_POST['SerialNumber'];
+  if ($serialnumber == NULL) {
+    header('location: ./no-serial-missing-report.php');
+  }
 	$results = search_serial_nonreg ($dbc,$serialnumber);
 	if ($results == 0){
     ?>
@@ -24,7 +27,7 @@
 	} else {
   ?>
   <h4>
-	A bicycle matching that serial number has been found.
+	A bicycle matching that serial number is registered.
   </h4>
 	<br />
   If you would like to report the bicycle found, please click the Report button below

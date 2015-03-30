@@ -8,7 +8,7 @@
 ?>
 
 <?php
-    $serialnumber = $_POST['SerialNumber'];
+    
 
     date_default_timezone_set("America/Toronto");
 
@@ -17,24 +17,20 @@
 
 <?php
     if(isset($_POST['submitReport']) AND $_POST['submitReport']) {
-      $result = nonreg_submit_report($dbc,
+      $result = no_serial_submit_report($dbc,
                                      $_POST['DateFound'],
                                      $_POST['TimeFound'],
                                      $_POST['LocationFound'],
-                                     $_POST['OtherInfo'],
-                                     $_POST['ReturnMethod'],
-                                     $serialnumber);
+                                     $_POST['OtherInfo']);
         if ($result != false) {
-            $emailresult = nonreg_missing_send_mail($dbc,
+            $emailresult = no_serial_missing_send_mail($dbc,
                                                $_POST['DateFound'],
                                                $_POST['TimeFound'],
                                                $_POST['LocationFound'],
                                                $_POST['OtherInfo'],
-                                               $_POST['ReturnMethod'],
-                                               $_POST['contactField'],
-                                                $serialnumber);
+                                               $_POST['contactField']);
             if ($emailresult != false) {
-              header('Location: nonreg-report-confirm.php?returnmethod='.$_POST['ReturnMethod']);
+              header('Location: nonreg-report-confirm.php?returnmethod=directContact');
             }else{
               echo "Fail";
             }
@@ -49,7 +45,7 @@
 
 <section>
 
-  <form class="form-horizontal" METHOD="POST" ACTION="nonreg-missing-report.php">
+  <form class="form-horizontal" METHOD="POST" ACTION="no-serial-missing-report.php">
   <table align="center" cellspacing="100">
     <tr>
       <td style="padding-right: 5px" align="right" width=200px><label>Date Found: </label></td>
@@ -68,20 +64,9 @@
       <td style="padding-top: 5px"><div class="col-lg-20"><textarea class="form-control" rows="6" cols="25" name="OtherInfo"></textarea></div></td>
     </tr>
     <tr>
-      <td style="padding-right: 5px" align="right"><label>Return Method: </label></div></td>
+      <td align="right" id="contactLabel"style="padding-right: 5px"><label>Phone Number or Email: </label></td>
       <td style="padding-top: 5px">
-        <div class="col-lg-20"><select class="form-control" name="ReturnMethod" id="ReturnMethod" onchange="DirectContact()">
-          <option value="security">Will return to Campus Security</option>
-          <option value="parking">Will return to Campus Parking</option>
-          <option value="police">Will return to Kingston Police</option>
-          <option value="directContact">Contact me directly</option>
-        </select></div>
-      </td>
-    </tr>
-    <tr>
-      <td align="right" id="contactLabel"style="display: none; padding-right: 5px"><label>Phone Number or Email: </label></td>
-      <td style="padding-top: 5px">
-        <div class="col-lg-20"><input class="form-control" type="text" name="contactField" id="contactField" style="display: none" /></div>
+        <div class="col-lg-20"><input class="form-control" type="text" name="contactField" id="contactField" /></div>
       </td>
     </tr>
   </table>
@@ -97,15 +82,3 @@
 <?php
   include_once './includes/footer.php';
 ?>
-<script type="text/javascript">
-function DirectContact(){
-    selectedSubject = document.getElementById('ReturnMethod').value;
-    if (selectedSubject == 'directContact'){
-      document.getElementById('contactField').style.display = 'block';
-      document.getElementById('contactLabel').style.display = 'block';
-    } else {
-      document.getElementById('contactField').style.display = 'none';
-      document.getElementById('contactLabel').style.display = 'none';
-    }
-}
-</script>

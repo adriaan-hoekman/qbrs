@@ -136,5 +136,58 @@ function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $
 	// -------------------------------------------
 }
 
+function no_serial_missing_send_mail($dbc, $date, $time, $location, $description, $contactfield){
+
+	
+  $locationmessage = "Direct Contact. Phone or E-mail: ".$contactfield;
+  $query = mysqli_query($dbc, "SELECT Email from User WHERE User.GetEmail=1");
+  $row = mysqli_fetch_assoc($query);
+  $to = $row['Email'];
+  while ($row = mysqli_fetch_assoc($query)){
+  	$to = $to.",".$row['Email'];
+  }
+  
+
+	$subject = "A No Serial Missing Bicycle has been Reported Found";
+
+	$message = "
+	<html>
+	<head>
+	<title>A No Serial Missing Bicycle has been Reported Found</title>
+	</head>
+	<body>
+	<p>Hello</p>
+	<p>The Following information was provided by the person who found a missing bicycle, but it is not associated with serial number.</p>
+	<p>Date Found: ".$date."</p>
+	<p>Time Found: ".$time."</p>
+	<p>Location Found: ".$location."</p>
+	<p>Other Information: ".$description."</p>
+	<p>The person provided this return method: ".$locationmessage."</p>
+	</body>
+	</html>
+	";
+
+	// always set content-type for HTML email
+	$headers = "MIME-Version: 1.0" . "\r\n";
+	$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+
+	// More Header
+	$headers .= 'From: Queens Bicycle Registration System<Do-Not-Reply@Queensu.ca>' . "\r\n";
+	//$headers .= 'Cc: myboss@example.com' . "\r\n";
+
+	// The following 4 lines of code are for testing the email function on localhost.
+	// Comment them out when moving to the PROD server.
+	// ------------------------------------------------------------
+	//echo $to;
+	//echo $subject;
+	//echo $message;
+	//echo $headers;
+	//return false;
+	// -----------------------------------------------------------
+	// The following line of code are MUST be uncommented when this code runs on the PROD server.
+	// -------------------------------------------
+	return mail($to,$subject,$message,$headers);
+	// -------------------------------------------
+}
 
 ?>

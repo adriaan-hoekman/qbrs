@@ -16,12 +16,11 @@
 			<br />
 			<h3>Found a bicycle?</h3>
 			<h4>Enter the serial number here to check if it has been reported missing:</h4>
-				<!-- <input name="SerialSearch" type="text" id="SerialSearch" value="Enter Serial Number here to Search" size="50" -->
+			<h4>(Or leave the field blank and click Search to file a report without a serial number)</h4>
 			<FORM METHOD="POST" ACTION="search-result.php">
 			<div class="col-lg-10">
 			<INPUT CLASS="form-control" TYPE="TEXT" NAME = "SerialNumber" placeholder="Enter Serial Number here and Click Search" size="50">
 			</div>
-			<!-- <INPUT TYPE="submit" VALUE="Search"> -->
 			<div class="col-lg-2">
 			<button type="submit" class="btn btn-primary">Search</button>
 			</div>
