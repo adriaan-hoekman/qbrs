@@ -24,7 +24,7 @@
         <form class="form-horizontal" align="center" method="POST" action="add-report.php" enctype="multipart/form-data">
             <table align="center">
                 <tr><td><label class="col-lg-5 control-label">Bicycle: </label></td><td><div class="col-lg-20"><input class="form-control" name="id" value="<?php echo $_GET['serial']; ?>" disabled/></div></td></tr>
-                <tr><td><label class="col-lg-5 control-label">Date: </label></td><td><div class="col-lg-20"><input class="form-control" type="date" name="date"></input></div></td></tr>
+                <tr><td><label class="col-lg-5 control-label">Date: </label></td><td><div class="col-lg-20"><input class="form-control" type="text" name="date" id="date"></input></div></td></tr>
                 <!--<tr><td><label class="col-lg-5 control-label">Time: </label></td><td><div class="col-lg-20"><input class="form-control" type="time" name="time"></input></div></td></tr>-->
                 <tr><td><label class="col-lg-5 control-label">Location: </label></td><div class="col-lg-15"><td><input class="form-control" name="location" id="location"></input></div></td></tr>
                 <tr><td><label class="col-lg-5 control-label">Description: </label></td><div class="col-lg-15"><td><textarea class="form-control" name="desc" rows="10" cols=auto></textarea></div></td></tr>
@@ -87,10 +87,13 @@
         $(function() {
 
             $( "#location" ).autocomplete(
-        {
-            source:data
-        })
-});
+            {
+                source:data
+            });
+
+            $( "#date" ).datepicker({maxDate: 0});
+        });
+
     </script>
 
 <?php
