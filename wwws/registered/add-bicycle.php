@@ -28,7 +28,7 @@
                 <tr><td><label class="col-lg-10 control-label">Other: </label></td><td><div class="col-lg-10"><textarea class="form-control" name="other" rows="10" cols=auto></textarea></div></td></tr>
                 <tr><td><label class="col-lg-10 control-label">Select Your Bicycle's Image: </label></td><td><div class="col-lg-10"><input class="form-control" type="file" name="pics" accept="image/*" /></div></td></tr>
             </table>
-        </br> * is required filed.
+        </br> * denotes a required field.
             </br>
             <input type="submit" class="btn btn-primary" name="submit" value="Submit">
             <input type="button" class="btn btn-primary" value="Cancel" onClick="window.location.href='./home.php'">
