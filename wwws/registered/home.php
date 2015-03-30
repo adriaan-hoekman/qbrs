@@ -34,18 +34,9 @@
     $('#phoneNumber').editable();
     });
 
-    function deleteConfirm(bicycleid){
-        var r = confirm("Are you sure you want to delete this bicycle?");
-        if (r == true) {
-            window.location.href = './delete-bicycle.php?id='+bicycleid;
-        }
+    function editPicture(bicycleid){
+        window.location.href = './edit-picture.php?id='+bicycleid;
     }
-
-    $('#cyclist-show confirm-delete').on('show.bs.modal', function(e) {
-    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-            
-    $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
-    });
 </script>
 
 <section>
@@ -60,6 +51,28 @@
         echo "</br>Your Phone Number is: <a href='#' id='phoneNumber' data-type='text' data-pk='".$netid."' data-url='edit-bicycle.php'>".$phoneResult['Phone']."</a>";
     ?>
 </nav>
+
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Bicycle Delete Confirmation</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <p>You are about to delete this bicycle, this procedure is irreversible.</p>
+                    <p>Do you want to proceed?</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <div class="container" align='center'>
     <button class="btn btn-primary" onclick="location.href='./add-bicycle.php'">Add Bicycle</button>
@@ -92,7 +105,7 @@
             while($row = mysqli_fetch_assoc($result)){
                 echo "<tr>";
                 if ($row['Image'] == NULL){
-                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><img height='75px' src='../images/Queens_logo.png'></div></td>";
+                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><img height='75px' src='../images/default_bicycle.png'></div></td>";
                 }else{
                     echo "<td id='cyclist-show-td'><div class='hidden-xs'><img height='75px' src=".$row['Image']."></div></td>";
                 }
@@ -111,29 +124,41 @@
 
 								</td>";
 
-									echo "<td id='cyclist-button-td'>";
-									echo "<div class='hidden-xs'>";
-									echo '<FORM>';
-									echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="deleteConfirm('.$row['BicycleID'].')">';
-									echo "</FORM>";
-									echo "</div>";
-									echo "</td>";
+									// echo "<td id='cyclist-button-td'>";
+									// echo "<div class='hidden-xs'>";
+									// echo '<FORM>';
+									// echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="deleteConfirm('.$row['BicycleID'].')">';
+									// echo "</FORM>";
+									// echo "</div>";
+									// echo "</td>";
 
-                                    // echo "<td id='cyclist-button-td'>";
-                                    // echo "<div class='hidden-xs'>";
-                                    // echo "<button class='btn btn-danger' data-href='./delete-bicycle.php?id=".$row['BicycleID']."' data-toggle='modal' data-target='#confirm-delete'>Delete";
-                                    // echo "</button>";
-                                    // echo "</div>";
-                                    // echo "</td>";
-                                    
+                                    echo "<td id='cyclist-button-td'>";
+                                    echo "<div class='hidden-xs'>";
+                                    ?>
+                                    <button class="btn btn-danger" data-href="./delete-bicycle.php?id=<?php echo $row['BicycleID']?>" data-toggle="modal" data-target="#confirm-delete">
+                                    Delete
+                                    </button>
+                                    <?php
+                                    echo "</div>";
+                                    echo "</td>";
+ 
+                                    echo "<td id='cyclist-button-td'>";
+                                    echo "<div class='hidden-xs'>";
+                                    ?>
+                                    <button class="btn btn-primary" onclick="location.href='./edit-picture.php?id=<?php echo $row['BicycleID']?>'">
+                                    Edit Picture
+                                    </button>
+                                    <?php
+                                    echo "</div>";
+                                    echo "</td>";                                    
 
-									echo "<td id='cyclist-button-td'>";
-									echo "<div class='hidden-xs'>";
-									echo '<FORM>';
-									echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Edit Picture" onClick="parent.location=\'./edit-picture.php?id='.$row['BicycleID'].'\'">';
-									echo "</FORM>";
-									echo "</div>";
-									echo "</td>";
+									// echo "<td id='cyclist-button-td'>";
+									// echo "<div class='hidden-xs'>";
+									// echo '<FORM>';
+									// echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Edit Picture" onClick="parent.location=\'./edit-picture.php?id='.$row['BicycleID'].'\'">';
+									// echo "</FORM>";
+									// echo "</div>";
+									// echo "</td>";
 
 								echo "</tr>";
             }
@@ -145,29 +170,15 @@
     ?>
 </div>
 </section>
+    
+    <script>
+        $('#confirm-delete').on('show.bs.modal', function(e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            
+            $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+        });
+    </script>
 
-    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Bicycle Delete Confirmation</h4>
-                </div>
-            
-                <div class="modal-body">
-                    <p>You are about to delete this bicycle, this procedure is irreversible.</p>
-                    <p>Do you want to proceed?</p>
-                    <p class="debug-url"></p>
-                </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger btn-ok">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 <?php
 	include_once '../includes/footer.php';
