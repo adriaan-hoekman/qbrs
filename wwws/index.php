@@ -34,7 +34,7 @@
 		<td align="center">
 			<?php
   echo "<br />";
-  echo "The number of bicycles that have been returned: ".implode('',returned_bicycles_count($dbc));
+  echo "Number of bicycles returned: ".implode('',returned_bicycles_count($dbc));
 			?>
 		</td>
 	</tr>
