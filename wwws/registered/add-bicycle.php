@@ -53,7 +53,7 @@
         if ($_POST['make'] == ""){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>Please enter Make of your Bicycle.</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>Please enter the Make of your Bicycle.</div>');
             </script>
             <?php
             exit();
@@ -62,7 +62,7 @@
         if ($_POST['model'] == ""){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>Please enter Model of your Bicycle.</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>Please enter the Model of your Bicycle.</div>');
             </script>
             <?php
             exit();
@@ -71,7 +71,7 @@
         if (bicycle_is_exist($dbc, $_POST['serial']) == 1){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>This Bicycle (Serial Number) is already in the database, Please contact an Administrator for more details.</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>This Bicycle (Serial Number) is already in the database. Please contact an Administrator for more details.</div>');
             </script>
             <?php
             exit();
@@ -80,7 +80,7 @@
         if ($_FILES["pics"]["size"] > 2000000){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>The Image of the Bicycle is too big, the image size cannot be larger than 2MB. Thanks.</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>The image cannot be larger than 2MB. Thank you.</div>');
             </script>
             <?php
             exit();
@@ -98,7 +98,7 @@
             $uploads_dir = '../uploads';
             $name = $_FILES["pics"]["name"];
             $pic_name = "../uploads/" . $_POST['serial'] . basename($_FILES["pics"]["name"]);
-            copy($_FILES["pics"]["tmp_name"], $uploads_dir. '/' .$_POST['serial'].$name);    
+            copy($_FILES["pics"]["tmp_name"], $uploads_dir. '/' .$_POST['serial'].$name);
         }
         $result = add_bicycle($dbc, $_POST['serial'],
                                     $_POST['make'],
