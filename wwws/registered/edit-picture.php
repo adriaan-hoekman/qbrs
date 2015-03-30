@@ -32,8 +32,8 @@
         if ($_FILES["pics"]["size"] > 1500000 || $_FILES["pics"]["error"] == 1){
             ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>The image cannot be larger than 1.5MB. Thank you.</div>');
             window.location.href = './edit-picture.php?id='+<?php echo $_POST['bicycleid']; ?>;
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>The image cannot be larger than 1.5MB. Thank you.</div>');
             </script>
             <?php
             exit();
