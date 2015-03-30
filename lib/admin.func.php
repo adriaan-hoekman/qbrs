@@ -110,15 +110,15 @@ function get_report_sql($report_type) {
 	if ($report_type == 1) {
 		return "SELECT NetID, Serial, Make, Model, Missing, Other
 						FROM Bicycle, User
-						WHERE Bicycle.UserID = User.UserID";
+						WHERE Bicycle.UserID = User.UserID AND Serial NOT LIKE '%DELETE%'";
 	} else if ($report_type == 2) {
 		return "SELECT NetID, Serial, Make, Model, Missing, Other
 						FROM Bicycle, User
-						WHERE Bicycle.UserID = User.UserID AND missing > 0";
+						WHERE Bicycle.UserID = User.UserID AND missing > 0 AND Serial NOT LIKE '%DELETE%'";
 	} else if ($report_type == 3) {
 		return "SELECT NetID, Serial, Make, Model, Missing, Other
 						FROM Bicycle, User
-						WHERE Bicycle.UserID = User.UserID AND missing = 0";
+						WHERE Bicycle.UserID = User.UserID AND missing = 0 AND Serial NOT LIKE '%DELETE%'";
 	} else if ($report_type == 4) {
 		return "SELECT Serial, Date, Time, Location, Description, ReturnLocation
 						FROM Report, Bicycle

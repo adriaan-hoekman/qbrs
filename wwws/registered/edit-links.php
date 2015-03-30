@@ -3,6 +3,7 @@
 	include_once '../../lib/global.conf.php';
 	include_once '../../lib/reg.func.php';
 	include_once '../../lib/admin.func.php';
+	include_once '../../lib/search.func.php';
 	include_once '../../lib/links.func.php';
 ?>
 
@@ -36,22 +37,42 @@
 					<td id='link-show-td' style='padding: 1%;'><div class='hidden-xs'>
 						<a href='#' id='linkUrl' data-type='text' data-pk='".$row['LinkID']." data-linkurl='".$row['Url']."' data-url='edit-link.php'>".$row['Url']."</a>
 					</div></td>
-					<td id='link-delete-td' style='padding-left: 2%;'><div class='hidden-xs'><form method='post' action='edit-link.php'>
-						<input class='btn btn-primary' type='submit' value='Delete'>
-						<input type='hidden' name='deleteLink' value='".$row['LinkID']."'>
-					</form></div></td>";
+					<td id='link-delete-td' style='padding-left: 2%; vertical-align: bottom;'><div class='hidden-xs'>
+						<form method='post' action='edit-link.php'>
+							<button class='btn btn-primary' type='submit'><span class='glyphicon glyphicon-remove'></span></button>
+							<input type='hidden' name='deleteLink' value='".$row['LinkID']."'>
+						</form>
+					</div></td>";
 		echo "</tr>";
 	}
 	echo "</table>";
 ?>
 </br>
-<form method="post" action="edit-link.php"><input class="btn btn-primary" type="submit" value="Add Link">
-<input type='hidden' name='addLink' value='<?php count($current_links); ?>'>
+<form method="post" action="edit-link.php">
+	<button class="btn btn-primary" type="submit">
+		<span class='glyphicon glyphicon-plus'></span> Add Link
+	</button>
+	<input type='hidden' name='addLink' value='<?php count($current_links); ?>'>
 </form>
 </section>
 
 <aside>
 <table align="center">
+<?php
+	$result = search_missing($dbc);
+	if (empty($result) == False) {
+		echo "<tr><td>";
+		echo '<ul style="list-style-type:none;padding:0;">';
+		echo '<li><h4 style="margin-bottom:0.2em;">Missing Bicycles</h4></li>';
+		echo '<div class="panel panel-default" style="border:1px solid black;padding:5px;height:80px;overflow: scroll;">';
+		while ($row = mysqli_fetch_assoc($result)) {
+			echo "<li>".$row['Serial']."</li>";
+		}
+		echo "</ul>";
+		echo "</div>";
+		echo "</td></tr>";
+	}
+?>
 	<tr>
 		<td>
 		<form method="link" action="./admin.php">

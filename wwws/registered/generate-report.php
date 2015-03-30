@@ -3,6 +3,7 @@
 	include_once '../../lib/global.conf.php';
 	include_once '../../lib/reg.func.php';
 	include_once '../../lib/admin.func.php';
+	include_once '../../lib/search.func.php';
 ?>
 
 <section id="admin-basic"  align='center'>
@@ -52,6 +53,21 @@
 
 <aside>
 <table align="center">
+<?php
+	$result = search_missing($dbc);
+	if (empty($result) == False) {
+		echo "<tr><td>";
+		echo '<ul style="list-style-type:none;padding:0;">';
+		echo '<li><h4 style="margin-bottom:0.2em;">Missing Bicycles</h4></li>';
+		echo '<div class="panel panel-default" style="border:1px solid black;padding:5px;height:80px;overflow: scroll;">';
+		while ($row = mysqli_fetch_assoc($result)) {
+			echo "<li>".$row['Serial']."</li>";
+		}
+		echo "</ul>";
+		echo "</div>";
+		echo "</td></tr>";
+	}
+?>
 	<tr>
 		<td>
 		<form method="link" action="./admin.php">
@@ -83,7 +99,7 @@
 </table>
 </aside>
 
-<section id="admin-results">
+<section id="admin-results" style='padding-left: 0%;'>
 <?php
 	if(isset($_POST['export'])) {
 		$result = report_to_csv($dbc, $_POST['export']);
@@ -102,7 +118,7 @@
 			echo "<h3>".get_report_name($_POST['submit'])."</h3>";
 			echo "<form method='post' action='./save-generated-report.php' target='_blank'>
 							<button class='btn btn-primary' id='admin-report-button' name='export' value='".$_POST['submit']."'>
-								Download
+								<span class='glyphicon glyphicon-download-alt'></span> Download
 							</button>
 						</form>";
 			echo "<table class='table table-striped table-hover' id='admin-search' align='center'>";
