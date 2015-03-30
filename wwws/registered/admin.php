@@ -125,6 +125,7 @@
 		<form method="post">
 				<td style="padding-left: 5px">
 					<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
+					<input type="hidden" name="doBicycleSearch" value="1">
 					<input type="hidden" name="doSearch" value="0">
 				</td>
 		</form>
@@ -231,6 +232,7 @@
 		<form method="post">
 				<td style="padding-left: 5px">
 					<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
+					<input type="hidden" name="doReportSearch" value="1">
 					<input type="hidden" name="doSearch" value="0">
 				</td>
 		</form>
@@ -312,6 +314,7 @@
 		<form method="post">
 				<td style="padding-left: 5px">
 					<button class="btn btn-primary btn-sm" id="admin-button">Reset</button>
+					<input type="hidden" name="doUserSearch" value="1">
 					<input type="hidden" name="doSearch" value="0">
 				</td>
 		</form>
