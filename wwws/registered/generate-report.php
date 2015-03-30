@@ -70,6 +70,13 @@
 ?>
 	<tr>
 		<td>
+		<form method="link" action="./home.php">
+			<button class='btn btn-primary' id="admin-button">Manage Personal Bicycles</button>
+		</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
 		<form method="link" action="./admin.php">
 			<button class='btn btn-primary' id="admin-button">Admin Home</button>
 		</form>
@@ -79,13 +86,6 @@
 		<td>
 		<form method="link" action="./manage-admin.php">
 			<button class='btn btn-primary' id="admin-button">Manage Administrators</button>
-		</form>
-		</td>
-	</tr>
-	<tr>
-		<td>
-		<form method="link" action="./home.php">
-			<button class='btn btn-primary' id="admin-button">Manage Personal Bicycles</button>
 		</form>
 		</td>
 	</tr>

@@ -352,13 +352,6 @@
 ?>
 	<tr>
 		<td>
-		<form method="link" action="./manage-admin.php">
-			<button class="btn btn-primary" id="admin-button">Manage Administrators</button>
-		</form>
-		</td>
-	</tr>
-	<tr>
-		<td>
 		<form method="link" action="./home.php">
 			<button class="btn btn-primary" id="admin-button">Manage Personal Bicycles</button>
 		</form>
@@ -366,8 +359,8 @@
 	</tr>
 	<tr>
 		<td>
-		<form method="link" action="./generate-report.php">
-			<button class="btn btn-primary" id="admin-button">Generate Spreadsheet</button>
+		<form method="link" action="./manage-admin.php">
+			<button class="btn btn-primary" id="admin-button">Manage Administrators</button>
 		</form>
 		</td>
 	</tr>
@@ -375,6 +368,13 @@
 		<td>
 		<form method="link" action="./edit-links.php">
 			<button class="btn btn-primary" id="admin-button">Edit Useful Links</button>
+		</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<form method="link" action="./generate-report.php">
+			<button class="btn btn-primary" id="admin-button">Generate Spreadsheet</button>
 		</form>
 		</td>
 	</tr>
