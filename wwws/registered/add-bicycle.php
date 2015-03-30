@@ -26,7 +26,7 @@
                 <tr><td><label class="col-lg-10 control-label">Make*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="make"></input></div></td></tr>
                 <tr><td><label class="col-lg-10 control-label">Model*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="model"></input></div></td></tr>
                 <tr><td><label class="col-lg-10 control-label">Other: </label></td><td><div class="col-lg-10"><textarea class="form-control" name="other" rows="10" cols=auto></textarea></div></td></tr>
-                <tr><td><label class="col-lg-10 control-label">Select Your Bicycle's Image: </label></td><td><div class="col-lg-10"><input class="form-control" type="file" name="pics" accept="image/*" /></div></td></tr>
+                <tr><td><label class="col-lg-10 control-label">Select Your Bicycle's Image: </label></td><td><div class="col-lg-10"><input class="form-control" type="file" name="pics" accept="image/*" /> * Image CAN'T larger than 1.5M</div></td></tr>
             </table>
         </br> * denotes a required field.
             </br>
@@ -77,10 +77,10 @@
             exit();
         }
 
-        if ($_FILES["pics"]["size"] > 2000000){
+        if ($_FILES["pics"]["size"] > 1500 || $_FILES["pics"]["error"] == 1){
            ?>
             <script type="text/javascript">
-            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>The image cannot be larger than 2MB. Thank you.</div>');
+            $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>The image cannot be larger than 1.5MB. Thank you.</div>');
             </script>
             <?php
             exit();
