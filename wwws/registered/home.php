@@ -12,6 +12,45 @@
     $da = date("Y-m-d H:i:s");
 ?>
 
+<style type="text/css">
+
+.img-wrap {    
+    position: relative;
+    max-width:350px;
+}
+
+.img-wrap .icon-wrap,
+.img-wrap .glyphicon {
+    opacity:0;
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    margin:auto;
+    width:15px;
+    height:15px;
+    transition:all 0.2s ease;
+}
+
+.img-wrap .glyphicon {
+    opacity:0;
+}
+
+.icon-wrap::before {
+    font-family: FontAwesome;
+    content: 'glyphicon glyphicon-camera';   
+    display:block;
+}
+
+
+.img-wrap:hover .icon-wrap,
+.img-wrap:hover .glyphicon {
+    opacity:1;
+}
+
+</style>
+
 <script type="text/javascript">
     type = "";
     $('#inline').change(function() {
@@ -36,7 +75,8 @@
 
     function editPicture(bicycleid){
         window.location.href = './edit-picture.php?id='+bicycleid;
-    }
+    };
+
 </script>
 
 <section>
@@ -103,9 +143,9 @@
             while($row = mysqli_fetch_assoc($result)){
                 echo "<tr>";
                 if ($row['Image'] == NULL){
-                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><img height='75px' src='../images/default_bicycle.png'></div></td>";
+                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src='../images/default_bicycle.png'><span class='glyphicon glyphicon-camera'></span></div></div></td>";
                 }else{
-                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><img height='75px' src=".$row['Image']."></div></td>";
+                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src=".$row['Image']."><span class='glyphicon glyphicon-camera'></span></div></div></td>";
                 }
 
                     // echo "<td id='cyclist-show-td'>".$row['Serial']."</td>
@@ -140,15 +180,16 @@
                                     echo "</div>";
                                     echo "</td>";
 
-                                    echo "<td id='cyclist-button-td'>";
-                                    echo "<div class='hidden-xs'>";
+                                    //echo "<td id='cyclist-button-td'>";
+                                    //echo "<div class='hidden-xs'>";
                                     ?>
+                                    <!--
                                     <button class="btn btn-primary" onclick="location.href='./edit-picture.php?id=<?php echo $row['BicycleID']?>'">
                                     Edit Picture
-                                    </button>
+                                    </button>-->
                                     <?php
-                                    echo "</div>";
-                                    echo "</td>";
+                                    //echo "</div>";
+                                    //echo "</td>";
 
 									// echo "<td id='cyclist-button-td'>";
 									// echo "<div class='hidden-xs'>";
