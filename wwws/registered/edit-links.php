@@ -20,11 +20,8 @@
     });
 </script>
 
-<nav>
-<h3 align='center'>EDIT USEFUL LINKS</h3>
-</nav>
-
 <section id="admin-basic" align='center'>
+<h3 align='center'>Useful Links</h3>
 <?php
 	$current_links = get_useful_links($dbc);
 	echo "<table class='table-responsive' id='edit-links-table' style='width: 85%; margin-left: 10%;' align='center'>";
@@ -64,13 +61,6 @@
 	</tr>
 	<tr>
 		<td>
-		<form method="link" action="./home.php">
-			<button class='btn btn-primary' id="admin-button">Manage Personal Bicycles</button>
-		</form>
-		</td>
-	</tr>
-	<tr>
-		<td>
 		<form method="link" action="./manage-admin.php">
 			<button class='btn btn-primary' id="admin-button">Manage Administrators</button>
 		</form>
@@ -78,8 +68,15 @@
 	</tr>
 	<tr>
 		<td>
+		<form method="link" action="./home.php">
+			<button class='btn btn-primary' id="admin-button">Manage Personal Bicycles</button>
+		</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
 		<form method="link" action="./generate-report.php">
-			<button class="btn btn-primary" id="admin-button">Generate Report</button>
+			<button class="btn btn-primary" id="admin-button">Generate Spreadsheet</button>
 		</form>
 		</td>
 	</tr>

@@ -41,14 +41,12 @@
 
 <section>
 <nav>
-<h3 align='center'>CYCLIST</h1>
-<h4 align='center'>Welcome <?php echo $_SERVER['HTTP_COMMON_NAME']; ?></h2>
     <?php
         $query = mysqli_query($dbc, "SELECT Phone from User Where NetID = '$netid';");
         $phoneResult = mysqli_fetch_assoc($query);
         $phone = $phoneResult['Phone'];
 
-        echo "</br>Your Phone Number is: <a href='#' id='phoneNumber' data-type='text' data-pk='".$netid."' data-url='edit-bicycle.php'>".$phoneResult['Phone']."</a>";
+        echo "<h4>Your Phone Number is: <a href='#' id='phoneNumber' data-type='text' data-pk='".$netid."' data-url='edit-bicycle.php'>".$phoneResult['Phone']."</a></h4>";
     ?>
 </nav>
 

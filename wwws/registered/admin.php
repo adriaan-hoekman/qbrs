@@ -6,13 +6,9 @@
 	include_once '../../lib/admin.func.php';
 ?>
 
-<nav>
-<h3 align="center">ADMINISTRATOR</h3>
-</nav>
-
 <div class="container" align='center'>
 <section id="admin-basic">
-
+</br>
 <ul class="nav nav-tabs">
 <?php
 	if (isset($_POST['doBicycleSearch']) OR !isset($_POST['doSearch'])) {
@@ -55,7 +51,7 @@
 			</tr>
 			<tr>
 				<td>
-					Serial Number:
+					<b>Serial Number:</b>
 				</td>
 				<td>
 				<?php
@@ -69,7 +65,7 @@
 			</tr>
 			<tr>
 				<td>
-					Make:
+					<b>Make:</b>
 				</td>
 				<td>
 				<?php
@@ -83,7 +79,7 @@
 			</tr>
 			<tr>
 				<td>
-					Model:
+					<b>Model:</b>
 				</td>
 				<td>
 				<?php
@@ -97,7 +93,7 @@
 			</tr>
 			<tr>
 				<td>
-					Missing:
+					<b>Missing:</b>
 				</td>
 				<td>
 					<input type="radio" name="missingQuery" value="True"
@@ -151,7 +147,7 @@
 		<form method="post" action="admin.php">
 			<tr>
 				<td>
-					Serial Number:
+					<b>Serial Number:</b>
 				</td>
 				<td>
 				<?php
@@ -165,7 +161,7 @@
 			</tr>
 			<tr>
 				<td>
-					Return Method:
+					<b>Return Method:</b>
 				</td>
 				<td>
 						<div class="col-lg-20"><select class="form-control" name="returnMethodQuery" id="ReturnMethod" onchange="DirectContact()">
@@ -179,7 +175,7 @@
 			</tr>
 			<tr>
 				<td>
-					Report Type:
+					<b>Report Type:</b>
 				</td>
 				<td>
 						<div class="col-lg-20"><select class="form-control" name="reportTypeQuery" id="ReportType" onchange="DirectContact()">
@@ -191,7 +187,7 @@
 			</tr>
 			<tr>
 				<td>
-					Date:
+					<b>Date:</b>
 				</td>
 				<td>
 				<?php
@@ -258,7 +254,7 @@
 		<form method="post" action="admin.php">
 			<tr>
 				<td>
-					NetID:
+					<b>NetID:</b>
 				</td>
 				<td>
 				<?php
@@ -272,7 +268,7 @@
 			</tr>
 			<tr>
 				<td>
-					Name:
+					<b>Name:</b>
 				</td>
 				<td>
 				<?php
@@ -286,7 +282,7 @@
 			</tr>
 			<tr>
 				<td>
-					Admin:
+					<b>Admin:</b>
 				</td>
 				<td>
 					<input type="radio" name="adminQuery" value="1"
@@ -359,7 +355,7 @@
 	<tr>
 		<td>
 		<form method="link" action="./generate-report.php">
-			<button class="btn btn-primary" id="admin-button">Generate Report</button>
+			<button class="btn btn-primary" id="admin-button">Generate Spreadsheet</button>
 		</form>
 		</td>
 	</tr>
