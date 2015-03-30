@@ -36,8 +36,8 @@
 					<td id='link-show-td' style='padding: 1%;'><div class='hidden-xs'>
 						<a href='#' id='linkUrl' data-type='text' data-pk='".$row['LinkID']." data-linkurl='".$row['Url']."' data-url='edit-link.php'>".$row['Url']."</a>
 					</div></td>
-					<td id='link-delete-td' style='padding-left: 2%;'><div class='hidden-xs'><form method='post' action='edit-link.php'>
-						<input class='btn btn-primary' type='submit' value='Delete'>
+					<td id='link-delete-td' style='padding-left: 2%; vertical-align: bottom;'><div class='hidden-xs'><form method='post' action='edit-link.php'>
+						<button class='btn btn-primary' type='submit'><span class='glyphicon glyphicon-remove'></span></button>
 						<input type='hidden' name='deleteLink' value='".$row['LinkID']."'>
 					</form></div></td>";
 		echo "</tr>";
@@ -45,8 +45,11 @@
 	echo "</table>";
 ?>
 </br>
-<form method="post" action="edit-link.php"><input class="btn btn-primary" type="submit" value="Add Link">
-<input type='hidden' name='addLink' value='<?php count($current_links); ?>'>
+<form method="post" action="edit-link.php">
+	<button class="btn btn-primary" type="submit">
+		<span class='glyphicon glyphicon-plus'></span> Add Link
+	</button>
+	<input type='hidden' name='addLink' value='<?php count($current_links); ?>'>
 </form>
 </section>
 

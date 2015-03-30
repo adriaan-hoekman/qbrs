@@ -18,14 +18,17 @@
 			NetID:
 		</td>
 <form method="post">
-		<td>
+		<td style='padding-right: 10px;'>
 			<input CLASS="form-control" type="text" name="adminQuery" value="">
 		</td>
-	</tr>
-	<tr>
+
 		<td>
-			<button class="btn btn-primary" name='submit' value='1'>Add</button>
-			<button class="btn btn-primary" name='submit' value='2'>Remove</button>
+			<button class="btn btn-primary" name='submit' value='1'>
+				<span class='glyphicon glyphicon-plus'></span> Add
+			</button>
+			<button class="btn btn-primary" name='submit' value='2'>
+				<span class='glyphicon glyphicon-minus'></span> Remove
+			</button>
 		</td>
 	</tr>
 </form>

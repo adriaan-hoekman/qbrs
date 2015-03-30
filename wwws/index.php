@@ -22,7 +22,9 @@
 			<INPUT CLASS="form-control" TYPE="TEXT" NAME = "SerialNumber" placeholder="Enter Serial Number here and Click Search" size="50">
 			</div>
 			<div class="col-lg-2">
-			<button type="submit" class="btn btn-primary">Search</button>
+			<button type="submit" class="btn btn-primary">
+				<span class="glyphicon glyphicon-search"></span> Search
+			</button>
 			</div>
 			</FORM>
 		</td>

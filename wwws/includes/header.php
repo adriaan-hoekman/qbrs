@@ -73,9 +73,9 @@
     <td>
     <div class = "col-xs-2">
 		<?php
-			include_once '../../lib/global.conf.php';
 			if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
 			{
+				include_once '../../lib/global.conf.php';
 				echo '<td align="center" width=100px>';
 
         // Uncomment the below two lines to switch to PROD server logout button
