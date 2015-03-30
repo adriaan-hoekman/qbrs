@@ -88,7 +88,7 @@
 
         if (!file_exists($_FILES['pics']['tmp_name']) || !is_uploaded_file($_FILES['pics']['tmp_name'])){
             $pic_name = NULL;
-        }else{
+        } else {
             // This following line for PROD Server
             // -------------------------------------
             // $uploads_dir = '/home/users/qbrssec/bbSSttHH/GGaaSSpp/wwws/uploads';
@@ -113,7 +113,7 @@
                 window.location.href = './home.php';
                 </script>
             <?php
-        }else{
+        } else {
             echo "Fail";
         }
     }
