@@ -12,14 +12,14 @@
 
     date_default_timezone_set("America/Toronto");
 
-    $da = date("Y-m-d H:i:s");
+    $servertime = date("H:i:s");
   ?>
 
 <?php
     if(isset($_POST['submitReport']) AND $_POST['submitReport']) {
       $result = nonreg_submit_report($dbc,
                                      $_POST['DateFound'],
-                                     $_POST['TimeFound'],
+                                     $servertime,
                                      $_POST['LocationFound'],
                                      $_POST['OtherInfo'],
                                      $_POST['ReturnMethod'],
@@ -27,7 +27,7 @@
         if ($result != false) {
             $emailresult = nonreg_missing_send_mail($dbc,
                                                $_POST['DateFound'],
-                                               $_POST['TimeFound'],
+                                               $servertime,
                                                $_POST['LocationFound'],
                                                $_POST['OtherInfo'],
                                                $_POST['ReturnMethod'],
@@ -55,10 +55,10 @@
       <td style="padding-right: 5px" align="right" width=200px><label>Date Found: </label></td>
       <td><div class="col-lg-20"><input class="form-control" type="date" name="DateFound"></input></div></td>
     </tr>
-    <tr>
+    <!-- <tr>
       <td style="padding-right: 5px" align="right"><label>Time Found: </label></td>
       <td style="padding-top: 5px"><div class="col-lg-20"><input class="form-control" type="time" name="TimeFound"></input></div></td>
-    </tr>
+    </tr> -->
     <tr>
       <td style="padding-right: 5px" align="right"><label>Location Found: </label></td>
       <td style="padding-top: 5px"><div class="col-lg-20"><input class="form-control" name="LocationFound"></input></div></td>
