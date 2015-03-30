@@ -73,6 +73,7 @@
     <td>
     <div class = "col-xs-2">
 		<?php
+			include_once '../../lib/global.conf.php';
 			if (strpos(dirname($_SERVER['PHP_SELF']), 'registered') !== FALSE)
 			{
 				echo '<td align="center" width=100px>';
@@ -87,6 +88,7 @@
 			  echo '<INPUT class="btn btn-danger btn-lg" TYPE="submit" VALUE="Logout">';
         // -------------------------------------------------------------------------------------
         echo "</FORM>";
+        echo "<p style='font-size: 75%;' align='center'>Welcome<br>".$_SERVER['HTTP_COMMON_NAME']."</p>";
 				echo "</td>";
 			} else {
 				echo '<td align="center" width=100px>';

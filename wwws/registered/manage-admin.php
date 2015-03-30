@@ -5,11 +5,8 @@
 	include_once '../../lib/admin.func.php';
 ?>
 
-<nav>
-<h3>ADMINISTRATOR MANAGEMENT</h3>
-</nav>
-
 <section id="admin-basic">
+</br>
 <table align="center">
 	<tr>
     	<td>
@@ -69,7 +66,7 @@
 	<tr>
 		<td>
 		<form method="link" action="./generate-report.php">
-			<button class="btn btn-primary" id="admin-button">Generate Report</button>
+			<button class="btn btn-primary" id="admin-button">Generate Spreadsheet</button>
 		</form>
 		</td>
 	</tr>

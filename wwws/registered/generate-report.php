@@ -5,11 +5,8 @@
 	include_once '../../lib/admin.func.php';
 ?>
 
-<nav>
-<h3 align='center'>GENERATE SPREADSHEET</h3>
-</nav>
-
 <section id="admin-basic"  align='center'>
+<h3 align='center'>Generate Spreadsheet</h3>
 <table align="center" style="width:60%">
 <form method="post">
 	<tr>
@@ -64,15 +61,15 @@
 	</tr>
 	<tr>
 		<td>
-		<form method="link" action="./home.php">
-			<button class='btn btn-primary' id="admin-button">Manage Personal Bicycles</button>
+		<form method="link" action="./manage-admin.php">
+			<button class='btn btn-primary' id="admin-button">Manage Administrators</button>
 		</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
-		<form method="link" action="./manage-admin.php">
-			<button class='btn btn-primary' id="admin-button">Manage Administrators</button>
+		<form method="link" action="./home.php">
+			<button class='btn btn-primary' id="admin-button">Manage Personal Bicycles</button>
 		</form>
 		</td>
 	</tr>
