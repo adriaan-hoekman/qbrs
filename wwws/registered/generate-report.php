@@ -3,6 +3,7 @@
 	include_once '../../lib/global.conf.php';
 	include_once '../../lib/reg.func.php';
 	include_once '../../lib/admin.func.php';
+	include_once '../../lib/search.func.php';
 ?>
 
 <section id="admin-basic"  align='center'>
@@ -52,6 +53,21 @@
 
 <aside>
 <table align="center">
+<?php
+	$result = search_missing($dbc);
+	if (empty($result) == False) {
+		echo "<tr><td>";
+		echo '<ul style="list-style-type:none;padding:0;">';
+		echo '<li><h4 style="margin-bottom:0.2em;">Missing Bicycles</h4></li>';
+		echo '<div class="panel panel-default" style="border:1px solid black;padding:5px;height:80px;overflow: scroll;">';
+		while ($row = mysqli_fetch_assoc($result)) {
+			echo "<li>".$row['Serial']."</li>";
+		}
+		echo "</ul>";
+		echo "</div>";
+		echo "</td></tr>";
+	}
+?>
 	<tr>
 		<td>
 		<form method="link" action="./admin.php">
