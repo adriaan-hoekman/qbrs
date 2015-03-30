@@ -1,6 +1,6 @@
 <?php
 
-function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemodel, $bicycledesc, $datemissing, $timemissing, $missinglocation, $missingdetail){
+function missing_send_mail($dbc, $to, $name, $bicycleserial, $bicyclemake, $bicyclemodel, $bicycledesc, $datemissing, $timemissing, $missinglocation, $missingdetail){
 
 	$parkingphone = $_SERVER['parkingphone'];
 	$parkingemail = $_SERVER['parkingemail'];
@@ -10,6 +10,13 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 	$kingstonpoliceemail = $_SERVER['kingstonpoliceemail'];
 
 	$subject = "This is Your Missing Report";
+
+	$query = mysqli_query($dbc, "SELECT Email from User WHERE User.GetEmail=1 AND User.Admin=1");
+  $row = mysqli_fetch_assoc($query);
+  $bcc = $row['Email'];
+  while ($row = mysqli_fetch_assoc($query)){
+  	$bcc = $bcc.",".$row['Email'];
+  }
 
 	$message = "
 	<html>
@@ -46,7 +53,7 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 
 	// More Header
 	$headers .= 'From: Queens Bicycle Registration System<Do-Not-Reply@Queensu.ca>' . "\r\n";
-	//$headers .= 'Cc: myboss@example.com' . "\r\n";
+	$headers .= 'Bcc: '. $bcc . "\r\n";
 
 		// The following 4 lines of code are for testing the email function on localhost.
 	// Comment them out when moving to the PROD server.
@@ -55,6 +62,7 @@ function missing_send_mail($to, $name, $bicycleserial, $bicyclemake, $bicyclemod
 	// echo $subject;
 	// echo $message;
 	// echo $headers;
+
 	// return false;
 	// -----------------------------------------------------------
 	// The following 2 lins of code are MUST be uncommented when this code runs on the PROD server.
@@ -95,6 +103,13 @@ function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $
 
 	$subject = "Your Missing Bicycle has been Reported Found";
 
+	$query = mysqli_query($dbc, "SELECT Email from User WHERE User.GetEmail=1 AND User.Admin=1");
+  $row = mysqli_fetch_assoc($query);
+  $bcc = $row['Email'];
+  while ($row = mysqli_fetch_assoc($query)){
+  	$bcc = $bcc.",".$row['Email'];
+  }
+
 	$message = "
 	<html>
 	<head>
@@ -119,7 +134,7 @@ function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $
 
 	// More Header
 	$headers .= 'From: Queens Bicycle Registration System<Do-Not-Reply@Queensu.ca>' . "\r\n";
-	//$headers .= 'Cc: myboss@example.com' . "\r\n";
+	$headers .= 'Bcc: '. $bcc . "\r\n";
 
 	// The following 4 lines of code are for testing the email function on localhost.
 	// Comment them out when moving to the PROD server.
@@ -140,7 +155,7 @@ function no_serial_missing_send_mail($dbc, $date, $time, $location, $description
 
 	
   $locationmessage = "Direct Contact. Phone or E-mail: ".$contactfield;
-  $query = mysqli_query($dbc, "SELECT Email from User WHERE User.GetEmail=1");
+  $query = mysqli_query($dbc, "SELECT Email from User WHERE User.GetEmail=1 AND User.Admin=1");
   $row = mysqli_fetch_assoc($query);
   $to = $row['Email'];
   while ($row = mysqli_fetch_assoc($query)){
