@@ -6,7 +6,7 @@
 ?>
 
 <body>
-
+<div class="container">
 <table align="center">
 	<tr>
 		<td style="padding: 10px">
@@ -14,31 +14,30 @@
 			<!-- <img src="/images/Row_of_Bicycles.jpg" width="192" height="146"> -->
 			<!-- <img src="/images/Single_Bicycle.jpg" width="250" height="141"> -->
 		</td>
-		<td align="center">
-			<h3>
-				Welcome to the Queen's Bicycle Registration System
-			</h3>
+		<td align="left">
 			<h4>
 				Do you own a bicycle? Afraid of losing it?
 			</h4>
 			<h4>
-				As a student, staff, or faculty member of Queen's University you can register your bicycle now!
+				Login now with your NetID to register your bicycle!
 			</h4>
 			<h4>
-				Registering your bicycle will allow us to help you in its recovery if it is stolen or lost!
+				Registering your bicycle will allow us to help you recover your bicycle if it is stolen or lost!
+			</h4>
+			<h4>
+				Not part of the Queen's community? No worries, anyone can report a bicycle missing below!
 			</h4>
 		</td>
 	</tr>
 </table>
 
-<div class="container">
+
 <table cellspacing="50" align="center">
 	<tr>
 		<td>
 			<!-- Blank Cell under the Queens Logo. -->
 		</td>
 		<td align="center">
-			<br />
 
 			<h3>Found a bicycle?</h3>
 			<h4>Enter the serial number here to check if it has been reported missing:</h4>
