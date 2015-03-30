@@ -24,7 +24,7 @@
 
             $miss = report_bicycle($dbc, $_POST['serialx']);
             if ($miss != false){
-                $email = missing_send_mail($_SERVER['HTTP_QUEENSU_MAIL'], $_SERVER['HTTP_COMMON_NAME'], $bicycleInfo['Serial'], $bicycleInfo['Make'], $bicycleInfo['Model'], $bicycleInfo['Other'], $mysql_date, $mysql_time, $_POST['location'], $_POST['desc']);
+                $email = missing_send_mail($dbc, $_SERVER['HTTP_QUEENSU_MAIL'], $_SERVER['HTTP_COMMON_NAME'], $bicycleInfo['Serial'], $bicycleInfo['Make'], $bicycleInfo['Model'], $bicycleInfo['Other'], $mysql_date, $mysql_time, $_POST['location'], $_POST['desc']);
                 if ($email != false){
                     header('Location: ./home.php');
                 }else{

@@ -4,6 +4,7 @@
     include_once '../../lib/reg.func.php';
     include_once '../../lib/search.func.php';
     include_once '../../lib/bicycle.func.php';
+    include_once '../../lib/mail.func.php';
 ?>
 
 <!--<section>-->
@@ -22,10 +23,47 @@
     <div id="message"> </div>
         <form class="form-horizontal" align="center" method="post" action="add-bicycle.php" enctype="multipart/form-data">
             <table align="center">
-                <tr><td><label class="col-lg-10 control-label">Serial Number*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="serial"></input></div></td></tr>
-                <tr><td><label class="col-lg-10 control-label">Make*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="make"></input></div></td></tr>
-                <tr><td><label class="col-lg-10 control-label">Model*: </label></td><td><div class="col-lg-10"><input class="form-control" type="text" name="model"></input></div></td></tr>
-                <tr><td><label class="col-lg-10 control-label">Other: </label></td><td><div class="col-lg-10"><textarea class="form-control" name="other" rows="10" cols=auto></textarea></div></td></tr>
+                <tr><td><label class="col-lg-10 control-label">Serial Number*: </label></td>
+                    <td><div class="col-lg-10">
+                        <?php
+                            if (isset($_POST['serial'])) {
+                                echo '<input CLASS="form-control" type="text" name="serial" value="'.$_POST['serial'].'">';
+                            } else {
+                                echo '<input class="form-control" type="text" name="serial"></input>';
+                            }
+                        ?>
+                    </div></td></tr>
+                <tr><td><label class="col-lg-10 control-label">Make*: </label></td>
+                    <td><div class="col-lg-10">
+                        <?php
+                            if (isset($_POST['make'])) {
+                                echo '<input CLASS="form-control" type="text" name="make" value="'.$_POST['make'].'">';
+                            } else {
+                                echo '<input class="form-control" type="text" name="make"></input>';
+                            }
+                        ?>
+                    </div></td></tr>
+                <tr><td><label class="col-lg-10 control-label">Model*: </label></td>
+                    <td><div class="col-lg-10">
+                        <?php
+                            if (isset($_POST['model'])) {
+                                echo '<input CLASS="form-control" type="text" name="model" value="'.$_POST['model'].'">';
+                            } else {
+                                echo '<input class="form-control" type="text" name="model"></input>';
+                            }
+                        ?>
+                    </div></td></tr>
+                <tr><td><label class="col-lg-10 control-label">Other: </label></td>
+                    <td><div class="col-lg-10">
+                        <?php
+                            if (isset($_POST['other'])) {
+                                echo '<textarea class="form-control" name="other" rows="10" cols=auto>'.$_POST['other'].'</textarea>';
+                            } else {
+                                echo '<textarea class="form-control" name="other" rows="10" cols=auto></textarea>';
+                            }
+                        ?>
+                        
+                    </div></td></tr>
                 <tr><td><label class="col-lg-10 control-label">Select Your Bicycle's Image: </label></td><td><div class="col-lg-10"><input class="form-control" type="file" name="pics" accept="image/*" /> * Image CAN'T larger than 1.5M</div></td></tr>
             </table>
         </br> * denotes a required field.
@@ -74,6 +112,7 @@
             $('#message').html('<div class="alert alert-success fade in"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">X</button>This Bicycle (Serial Number) is already in the database. Please contact an Administrator for more details.</div>');
             </script>
             <?php
+            bicycle_alread_in_send_mail($dbc, $netid, $_POST['serial']);
             exit();
         }
 
