@@ -72,7 +72,7 @@ function delete_bicycle($dbc, $bicycleid) {
 	$row = mysqli_fetch_assoc($query);
 	$serialNum = $row['Serial'];
 	$count = $row['COUNT(*)'];
-	$newSerial = $serialNum.'-DELETED-'.($count++);
+	$newSerial = 'DELETED-'.($count++).'-'.$serialNum;
 
 	$sql = "UPDATE Bicycle SET `Serial` = '$newSerial'	WHERE `BicycleID` = '$bicycleid' limit 1";
 	$result = mysqli_query($dbc, $sql)or die ("<br />Couldn't execute query.");
