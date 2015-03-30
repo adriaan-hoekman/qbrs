@@ -10,8 +10,8 @@
 
 <footer>
 <div class="container">
-<table align="center" style="padding:5%;margin-top:5%">
-	<tr align="center"><td align="center"><b>Useful Links</b></td></tr>
+<table align="center" style="margin-top:2%">
+	<tr align="center"><td align="center" style='padding-bottom: 5px;'><b>Useful Links</b></td></tr>
 	<tr>
 		<td align="center" style="padding-bottom:5%">
 <?php

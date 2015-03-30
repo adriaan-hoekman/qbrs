@@ -83,7 +83,6 @@ table#edit-links-table {
 table#cyclist-show {
 	width: 90%;
 	margin: 5%;
-/* 	border: 1px solid black; */
 }
 th#admin-th, td#admin-search-td {
 	border:1px solid black;
