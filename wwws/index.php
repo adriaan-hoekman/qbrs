@@ -38,7 +38,7 @@
 		</td>
 		<td align="center">
 <?php
-			echo "<br />";
+			echo "<br/>";
 			echo "Number of bicycles returned to owner: ".implode('',returned_bicycles_count($dbc));
 ?>
 		</td>
