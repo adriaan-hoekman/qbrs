@@ -473,7 +473,7 @@
 					</tr>
 <?php
 				while ($row = mysqli_fetch_assoc($result)){
-					if ($row['UserID'] !== 0) {
+					if ($row['UserID'] != 0) {
 						$missing = ($row['Missing'] == 0 ? "No" : "Yes");
 						if (empty($row['Image'])) {
 							echo "<tr><td id='admin-search-td'><img height='75px' src='../images/default_bicycle.png'></td>";
@@ -533,7 +533,7 @@
 					</tr>
 <?php
 				while ($row = mysqli_fetch_assoc($result)){
-					if ($row['UserID'] !== 0) {
+					if ($row['UserID'] != 0) {
 						$is_admin = ($row['Admin'] == 0 ? "No" : "Yes");
 						echo "<tr>
 									<td id='admin-search-td'>".$row['NetID']."</td>
