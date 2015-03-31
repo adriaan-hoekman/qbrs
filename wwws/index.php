@@ -8,7 +8,6 @@
 <body>
 <div class="container">
 <table align="center">
-	>
 	<tr>
 		<td style="padding: 10px">
 			<div class="hidden-xs">
