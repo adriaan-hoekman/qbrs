@@ -15,6 +15,11 @@
 	<tr>
 		<td align="center" style="padding-bottom:5%">
 <?php
+		if (strpos($_SERVER['REQUEST_URI'], 'registered') !== FALSE) {
+			echo '<a href="../faq.php" title="Frequently Asked Questions" target="new">FAQ</a><br/>';
+		} else {
+			echo '<a href="faq.php" title="Frequently Asked Questions" target="new">FAQ</a><br/>';
+		}
 		$result = get_useful_links($dbc);
 		while ($row = mysqli_fetch_assoc($result)) {
 			echo '<a href="'.$row['Url'].'" title="'.$row['Description'].'" target="new">'.$row['Description'].'</a><br/>';
