@@ -144,9 +144,9 @@
             while($row = mysqli_fetch_assoc($result)){
                 echo "<tr>";
                 if ($row['Image'] == NULL){
-                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src='../images/default_bicycle.png'><span class='glyphicon glyphicon-camera'></span></div></div></td>";
+                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src='../images/default_bicycle.png'><span onclick='editPicture(".$row['BicycleID'].")' class='glyphicon glyphicon-camera'></span></div></div></td>";
                 }else{
-                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src=".$row['Image']."><span class='glyphicon glyphicon-camera'></span></div></div></td>";
+                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src=".$row['Image']."><span onclick='editPicture(".$row['BicycleID'].")' class='glyphicon glyphicon-camera'></span></div></div></td>";
                 }
 
                     // echo "<td id='cyclist-show-td'>".$row['Serial']."</td>
