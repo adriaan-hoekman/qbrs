@@ -137,23 +137,23 @@
                         <th id='cyclist-show-th'><div class='hidden-xs'>Image</div></th>
                         <th id='cyclist-show-th'>Serial Number</th>
                         <th id='cyclist-show-th'><div class='hidden-xs'>Make</div></th>
-                        <th id='cyclist-show-th'><div class='hidden-xs'>Model</div></th>
+                        <th id='cyclist-show-th'><div class='hidden-xs'>Model/Type</div></th>
                         <th id='cyclist-show-th'>Description</th>
                         <th id='cyclist-show-th'>Missing</th>
                     </tr>";
             while($row = mysqli_fetch_assoc($result)){
                 echo "<tr>";
                 if ($row['Image'] == NULL){
-                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src='../images/default_bicycle.png'><span class='glyphicon glyphicon-camera'></span></div></div></td>";
+                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src='../images/default_bicycle.png'><span onclick='editPicture(".$row['BicycleID'].")' class='glyphicon glyphicon-camera'></span></div></div></td>";
                 }else{
-                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src=".$row['Image']."><span class='glyphicon glyphicon-camera'></span></div></div></td>";
+                    echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src=".$row['Image']."><span onclick='editPicture(".$row['BicycleID'].")' class='glyphicon glyphicon-camera'></span></div></div></td>";
                 }
 
                     // echo "<td id='cyclist-show-td'>".$row['Serial']."</td>
                     //       <td id='cyclist-show-td'>".$row['Make']."</td>
                     //       <td id='cyclist-show-td'>".$row['Model']."</td>";
-                echo "<td id='cyclist-show-td'><a href='#' id='serialNumber' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Serial']."</a></td>
-											<td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleMake' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Make']."</a></div></td>
+                echo "<td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='serialNumber' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Serial']."</a></div></td>
+											<td id='cyclist-show-td'><a href='#' id='bicycleMake' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Make']."</a></td>
 											<td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleModel' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Model']."</a></div></td>
 											<td id='cyclist-show-td'><a href='#' id='bicycleOther' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Other']."</a></td>";
 

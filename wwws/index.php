@@ -8,17 +8,16 @@
 <body>
 <div class="container">
 <table align="center">
-	>
 	<tr>
 		<td style="padding: 10px">
-			<div class="hidden-xs"
+			<div class="hidden-xs">
 			<img src="/images/default_bicycle.png" width="240" height="144">
 			<!-- <img src="/images/Row_of_Bicycles.jpg" width="192" height="146"> -->
 			<!-- <img src="/images/Single_Bicycle.jpg" width="250" height="141"> -->
 		</div>
 		</td>
 		<td align="left">
-			<div class="hidden-xs"
+			<div class="hidden-xs">
 			<h4>
 				Do you own a bicycle? Afraid of losing it?
 			</h4>
