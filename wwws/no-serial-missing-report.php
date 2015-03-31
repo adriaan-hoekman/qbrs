@@ -85,7 +85,7 @@
         {"label" : "John Deutsch University Centre(JDUC)"},
         {"label" : "Queen's Centre, including the Athletics and Recreation Centre (ARC)"},
         {"label" : "Physical and Health Education Centre (PEC)"},
-        {"label" : "Dauglas Library"},
+        {"label" : "Douglas Library"},
         {"label" : "Joseph S. Stauffer Library"},
         {"label" : "Goodes Hall"},
         {"label" : "Dupuis Hall"},
