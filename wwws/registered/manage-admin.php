@@ -44,11 +44,55 @@
 			<input type='checkbox' value='1' name='checket'
 				<?php if((get_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID']) != 0)){echo "checked='checked'";} ?>>
 			</input> &nbsp
+				<?php
+					if((get_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID']) != 0)) {
+						echo '<input type="hidden" name="checked_value" value="1">';
+					} else {
+						echo '<input type="hidden" name="checked_value" value="0">';
+					}
+				?>
 			<button class="btn btn-primary" name='get_email' value='1'>Save</button>
 		</td>
 	</tr>
 </form>
 </table>
+<?php
+	if (isset($_POST['submit']) AND $_POST['submit'] == 1) {
+		$result = add_admin($dbc, $_POST['adminQuery']);
+		if ($result == 1) {
+			echo "<br>Admin successfully added.";
+		} else {
+			echo "<br>Unable to add admin.";
+		}
+	}
+
+	if (isset($_POST['submit']) AND $_POST['submit'] == 2) {
+		$result = remove_admin($dbc, $_POST['adminQuery']);
+		if ($result == 1) {
+			echo "<br>Admin successfully removed.";
+		} else {
+			echo "<br>Unable to remove admin.";
+		}
+	}
+
+	if (isset($_POST['get_email'])) {
+		if (isset($_POST['checket'])) {
+			$var = set_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID'], 1);
+		} else {
+			$var = set_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID'], 0);
+		}
+		if ($var == 1) {
+?>
+		<script language="JavaScript">
+			window.location.href = './manage-admin.php';
+		</script>
+<?php
+		} else {
+			echo "<br>Unable to remove you for the mailing list.
+						<br>You are the only admin receiving e-mails.";
+		}
+	}
+?>
 </section>
 
 <aside>
@@ -100,34 +144,7 @@
 </aside>
 
 <section id="admin-results">
-<?php
-	if (isset($_POST['submit']) AND $_POST['submit'] == 1) {
-		$result = add_admin($dbc, $_POST['adminQuery']);
-		if ($result == 1) {
-			echo "Admin successfully added.";
-		} else {
-			echo "Unable to add admin.";
-		}
-	}
 
-	if (isset($_POST['submit']) AND $_POST['submit'] == 2) {
-		$result = remove_admin($dbc, $_POST['adminQuery']);
-		if ($result == 1) {
-			echo "Admin successfully removed.";
-		} else {
-			echo "Unable to remove admin.";
-		}
-	}
-
-	if (isset($_POST['get_email'])) {
-		if (get_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID']) == 0) {
-			set_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID'], 1);
-		} else {
-			set_get_email($dbc, $_SERVER['HTTP_QUEENSU_NETID'], 0);
-		}
-		header("Location: manage-admin.php");
-	}
-?>
 </section>
 
 <?php

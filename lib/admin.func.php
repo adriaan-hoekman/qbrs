@@ -37,6 +37,17 @@ function remove_admin($dbc, $netid) {
 		return 0;
 	}
 
+	$sql = "Select * FROM User WHERE NetID = '$netid'";
+	$query = $dbc -> query($sql);
+	if ($query === FALSE) {
+		return 0;
+	} else {
+		$result = $query -> fetch_array();
+		if (empty($result) OR $result['Admin'] == 1) {
+			return 0;
+		}
+	}
+
 	$sql = "UPDATE User SET Admin = 0 WHERE NetID = '$netid'";
 
 	if ($dbc -> query($sql) === TRUE) {
@@ -60,6 +71,12 @@ function get_get_email($dbc, $netid) {
 }
 
 function set_get_email($dbc, $netid, $get_email) {
+	$sql = "SELECT * FROM User WHERE Admin = 1 AND GetEmail = 1";
+	$result = $dbc -> query($sql);
+	if (($result -> num_rows) <= 1) {
+		return 0;
+	}
+
 	$sql = "UPDATE User SET GetEmail = '$get_email' WHERE NetID = '$netid'";
 	if ($dbc -> query($sql) === TRUE) {
 		return 1;
