@@ -18,9 +18,11 @@ if (isset($_SERVER['HTTP_QUEENSU_NETID']) AND is_registered($dbc, $_SERVER['HTTP
 	if (is_admin($dbc, $_SERVER['HTTP_QUEENSU_NETID'])) {
 ?>
 	<li><a href="#admin-faq">Admin FAQ</a></li>
-</ol>
 <?php
 	}
+?>
+</ol>
+<?php
 }
 ?>
 <h3 style='padding-left:25%; font-weight:bold;'><a name="general-faq"></a>General FAQ</h3>
