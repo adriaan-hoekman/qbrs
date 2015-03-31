@@ -64,7 +64,7 @@
                         ?>
                         
                     </div></td></tr>
-                <tr><td><label class="col-lg-10 control-label">Select Your Bicycle's Image: </label></td><td><div class="col-lg-10"><input class="form-control" type="file" name="pics" accept="image/*" /> * Image CAN'T larger than 1.5M</div></td></tr>
+                <tr><td><label class="col-lg-10 control-label">Select Your Bicycle's Image: </label></td><td><div class="col-lg-10"><input class="form-control" type="file" name="pics" accept="image/*" /> * Max image size is 1.5MB</div></td></tr>
             </table>
         </br> * denotes a required field.
             </br>

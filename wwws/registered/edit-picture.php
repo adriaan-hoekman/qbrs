@@ -16,7 +16,7 @@
         <div id="message"> </div>
         <form class="form-horizontal" align="center" method="post" action="edit-picture.php" enctype="multipart/form-data">
             <table align="center">
-                <tr><td><label class="col-lg-10 control-label">Select Your Bicycle's Image: </label></td><td><div class="col-lg-10"><input class="form-control" type="file" name="pics" accept="image/*" /> * Image CAN'T larger than 1.5M</div></td></tr>
+                <tr><td><label class="col-lg-10 control-label">Select Your Bicycle's Image: </label></td><td><div class="col-lg-10"><input class="form-control" type="file" name="pics" accept="image/*" /> * Max image size is 1.5MB</div></td></tr>
             </table>
             </br>
             <input type="submit" class="btn btn-primary" name="submit" value="Submit">
