@@ -137,7 +137,7 @@
                         <th id='cyclist-show-th'><div class='hidden-xs'>Image</div></th>
                         <th id='cyclist-show-th'>Serial Number</th>
                         <th id='cyclist-show-th'><div class='hidden-xs'>Make</div></th>
-                        <th id='cyclist-show-th'><div class='hidden-xs'>Model</div></th>
+                        <th id='cyclist-show-th'><div class='hidden-xs'>Model/Type</div></th>
                         <th id='cyclist-show-th'>Description</th>
                         <th id='cyclist-show-th'>Missing</th>
                     </tr>";

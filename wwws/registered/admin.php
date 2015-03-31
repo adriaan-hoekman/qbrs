@@ -79,7 +79,7 @@
 			</tr>
 			<tr>
 				<td>
-					<b>Model:</b>
+					<b>Model/Type:</b>
 				</td>
 				<td>
 				<?php
@@ -452,7 +452,7 @@
 						<th id="admin-th">NetID</th>
 						<th id="admin-th">Serial Number</th>
 						<th id="admin-th">Make</th>
-						<th id="admin-th">Model</th>
+						<th id="admin-th">Model/Type</th>
 						<th id="admin-th">Missing</th>
 					</tr>
 <?php

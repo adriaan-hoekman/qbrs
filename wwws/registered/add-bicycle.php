@@ -43,7 +43,7 @@
                             }
                         ?>
                     </div></td></tr>
-                <tr><td><label class="col-lg-10 control-label">Model*: </label></td>
+                <tr><td><label class="col-lg-10 control-label">Model/Type*: </label></td>
                     <td><div class="col-lg-10">
                         <?php
                             if (isset($_POST['model'])) {
