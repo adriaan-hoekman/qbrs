@@ -51,6 +51,20 @@
 			</tr>
 			<tr>
 				<td>
+					<b>NetID:</b>
+				</td>
+				<td>
+				<?php
+					if (isset($_POST['bicycleNetidQuery'])) {
+						echo '<input CLASS="form-control" type="text" name="bicycleNetidQuery" value="'.$_POST['bicycleNetidQuery'].'">';
+					} else {
+						echo '<input CLASS="form-control" type="text" name="bicycleNetidQuery" value="">';
+					}
+				?>
+				 </td>
+			</tr>
+			<tr>
+				<td>
 					<b>Serial Number:</b>
 				</td>
 				<td>
@@ -124,7 +138,7 @@
 				<td style="padding-left: 5px">
 					<button class="btn btn-primary btn-sm" id="admin-button">
 						<span class="glyphicon glyphicon-refresh"></span> Reset
-					</button
+					</button>
 					<input type="hidden" name="doBicycleSearch" value="1">
 					<input type="hidden" name="doSearch" value="0">
 				</td>
@@ -235,7 +249,7 @@
 				<td style="padding-left: 5px">
 					<button class="btn btn-primary btn-sm" id="admin-button">
 						<span class="glyphicon glyphicon-refresh"></span> Reset
-					</button
+					</button>
 					<input type="hidden" name="doReportSearch" value="1">
 					<input type="hidden" name="doSearch" value="0">
 				</td>
@@ -385,10 +399,11 @@
 <?php
 	if (isset($_POST['doSearch']) AND $_POST['doSearch']) {
 		if (isset($_POST['doBicycleSearch'])) {
-			$result = search_bicycle($dbc, $_POST['serialQuery'],
-																	$_POST['makeQuery'],
-																	$_POST['modelQuery'],
-																	$_POST['missingQuery']);
+			$result = search_bicycle($dbc, $_POST['bicycleNetidQuery'],
+																		$_POST['serialQuery'],
+																		$_POST['makeQuery'],
+																		$_POST['modelQuery'],
+																		$_POST['missingQuery']);
 			if ($result != false && $result -> num_rows != 0) {
 				echo "<form method='post' action='./save-generated-report.php' target='_blank'>
 								<h3 align='left'>Bicycle Search Results &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
@@ -397,6 +412,7 @@
 									<span class='glyphicon glyphicon-download-alt'></span> Download
 								</button>
 								</h3>
+								<input type='hidden' name='bicycleNetidQuery' value='".$_POST['bicycleNetidQuery']."'>
 								<input type='hidden' name='serialQuery' value='".$_POST['serialQuery']."'>
 								<input type='hidden' name='makeQuery' value='".$_POST['makeQuery']."'>
 								<input type='hidden' name='modelQuery' value='".$_POST['modelQuery']."'>
@@ -457,14 +473,20 @@
 					</tr>
 <?php
 				while ($row = mysqli_fetch_assoc($result)){
-					$missing = ($row['Missing'] == 0 ? "No" : "Yes");
-					echo "<tr><td id='admin-search-td'><img height='75px' src=".$row['Image']."></td>
-								<td id='admin-search-td'>".$row['NetID']."</td>
-								<td id='admin-search-td'>".$row['Serial']."</td>
-								<td id='admin-search-td'>".$row['Make']."</td>
-								<td id='admin-search-td'>".$row['Model']."</td>
-								<td id='admin-search-td'>".$missing."</td>
-								</tr>";
+					if (empty($row['NetID']) == False) {
+						$missing = ($row['Missing'] == 0 ? "No" : "Yes");
+						if (empty($row['Image'])) {
+							echo "<tr><td id='admin-search-td'><img height='75px' src='../images/default_bicycle.png'></td>";
+						} else {
+							echo "<tr><td id='admin-search-td'><img height='75px' src=".$row['Image']."></td>";
+						}
+							echo "<td id='admin-search-td'>".$row['NetID']."</td>
+										<td id='admin-search-td'>".$row['Serial']."</td>
+										<td id='admin-search-td'>".$row['Make']."</td>
+										<td id='admin-search-td'>".$row['Model']."</td>
+										<td id='admin-search-td'>".$missing."</td>
+										</tr>";
+					}
 				}
 				echo "</table>";
 			} else {
@@ -511,14 +533,16 @@
 					</tr>
 <?php
 				while ($row = mysqli_fetch_assoc($result)){
-					$is_admin = ($row['Admin'] == 0 ? "No" : "Yes");
-					echo "<tr>
-								<td id='admin-search-td'>".$row['NetID']."</td>
-								<td id='admin-search-td'>".$row['Name']."</td>
-								<td id='admin-search-td'>".$row['Email']."</td>
-								<td id='admin-search-td'>".$row['Phone']."</td>
-								<td id='admin-search-td'>".$is_admin."</td>
-								</tr>";
+					if (empty($row['NetID']) == False) {
+						$is_admin = ($row['Admin'] == 0 ? "No" : "Yes");
+						echo "<tr>
+									<td id='admin-search-td'>".$row['NetID']."</td>
+									<td id='admin-search-td'>".$row['Name']."</td>
+									<td id='admin-search-td'>".$row['Email']."</td>
+									<td id='admin-search-td'>".$row['Phone']."</td>
+									<td id='admin-search-td'>".$is_admin."</td>
+									</tr>";
+					}
 				}
 				echo "</table>";
 			} else {

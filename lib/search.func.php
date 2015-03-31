@@ -89,10 +89,14 @@ function search_missing($dbc) {
 	return $query;
 }
 
-function search_bicycle($dbc, $serial, $make, $model, $missing) {
+function search_bicycle($dbc, $netid, $serial, $make, $model, $missing) {
 	$sql = "SELECT * FROM Bicycle, User
 					WHERE Bicycle.UserID = User.UserID
 					AND SERIAL NOT LIKE '%DELETE%'";
+	if (empty($netid) == False) {
+		$netid = mysqli_real_escape_string($dbc, $netid);
+		$sql .= " AND NetID LIKE '%$netid%'";
+	}
 	if (empty($serial) == False) {
 		$serial = mysqli_real_escape_string($dbc, $serial);
 		$sql .= " AND Serial LIKE '%$serial%'";
@@ -112,7 +116,6 @@ function search_bicycle($dbc, $serial, $make, $model, $missing) {
 			$sql .= " AND Missing = 0";
 		}
 	}
-
 	$query = $dbc -> query($sql) or die ("<br />Couldn't execute query.");
 	return $query;
 }
