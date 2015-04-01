@@ -6,7 +6,8 @@
 	if(isset($_POST['exportCustom'])) {
 		switch($_POST['exportCustom']) {
 			case 1:
-				$query = search_bicycle($dbc, $_POST['serialQuery'],
+				$query = search_bicycle($dbc, $_POST['bicycleNetidQuery'],
+																			$_POST['serialQuery']
 																			$_POST['makeQuery'],
 																			$_POST['modelQuery'],
 																			$_POST['missingQuery']);
