@@ -5,7 +5,7 @@
  */
 
 function is_registered($dbc, $netid) {
-	$sql = "SELECT * FROM User WHERE NetID = '$netid' limit 1";
+	$sql = "SELECT * FROM User WHERE NetID = '$netid' AND NOT UserID = 0 limit 1";
 	$query = $dbc -> query($sql);
 
 	$result = $query -> fetch_array();
