@@ -11,8 +11,7 @@
 <?php
 if (isset($_SERVER['HTTP_QUEENSU_NETID']) AND is_registered($dbc, $_SERVER['HTTP_QUEENSU_NETID'])) {
 ?>
-<ol style='width:75%; padding-left:28%; font-size: 16px;'>
-	<li><a href="#general-faq">General FAQ</a></li>
+<ul style='width:75%; padding-left:28%; font-size: 16px;'>
 	<li><a href="#cyclist-faq">Cyclist FAQ</a></li>
 <?php
 	if (is_admin($dbc, $_SERVER['HTTP_QUEENSU_NETID'])) {
@@ -21,7 +20,7 @@ if (isset($_SERVER['HTTP_QUEENSU_NETID']) AND is_registered($dbc, $_SERVER['HTTP
 <?php
 	}
 ?>
-</ol>
+</ul>
 <?php
 }
 ?>
