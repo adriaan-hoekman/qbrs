@@ -97,7 +97,7 @@ th#link-show-th {
 th#cyclist-show-th {
 	border: 1px solid black;
 	text-align: center;
-	padding: 1%;
+	/*padding: 1%;*/
 	background-color: white;
 }
 td#link-show-td {
@@ -113,7 +113,7 @@ td#link-delete-td {
 td#cyclist-show-td {
 	border: 1px solid black;
 	text-align: center;
-	padding: 1%;
+	/*padding: 1%;*/
 	background-color: white;
 }
 td#cyclist-button-td {

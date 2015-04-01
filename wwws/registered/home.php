@@ -114,8 +114,8 @@
 
 <div class="container" align='center'>
     <button class="btn btn-primary" onclick="location.href='./add-bicycle.php'">
-    	<span class='glyphicon glyphicon-plus'></span> Add Bicycle
-		</button>
+        <span class='glyphicon glyphicon-plus'></span> Add Bicycle
+        </button>
 <?php
     $netid = $_SERVER['HTTP_QUEENSU_NETID'];
     if (is_admin($dbc, $netid) != 0) {
@@ -136,9 +136,9 @@
                 echo "<tr>
                         <th id='cyclist-show-th'><div class='hidden-xs'>Image</div></th>
                         <th id='cyclist-show-th'>Serial Number</th>
-                        <th id='cyclist-show-th'><div class='hidden-xs'>Make</div></th>
+                        <th id='cyclist-show-th'>Make</th>
                         <th id='cyclist-show-th'><div class='hidden-xs'>Model/Type</div></th>
-                        <th id='cyclist-show-th'>Description</th>
+                        <th id='cyclist-show-th'><div class='hidden-xs'>Description</div></th>
                         <th id='cyclist-show-th'>Missing</th>
                     </tr>";
             while($row = mysqli_fetch_assoc($result)){
@@ -152,44 +152,44 @@
                     // echo "<td id='cyclist-show-td'>".$row['Serial']."</td>
                     //       <td id='cyclist-show-td'>".$row['Make']."</td>
                     //       <td id='cyclist-show-td'>".$row['Model']."</td>";
-                echo "<td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='serialNumber' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Serial']."</a></div></td>
-											<td id='cyclist-show-td'><a href='#' id='bicycleMake' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Make']."</a></td>
-											<td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleModel' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Model']."</a></div></td>
-											<td id='cyclist-show-td'><a href='#' id='bicycleOther' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Other']."</a></td>";
+                echo "<td id='cyclist-show-td'><a href='#' id='serialNumber' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Serial']."</a></td>
+                                            <td id='cyclist-show-td'><a href='#' id='bicycleMake' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Make']."</a></td>
+                                            <td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleModel' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Model']."</a></div></td>
+                                            <td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleOther' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Other']."</a></div></td>";
 
                 echo "<td id='cyclist-show-td'>
 
-								<input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." src=".htmlspecialchars('./edit-bicycle.php?found=1&id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='location.assign(this.checked?this.value:this.src)' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input>
+                                <input type='checkbox' value=".htmlspecialchars('./missing-report.php?id='.$row['BicycleID'].'&serial='.$row['Serial'])." src=".htmlspecialchars('./edit-bicycle.php?found=1&id='.$row['BicycleID'].'&serial='.$row['Serial'])." name='checket' onClick='location.assign(this.checked?this.value:this.src)' "?><?php if($row['Missing'] != 0){echo 'checked';} ?><?php echo "></input>
 
-								</td>";
+                                </td>";
 
-									// echo "<td id='cyclist-button-td'>";
-									// echo "<div class='hidden-xs'>";
-									// echo '<FORM>';
-									// echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="deleteConfirm('.$row['BicycleID'].')">';
-									// echo "</FORM>";
-									// echo "</div>";
-									// echo "</td>";
+                                    // echo "<td id='cyclist-button-td'>";
+                                    // echo "<div class='hidden-xs'>";
+                                    // echo '<FORM>';
+                                    // echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="deleteConfirm('.$row['BicycleID'].')">';
+                                    // echo "</FORM>";
+                                    // echo "</div>";
+                                    // echo "</td>";
 
-									echo "<td id='cyclist-button-td'>";
-									echo "<div class='hidden-xs'>";
-									?>
-									<button class="btn btn-danger" data-href="./delete-bicycle.php?id=<?php echo $row['BicycleID']?>" data-toggle="modal" data-target="#confirm-delete">
-										<span class='glyphicon glyphicon-remove'></span>
-									</button>
-									<?php
-									echo "</div>";
-									echo "</td>";
+                                    echo "<td id='cyclist-button-td'>";
+                                    echo "<div class='hidden-xs'>";
+                                    ?>
+                                    <button class="btn btn-danger" data-href="./delete-bicycle.php?id=<?php echo $row['BicycleID']?>" data-toggle="modal" data-target="#confirm-delete">
+                                        <span class='glyphicon glyphicon-remove'></span>
+                                    </button>
+                                    <?php
+                                    echo "</div>";
+                                    echo "</td>";
 
-									// echo "<td id='cyclist-button-td'>";
-									// echo "<div class='hidden-xs'>";
-									// echo '<FORM>';
-									// echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Edit Picture" onClick="parent.location=\'./edit-picture.php?id='.$row['BicycleID'].'\'">';
-									// echo "</FORM>";
-									// echo "</div>";
-									// echo "</td>";
+                                    // echo "<td id='cyclist-button-td'>";
+                                    // echo "<div class='hidden-xs'>";
+                                    // echo '<FORM>';
+                                    // echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Edit Picture" onClick="parent.location=\'./edit-picture.php?id='.$row['BicycleID'].'\'">';
+                                    // echo "</FORM>";
+                                    // echo "</div>";
+                                    // echo "</td>";
 
-								echo "</tr>";
+                                echo "</tr>";
             }
             echo "</table>";
             echo "</div>";
@@ -210,5 +210,5 @@
 
 
 <?php
-	include_once '../includes/footer.php';
+    include_once '../includes/footer.php';
 ?>
