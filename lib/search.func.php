@@ -160,32 +160,23 @@ function search_report($dbc, $serial, $return_location, $report_type, $date, $pe
 }
 
 function search_user($dbc, $netid, $name, $user_role) {
-	$sql = "SELECT * FROM User";
+	$sql = "SELECT * FROM User WHERE NOT UserID = 0";
 
-	if (empty($netid) == False OR empty($name) == False OR $user_role > 0) {
-		$sql .= " WHERE";
-	}
 	if (empty($netid) == False) {
 		$netid = mysqli_real_escape_string($dbc, $netid);
-		$sql .= " NetID = '$netid'";
+		$sql .= " AND NetID = '$netid'";
 	}
 	if (empty($name) == False) {
-		if (empty($netid) == False) {
-			$sql .= " AND";
-		}
 		$name = mysqli_real_escape_string($dbc, $name);
-		$sql .= " Name LIKE '%$name%'";
+		$sql .= " AND Name LIKE '%$name%'";
 	}
 	if ($user_role > 0) {
-		if (empty($netid) == False OR empty($name) == False) {
-			$sql .= " AND";
-		}
 		switch ($user_role) {
 			case 1:
-				$sql .= " Admin > 0";
+				$sql .= " AND Admin > 0";
 				break;
 			case 2:
-				$sql .= " Admin = 0";
+				$sql .= " AND Admin = 0";
 				break;
 			default:
 				break;
