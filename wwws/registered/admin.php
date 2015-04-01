@@ -480,7 +480,17 @@
 						} else {
 							echo "<tr><td id='admin-search-td'><img height='75px' src=".$row['Image']."></td>";
 						}
-							echo "<td id='admin-search-td'>".$row['NetID']."</td>
+							echo "<td id='admin-search-td'>
+										<form method='post' action='admin.php'>
+										<button style='background:none!important; border:none; padding:0!important; border-bottom:1px solid #444;cursor: pointer;'>
+										".$row['NetID']."</button>
+										<input type='hidden' name='netidQuery' value='".$row['NetID']."'>
+										<input type='hidden' name='nameQuery' value=''>
+										<input type='hidden' name='adminQuery' value='0'>
+										<input type='hidden' name='doUserSearch' value='1'>
+										<input type='hidden' name='doSearch' value='1'>
+										</form>
+										</td>
 										<td id='admin-search-td'>".$row['Serial']."</td>
 										<td id='admin-search-td'>".$row['Make']."</td>
 										<td id='admin-search-td'>".$row['Model']."</td>
