@@ -147,6 +147,9 @@
                                     $netid);
         if ($result != false) {
             // header('Location: ./home.php');
+            flush();
+            ob_flush();
+            session_write_close();
             ?>
                 <script language="JavaScript">
                 window.location.href = './home.php';
