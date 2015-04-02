@@ -28,7 +28,7 @@ function nonreg_submit_report($dbc, $date, $time, $location, $description, $retu
   }
   $result = mysqli_query($dbc,
       "INSERT INTO Report (Date, Time, Location, Description, ReturnLocation, BicycleID)
-                VALUES ('$date', '$time', '$location', '$description' ,'$returnlocationnum', '$bicycleid');")
+                VALUES ('$mysql_date', '$mysql_time', '$location', '$description' ,'$returnlocationnum', '$bicycleid');")
       or die ("<br />Couldn't execute query.");
   return $result;
 }
@@ -45,7 +45,7 @@ function no_serial_submit_report($dbc, $date, $time, $location, $description) {
 
   $result = mysqli_query($dbc,
       "INSERT INTO Report (Date, Time, Location, Description, ReturnLocation, BicycleID)
-                VALUES ('$date', '$time', '$location', '$description' ,'$returnlocationnum', '$bicycleid');")
+                VALUES ('$mysql_date', '$mysql_time', '$location', '$description' ,'$returnlocationnum', '$bicycleid');")
       or die ("<br />Couldn't execute query.");
   return $result;
 }
