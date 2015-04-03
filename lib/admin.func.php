@@ -56,18 +56,18 @@ function remove_admin($dbc, $netid) {
 		return 0;
 	}
 
-	$sql = "Select * FROM User WHERE NetID = '$netid'";
+	$sql = "SELECT * FROM User WHERE NetID = '$netid'";
 	$query = $dbc -> query($sql);
 	if ($query === FALSE) {
 		return 0;
 	} else {
 		$result = $query -> fetch_array();
 		if (empty($result) OR $result['Admin'] == 1) {
-			return 0;
+			$sql = "UPDATE User SET Admin = 0 WHERE NetID = '$netid'";
 		}
 	}
 
-	$sql = "UPDATE User SET Admin = 0 WHERE NetID = '$netid'";
+	
 
 	if ($dbc -> query($sql) === TRUE) {
 		return 1;
