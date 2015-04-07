@@ -45,7 +45,7 @@ if (isset($_SERVER['HTTP_QUEENSU_NETID']) AND is_registered($dbc, $_SERVER['HTTP
 <h3 style='padding-left:25%; font-weight:bold;'><a name="cyclist-faq"></a>Cyclist FAQ</h3>
 <ol style='width:75%; padding-left:28%; font-size: 16px;'>
 	<li>How do I register a bicycle?</li>
-	<ul><li>After you login to the system, you will be directed to the Cyclist home page. Clicking the “Add Bicycle” button will bring you to a page where you can add your bicycle.</li></ul>
+	<ul><li>After you login to the system, you will be directed to the Cyclist home page. Clicking the "Add Bicycle" button will bring you to a page where you can add your bicycle.</li></ul>
 	<br><li>How do I file a missing report if I've lost my bicycle?</li>
 	<ul><li>If you've lost your bicycle you can mark your bicycle as missing by clicking the checkbox in the missing column of that bicycle's row. The checkbox will bring you to a new page where you will be prompted to enter the details of your loss. That is, of course, provided you were smart enough to register your bicycle before losing it.</li></ul>
 	<br><li>How do I edit my bicycle's information?</li>
@@ -55,9 +55,9 @@ if (isset($_SERVER['HTTP_QUEENSU_NETID']) AND is_registered($dbc, $_SERVER['HTTP
 	<br><li>How do I delete my bicycle?</li>
 	<ul><li>You may have noticed a red X button at the end of each bicycle entry. Pressing this button will bring up a prompt checking if you're really, really, really sure that you want to delete that bicycle entry. Please actually be sure because deletion is permanent.</li></ul>
 	<br><li>How do I edit my phone number?</li>
-	<ul><li>Clicking on the underlined text after “Your Phone Number is” will allow you to edit your phone number.</li></ul>
+	<ul><li>Clicking on the underlined text after "Your Phone Number is" will allow you to edit your phone number.</li></ul>
 	<br><li>Is it possible to edit my email address or name?</li>
-	<ul><li>We currently use Queen's SSO, that wonderful login system you passed through to get here, to retrieve your Queen's email and the name Queen's has you registered under. So no, sorry (not sorry, SSO reduced our workload a ton!), you can't.</li></ul>
+	<ul><li>Unfortunately, it is not. We currently use Queen's SSO, that wonderful login system you passed through to get here, to retrieve your Queen's email and the name Queen's has you registered under.</li></ul>
 </ol>
 <?php
 }
