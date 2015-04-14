@@ -1,4 +1,14 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| Add bicyle Page.
+|--------------------------------------------------------------------------
+|
+| A HTML+PHP Page allow user to input their bicycle information
+|
+*/
+
+    // Include function/config file for feature uses.
     include_once '../includes/header.php';
     include_once '../../lib/global.conf.php';
     include_once '../../lib/reg.func.php';

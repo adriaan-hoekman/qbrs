@@ -1,4 +1,13 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| System Footer
+|--------------------------------------------------------------------------
+|
+| System Global Footer
+|
+*/
+
 	if (strpos($_SERVER['REQUEST_URI'], 'registered') !== FALSE) {
     include_once '../../lib/links.func.php';
     $link_file = "../includes/useful_links.txt";

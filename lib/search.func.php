@@ -1,8 +1,16 @@
 <?php
 
-/**
- * Bicycle Search functuons file to search Bicycle information.
- */
+/*
+|--------------------------------------------------------------------------
+| Bicycle Search Function file.
+|--------------------------------------------------------------------------
+|
+| All Search function, include serach by bicycle id, serach by serial number etc.
+| This file will allow system get bicycle information from database.
+|
+*/
+
+
 function search_serial_nonreg ($dbc, $serialNum) {
 	$serialNum = mysqli_real_escape_string($dbc, $serialNum);
 	$sql = "SELECT * FROM Bicycle WHERE Serial = '$serialNum' limit 1";

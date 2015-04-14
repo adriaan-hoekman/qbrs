@@ -1,17 +1,34 @@
 <?php
+
+/*
+|--------------------------------------------------------------------------
+| Cyclist Home Page. (PHP+HTML)
+|--------------------------------------------------------------------------
+|
+| Cyclist Home Page that show user all their bicycle.
+|
+*/
+
+    // Include function/config file for feature uses.
     include_once '../includes/header.php';
     include_once '../../lib/global.conf.php';
     include_once '../../lib/reg.func.php';
     include_once '../../lib/search.func.php';
 
+    // Set default time zone to Toronto EST.
     date_default_timezone_set("America/Toronto");
 
+    // Get Account Deatil Header form SSO
     $netid = $_SERVER['HTTP_QUEENSU_NETID'];
     $name = $_SERVER['HTTP_COMMON_NAME'];
     $email = $_SERVER['HTTP_QUEENSU_MAIL'];
+
+    // Get Server Date
     $da = date("Y-m-d H:i:s");
 ?>
 
+
+<!-- Custom CSS -->
 <style type="text/css">
 
 .img-wrap {    
@@ -51,6 +68,8 @@
 
 </style>
 
+<!-- Custom JavaScript -->
+<!-- All this JavaScript is used for Inline-Editing --> 
 <script type="text/javascript">
     type = "";
     $('#inline').change(function() {
@@ -79,6 +98,7 @@
 
 </script>
 
+<!-- Page Body -->
 <section>
 <nav>
     <?php
@@ -149,9 +169,6 @@
                     echo "<td id='cyclist-show-td'><div class='hidden-xs'><div class='img-wrap'><img id='current_image' onclick='editPicture(".$row['BicycleID'].")' height='75px' src=".$row['Image']."><span onclick='editPicture(".$row['BicycleID'].")' class='glyphicon glyphicon-camera'></span></div></div></td>";
                 }
 
-                    // echo "<td id='cyclist-show-td'>".$row['Serial']."</td>
-                    //       <td id='cyclist-show-td'>".$row['Make']."</td>
-                    //       <td id='cyclist-show-td'>".$row['Model']."</td>";
                 echo "<td id='cyclist-show-td'><a href='#' id='serialNumber' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Serial']."</a></td>
                                             <td id='cyclist-show-td'><a href='#' id='bicycleMake' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Make']."</a></td>
                                             <td id='cyclist-show-td'><div class='hidden-xs'><a href='#' id='bicycleModel' data-type='text' data-pk='".$row['BicycleID']."' data-url='edit-bicycle.php'>".$row['Model']."</a></div></td>
@@ -163,14 +180,6 @@
 
                                 </td>";
 
-                                    // echo "<td id='cyclist-button-td'>";
-                                    // echo "<div class='hidden-xs'>";
-                                    // echo '<FORM>';
-                                    // echo '<INPUT class="btn btn-danger" TYPE="button" VALUE="Delete" onClick="deleteConfirm('.$row['BicycleID'].')">';
-                                    // echo "</FORM>";
-                                    // echo "</div>";
-                                    // echo "</td>";
-
                                     echo "<td id='cyclist-button-td'>";
                                     echo "<div class='hidden-xs'>";
                                     ?>
@@ -180,14 +189,6 @@
                                     <?php
                                     echo "</div>";
                                     echo "</td>";
-
-                                    // echo "<td id='cyclist-button-td'>";
-                                    // echo "<div class='hidden-xs'>";
-                                    // echo '<FORM>';
-                                    // echo '<INPUT class="btn btn-primary" TYPE="button" VALUE="Edit Picture" onClick="parent.location=\'./edit-picture.php?id='.$row['BicycleID'].'\'">';
-                                    // echo "</FORM>";
-                                    // echo "</div>";
-                                    // echo "</td>";
 
                                 echo "</tr>";
             }
@@ -210,5 +211,6 @@
 
 
 <?php
+    // Include Fotter.
     include_once '../includes/footer.php';
 ?>

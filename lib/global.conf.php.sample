@@ -1,0 +1,44 @@
+<?php
+/*
+|--------------------------------------------------------------------------
+| Database Connect detail.
+|--------------------------------------------------------------------------
+|
+| This file contain all database connection information.
+| This is used to connect to the database.
+|
+*/
+
+// Define Database Connection
+/*
+	Uncomment the following part for PROD server.
+	PROD Env PORT = 4444
+	PROD Env FILE = (Please See the document)
+ */
+
+//define('DB_PORT','');
+//define('DB_FILE','');
+
+/*
+	Change Database detail User name and password to real connection detail	
+*/
+define('DB_USER','');
+define('DB_PWD','');
+define('DB_DBNAME','');
+
+// Local Env Test Param for SSO Login
+/*
+	Uncomment the following part for Local Development Env.
+ */
+.
+// $_SERVER['HTTP_QUEENSU_NETID'] = '';
+// $_SERVER['HTTP_COMMON_NAME'] = '';
+// $_SERVER['HTTP_QUEENSU_MAIL'] = '';
+
+// Using MySQL
+/*
+	Change last Two Null to 'DB_PORT' and 'DB_FILE'
+ */
+$dbc = mysqli_connect('localhost',DB_USER,DB_PWD,DB_DBNAME,Null,Null);
+
+?>

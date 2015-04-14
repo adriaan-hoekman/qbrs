@@ -1,4 +1,14 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| Bicycle Missing Report Page. (PHP+HTML)
+|--------------------------------------------------------------------------
+|
+| User file missting report detail
+|
+*/
+
+    // Include function/config file for feature uses.
     include_once '../includes/header.php';
     include_once '../../lib/global.conf.php';
     include_once '../../lib/reg.func.php';

@@ -1,5 +1,18 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Mail function file.
+|--------------------------------------------------------------------------
+|
+| Allow System send Email to user/Cyclist/Admin
+|
+*/
+
+/**
+ * Send Email when user file missing report.
+ *
+ */
 function missing_send_mail($dbc, $to, $name, $bicycleserial, $bicyclemake, $bicyclemodel, $bicycledesc, $datemissing, $timemissing, $missinglocation, $missingdetail){
 
 	$parkingphone = $_SERVER['parkingphone'];
@@ -71,6 +84,11 @@ function missing_send_mail($dbc, $to, $name, $bicycleserial, $bicyclemake, $bicy
 	// -------------------------------------------
 }
 
+
+/**
+ * Send Email when non-register user file missing/found report.
+ *
+ */
 function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $returnlocation, $contactfield, $serialnumber){
 
 	$parkingphone = $_SERVER['parkingphone'];
@@ -151,6 +169,10 @@ function nonreg_missing_send_mail($dbc, $date, $time, $location, $description, $
 	// -------------------------------------------
 }
 
+/**
+ * Send Email to Admin when non-register user file missing/found report without Serial Number.
+ *
+ */
 function no_serial_missing_send_mail($dbc, $date, $time, $location, $description, $contactfield){
 
 	
@@ -205,7 +227,10 @@ function no_serial_missing_send_mail($dbc, $date, $time, $location, $description
 	// -------------------------------------------
 }
 
-
+/**
+ * Send Email to Admin when user try to add a bicycle that already in database.
+ *
+ */
 function bicycle_alread_in_send_mail($dbc, $netid, $serialNumber){
 
 	

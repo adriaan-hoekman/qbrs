@@ -1,4 +1,16 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| In-Line Edit Bicycle information Function Handler file
+|--------------------------------------------------------------------------
+|
+| In-Line Editing 
+| This file will edit bicycle entry by using In-line edit,
+| and this will change database.
+|
+*/
+
+    // Include function/config file for feature uses.
     include_once '../includes/header.php';
     include_once '../../lib/global.conf.php';
     include_once '../../lib/reg.func.php';

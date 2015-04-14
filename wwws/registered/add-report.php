@@ -1,4 +1,16 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| Add report function file.
+|--------------------------------------------------------------------------
+|
+| POST report detail form missing-report.php
+| POST detail information and add all information into database.
+| This is not real function file, just use file from library (lib).
+|
+*/
+
+    // Include function/config file for feature uses.
     include_once '../includes/header.php';
     include_once '../../lib/global.conf.php';
     include_once '../../lib/reg.func.php';
