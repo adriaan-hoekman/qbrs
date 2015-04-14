@@ -27,6 +27,7 @@ function search_serial_nonreg ($dbc, $serialNum) {
 	}
 }
 
+// Return the bicycle with the specified bicycle ID
 function search_bicycle_id($dbc, $bicycleid) {
 	$bicycleid = mysqli_real_escape_string($dbc, $bicycleid);
 	$query = mysqli_query($dbc, "SELECT * FROM Bicycle WHERE BicycleID = '$bicycleid';");
@@ -34,6 +35,7 @@ function search_bicycle_id($dbc, $bicycleid) {
 	return $query;
 }
 
+// Return the bicycle with the specified serial number
 function search_serial($dbc, $serialNum) {
 	$serialNum = mysqli_real_escape_string($dbc, $serialNum);
 	$sql = "SELECT * FROM Bicycle WHERE Serial = '$serialNum' limit 1";
@@ -50,6 +52,7 @@ function search_serial($dbc, $serialNum) {
 	}
 }
 
+// Return a list of bicycles with the specified model
 function search_model($dbc, $model) {
 	$model = mysqli_real_escape_string($dbc, $model);
 	$sql = "SELECT * FROM Bicycle WHERE Model = '$model' limit 1";
@@ -66,6 +69,7 @@ function search_model($dbc, $model) {
 	}
 }
 
+// Return a list of bicycles with the specified make
 function search_make($dbc, $make) {
 	$make = mysqli_real_escape_string($dbc, $make);
 	$sql = "SELECT * FROM Bicycle WHERE Make = '$make' limit 1";
@@ -82,6 +86,7 @@ function search_make($dbc, $make) {
 	}
 }
 
+// Return the user with the specified netid
 function search_netid($dbc, $netid) {
 	$netid = mysqli_real_escape_string($dbc, $netid);
 	$sql = "SELECT * FROM User, Bicycle WHERE User.NetID = '$netid' AND Bicycle.UserID = User.UserID AND Bicycle.Serial NOT LIKE '%DELETE%'";
@@ -90,6 +95,7 @@ function search_netid($dbc, $netid) {
 	return $query;
 }
 
+// Return the list of all missing bicycles
 function search_missing($dbc) {
 	$sql = "SELECT Serial FROM Bicycle WHERE Missing > 0 AND Serial NOT LIKE '%DELETE%'";
 	$query = $dbc -> query($sql);
@@ -97,6 +103,7 @@ function search_missing($dbc) {
 	return $query;
 }
 
+// Return a list of bicycles based on the inputs from the bicycle tab on the admin page
 function search_bicycle($dbc, $netid, $serial, $make, $model, $missing) {
 	$sql = "SELECT * FROM Bicycle, User
 					WHERE Bicycle.UserID = User.UserID
@@ -128,6 +135,7 @@ function search_bicycle($dbc, $netid, $serial, $make, $model, $missing) {
 	return $query;
 }
 
+// Return a list of reports based on the inputs from the report tab on the admin page
 function search_report($dbc, $serial, $return_location, $report_type, $date, $period) {
 	$sql = "SELECT * FROM Bicycle, Report
 					WHERE Bicycle.BicycleID = Report.BicycleID";
@@ -167,6 +175,7 @@ function search_report($dbc, $serial, $return_location, $report_type, $date, $pe
 	return $query;
 }
 
+// Return a list of users based on the inputs from the user tab on the admin page
 function search_user($dbc, $netid, $name, $user_role) {
 	$sql = "SELECT * FROM User WHERE NOT UserID = 0";
 
