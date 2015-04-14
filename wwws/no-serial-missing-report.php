@@ -8,7 +8,7 @@
 ?>
 
 <?php
-    
+   // This is the report entry page when a user wants to report a bicycle without knowing the serial number of the bicycle 
 
     date_default_timezone_set("America/Toronto");
 

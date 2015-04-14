@@ -18,7 +18,7 @@
   <h1>SUCCESS!</h1>
 
   <?php
-
+    // This is the report confirmation page, after the report has been submitted and the email has been successfully sent.
     date_default_timezone_set("America/Toronto");
 
     $da = date("Y-m-d H:i:s");

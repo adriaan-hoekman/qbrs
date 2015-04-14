@@ -1,3 +1,12 @@
+<!--
+|
+| System Header
+|
+|
+| System Global Header
+|
+-->
+
 <DOCTYPE html>
 <html>
 <head>

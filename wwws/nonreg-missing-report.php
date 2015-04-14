@@ -8,6 +8,9 @@
 ?>
 
 <?php
+    // This is the report entry page when a user chooses to report a bicycle they have found and have search for it by
+    // serial number in the database and there was a match in the database
+
     $serialnumber = $_POST['SerialNumber'];
 
     date_default_timezone_set("America/Toronto");

@@ -3,6 +3,12 @@
 	include_once './includes/header.php';
 	include_once '../lib/header.func.php';
 	include_once '../lib/global.conf.php';
+
+	/*
+		This is the main index page for the system, and what is displayed when no specific file is referenced it the url.
+		from this page, registered and non registered users can search the database for a bicycle using a serial number, or 
+		by leaving the serial number field blank, submit a missing report without knowing the serial number of the bicycle.
+	*/
 ?>
 
 <body>
@@ -12,8 +18,6 @@
 		<td style="padding: 10px">
 			<div class="hidden-xs">
 			<img src="/images/default_bicycle.png" width="240" height="144">
-			<!-- <img src="/images/Row_of_Bicycles.jpg" width="192" height="146"> -->
-			<!-- <img src="/images/Single_Bicycle.jpg" width="250" height="141"> -->
 		</div>
 		</td>
 		<td align="left">

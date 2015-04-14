@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Report functions file that allow user to get and ganerate report
+ * Report functions file that allow user to get and generate report
  */
 
 function nonreg_submit_report($dbc, $date, $time, $location, $description, $returnlocation, $serialnumber) {
