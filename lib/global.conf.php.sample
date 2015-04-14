@@ -12,7 +12,7 @@
 // Define Database Connection
 /*
 	Uncomment the following part for PROD server.
-	PROD Env PORT = 4444
+	PROD Env PORT = (Please See the document)
 	PROD Env FILE = (Please See the document)
  */
 
