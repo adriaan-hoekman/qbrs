@@ -1,9 +1,6 @@
 <?php
 
-/**
- * User checking function see if the user are already in database
- */
-
+// Function to check if the user is already in the database
 function is_registered($dbc, $netid) {
 	$sql = "SELECT * FROM User WHERE NetID = '$netid' AND NOT UserID = 0 limit 1";
 	$query = $dbc -> query($sql);
@@ -19,6 +16,7 @@ function is_registered($dbc, $netid) {
 	}
 }
 
+// Function to check if the user is an admin
 function is_admin($dbc, $netid) {
 	$sql = "SELECT * FROM User WHERE NetID = '$netid' AND Admin > 0 limit 1";
 	$query = $dbc -> query($sql);
@@ -34,6 +32,7 @@ function is_admin($dbc, $netid) {
 	}
 }
 
+// Function to register new users in the database
 function register_user($dbc, $netid, $name, $email, $da) {
 	$result = mysqli_query($dbc,
 		"INSERT INTO User (NetID, Name, Email, RegistrationDate)
